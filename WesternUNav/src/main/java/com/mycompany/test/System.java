@@ -9,5 +9,6 @@ package com.mycompany.test;
  * @author orenj
  */
 public class System {
+    private int devKey = 1;
     
 }
