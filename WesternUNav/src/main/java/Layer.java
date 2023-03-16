@@ -4,6 +4,7 @@
  */
 import java.util.LinkedList;
 
+
 public class Layer {
     private String description;
     private LinkedList<POI> POIs;
