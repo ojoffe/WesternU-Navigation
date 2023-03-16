@@ -19,8 +19,29 @@ public class System {
         return newUser;
     }
 
-    public User getUser(int index) {
-        return this.users.get(index);
+    /**
+     * Searches for existing user in the system.
+     * @param systemID
+     * @param password
+     * @return User object if user exists, null if user doesn't exist
+     */
+    private User getUser(String systemID, String password) {
+        boolean found = false;
+        User targetUser = new User();
+        
+        for (User user : this.users) {
+            if (user.getID().equals(systemID) && user.getPassword() == password) {
+                targetUser = user;
+                found = true;
+                break;
+            }
+        }
+        
+        if (found) {
+            return targetUser;
+        } else {
+            return null;
+        }
     }
 
     public String getWeather() {
