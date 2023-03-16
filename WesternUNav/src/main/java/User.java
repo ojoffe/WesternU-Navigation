@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
  * @author Aaron
@@ -20,10 +15,9 @@ public class User {
         systemID = "";
     }
     
-    public User(LinkedList<POI> favoritePOIs, String password, String systemID) {
-        this.favoritePOIs = favoritePOIs;
-        this.password = password;
+    public User(String systemID, String password) {
         this.systemID = systemID;
+        this.password = password;
     }
     
     public String getPassword() {
