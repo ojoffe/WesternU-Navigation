@@ -23,4 +23,8 @@ public class Layer {
     public String getDescription(){
             return description;
         }
+    
+    public LinkedList<POI> getPois() {
+        return POIs;
+        }
 }
