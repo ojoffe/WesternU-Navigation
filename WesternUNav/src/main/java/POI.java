@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  *
  * @author Aaron
@@ -14,9 +9,9 @@ public class POI {
     private int id;
     private int roomNum;
     private String name;
-    private int[] coordinate;
+    private float[] coordinate;
     
-    public POI(Layer layer, boolean userDefined, int id, int roomNum, String name, int[] coordinate) {
+    public POI(Layer layer, boolean userDefined, int id, int roomNum, String name, float[] coordinate) {
         this.layer = layer;
         this.userDefined = userDefined;
         this.id = id;
@@ -29,11 +24,9 @@ public class POI {
         this.layer = layer;
     }
     
-    public void setCoordinate(int[] coordinate) {
+    public void setCoordinate(float[] coordinate) {
         this.coordinate = coordinate;
     }
-    
-    
     
     public String setName(String name) {
         this.name = name;
@@ -51,5 +44,9 @@ public class POI {
     public String getDescription() {
         return "POI name: " + name + ", room number: " + roomNum + ", coordinate: " + coordinate;
     }
-}
+    
+    public float[] getCoordinate() {
+        return this.coordinate;
+    }
+ }
 
