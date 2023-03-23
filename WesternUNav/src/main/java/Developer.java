@@ -2,7 +2,11 @@
  *
  * @author orenj
  */
-public class Developer extends User{
+public class Developer extends User {
+    
+    public Developer(String systemID, String password) {
+        super(systemID, password);
+    }
     
     public POI addPOI(Layer layer, int id, int roomNum, String name, float[] coordinate) {
         POI newPOI = new POI(layer, false, id, roomNum, name, coordinate);
@@ -11,6 +15,7 @@ public class Developer extends User{
     }
     
     // editPOI
+    
     
     
     // deletePOI
