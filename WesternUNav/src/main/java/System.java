@@ -8,15 +8,29 @@ import java.util.LinkedList;
 public class System {
     private int developerKey = 1;
     private LinkedList<User> users;
+    private LinkedList<Developer> devs;
 
     public System() {
         this.users = new LinkedList<>();
+        this.devs = new LinkedList<>();
     }
 
+    /**
+     * Adds user to the System.
+     * @param systemID
+     * @param password
+     * @return 
+     */
     public User addUser(String systemID, String password) {
         User newUser = new User(systemID, password);
         this.users.add(newUser);
         return newUser;
+    }
+    
+    public Developer addDeveloper(String systemID, String password) {
+        Developer newDev = new Developer(systemID, password);
+        this.devs.add(newDev);
+        return newDev;
     }
 
     /**
@@ -26,22 +40,24 @@ public class System {
      * @return User object if user exists, null if user doesn't exist
      */
     private User getUser(String systemID, String password) {
-        boolean found = false;
-        User targetUser = new User();
-        
+        // Check all users
         for (User user : this.users) {
-            if (user.getID().equals(systemID) && user.getPassword() == password) {
-                targetUser = user;
-                found = true;
-                break;
+            if (user.getID().equals(systemID) && user.getPassword().equals(password)) {
+                //targetUser = user;
+                return user;
             }
         }
         
-        if (found) {
-            return targetUser;
-        } else {
-            return null;
+        // Check all developers
+        for (Developer dev : this.devs) {
+            if (dev.getID().equals(systemID) && dev.getPassword().equals(password)) {
+                //targetUser = dev;
+                return dev;
+            }
         }
+        
+        // Return null if it hasn't been found
+        return null;
     }
 
     public String getWeather() {
