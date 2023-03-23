@@ -5,15 +5,9 @@
 import java.util.LinkedList;
 
 public class User {
-    private LinkedList<POI> favoritePOIs;
+    private LinkedList<POI> favoritePOIs = new LinkedList<>();;  
     private String password;
     private String systemID;
-    
-    public User() {
-        favoritePOIs = new LinkedList<>();
-        password = "";
-        systemID = "";
-    }
     
     public User(String systemID, String password) {
         this.systemID = systemID;
@@ -32,7 +26,7 @@ public class User {
         favoritePOIs.remove(poi);
     }
     
-    public POI editFavPOI(POI poi) {
+    public POI editFavPOI(POI poi) {  //FIXME: is this correct for editing
         int index = favoritePOIs.indexOf(poi);
         if (index >= 0) {
             favoritePOIs.set(index, poi);
