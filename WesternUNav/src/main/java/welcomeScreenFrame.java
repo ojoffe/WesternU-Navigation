@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import javax.swing.JComboBox;
 /**
  *
  * @author stephenkinsey
  */
+        
 public class welcomeScreenFrame extends javax.swing.JFrame {
-
+    private String selectedBuilding;
     /**
      * Creates new form welcomeScreenFrame
      */
@@ -207,11 +208,14 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AboutUsButtonActionPerformed
 
     private void SelectBuildingBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectBuildingBoxActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_SelectBuildingBoxActionPerformed
 
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
-        // TODO add your handling code here:
+        if (SelectBuildingBox.getSelectedItem().toString().equals("Middlesex College")) {
+            new Middlesex1().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
     private void DoneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButton1ActionPerformed
