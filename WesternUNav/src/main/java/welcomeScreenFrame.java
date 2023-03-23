@@ -34,6 +34,8 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         AboutUsButton = new javax.swing.JButton();
         SelectBuildingBox = new javax.swing.JComboBox<>();
         DoneButton = new javax.swing.JButton();
+        DoneButton1 = new javax.swing.JButton();
+        logOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +53,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             .addGroup(HeaderBGLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(HeaderTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         HeaderBGLayout.setVerticalGroup(
             HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +118,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(221, 221, 221)
                         .addComponent(AboutUsButton)))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,21 +136,50 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
+        DoneButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        DoneButton1.setText("Help");
+        DoneButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoneButton1ActionPerformed(evt);
+            }
+        });
+
+        logOutButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        logOutButton.setText("Log Out");
+        logOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout OtherBGLayout = new javax.swing.GroupLayout(OtherBG);
         OtherBG.setLayout(OtherBGLayout);
         OtherBGLayout.setHorizontalGroup(
             OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OtherBGLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(OtherBGLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(DoneButton1))
+                    .addGroup(OtherBGLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logOutButton)
+                .addGap(14, 14, 14))
         );
         OtherBGLayout.setVerticalGroup(
             OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OtherBGLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(16, 16, 16)
+                .addComponent(logOutButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(DoneButton1)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,6 +212,14 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DoneButtonActionPerformed
+
+    private void DoneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DoneButton1ActionPerformed
+
+    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logOutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +259,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AboutUsButton;
     private javax.swing.JButton DoneButton;
+    private javax.swing.JButton DoneButton1;
     private javax.swing.JPanel HeaderBG;
     private javax.swing.JLabel HeaderTitle;
     private javax.swing.JPanel OtherBG;
@@ -227,5 +267,6 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton logOutButton;
     // End of variables declaration//GEN-END:variables
 }
