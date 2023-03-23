@@ -243,19 +243,22 @@ public class Middlesex1 extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectFloorBox1ActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        // TODO add your handling code here:
+        new HelpFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
-        // TODO add your handling code here:
+        new CreateAccountFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     private void buildingSelectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildingSelectionButtonActionPerformed
-        // TODO add your handling code here:
+        new welcomeScreenFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_buildingSelectionButtonActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_goButtonActionPerformed
 
     /**
