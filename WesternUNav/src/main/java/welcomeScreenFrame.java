@@ -203,6 +203,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
 
     private void AboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutUsButtonActionPerformed
         new AboutUsFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_AboutUsButtonActionPerformed
 
     private void SelectBuildingBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectBuildingBoxActionPerformed
@@ -220,6 +221,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         new CreateAccountFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     /**
