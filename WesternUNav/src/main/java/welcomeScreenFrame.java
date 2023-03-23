@@ -202,7 +202,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutUsButtonActionPerformed
-        // TODO add your handling code here:
+        new AboutUsFrame().setVisible(true);
     }//GEN-LAST:event_AboutUsButtonActionPerformed
 
     private void SelectBuildingBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectBuildingBoxActionPerformed
@@ -214,11 +214,12 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_DoneButtonActionPerformed
 
     private void DoneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButton1ActionPerformed
-        // TODO add your handling code here:
+        new HelpFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_DoneButton1ActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
-        // TODO add your handling code here:
+        new CreateAccountFrame().setVisible(true);
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     /**
