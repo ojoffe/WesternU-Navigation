@@ -17,9 +17,17 @@ public class Layer {
 
     public String getDescription(){
             return description;
-        }
+    }
     
     public LinkedList<POI> getPOIs() {
         return POIs;
-        }
+    }
+    
+    public void addPOI(POI POI) {
+        this.POIs.add(POI);
+    }
+    
+    public void deletePOI(POI POI) {
+        this.POIs.remove(POI);
+    }
 }
