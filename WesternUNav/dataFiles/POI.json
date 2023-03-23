@@ -1,0 +1,169 @@
+{
+  "buildings": [
+    {
+      "name": "Middlesex College",
+      "points_of_interest": [
+        {
+          "name": "Grad Club",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 19,
+          "coordinates": {
+            "latitude": 311,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 17,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 6,
+          "coordinates": {
+            "latitude": 37.7749,
+            "longitude": -122.4194
+          }
+        },
+        {
+          "name": "Lecture Hall",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 110,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 105,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        }  
+      ]
+    },
+    {
+      "name": "University College",
+      "points_of_interest": [
+        {
+          "name": "Grad Club",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 19,
+          "coordinates": {
+            "latitude": 311,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 17,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 6,
+          "coordinates": {
+            "latitude": 37.7749,
+            "longitude": -122.4194
+          }
+        },
+        {
+          "name": "Lecture Hall",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 110,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 105,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        }  
+      ]
+    },
+    {
+      "name": "Middlesex College",
+      "points_of_interest": [
+        {
+          "name": "Grad Club",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 19,
+          "coordinates": {
+            "latitude": 311,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 17,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 6,
+          "coordinates": {
+            "latitude": 37.7749,
+            "longitude": -122.4194
+          }
+        },
+        {
+          "name": "Lecture Hall",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 110,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        },
+        {
+          "name": "Classroom",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 105,
+          "coordinates": {
+            "latitude": 310,
+            "longitude": 101
+          }
+        }  
+      ]
+    }
+  ]
+}
