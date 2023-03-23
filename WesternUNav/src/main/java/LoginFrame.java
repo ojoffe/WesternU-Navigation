@@ -229,6 +229,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
         if (loginField.getText().equals("hello")) {
             new welcomeScreenFrame().setVisible(true);
+            this.dispose();
         }
         else {
             System.exit(0);
