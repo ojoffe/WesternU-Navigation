@@ -272,6 +272,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
     private void loginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton2ActionPerformed
         new LoginFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loginButton2ActionPerformed
 
     /**
