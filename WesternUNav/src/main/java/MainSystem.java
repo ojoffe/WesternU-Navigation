@@ -61,7 +61,12 @@ public class MainSystem {
     }
 
     public String getWeather() {
-        // TODO: Implement weather API logic here
-        return "Sunny";
+        try {
+            String weatherData = WeatherAPI.getWeatherData("London, Ontario");
+            System.out.println(weatherData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
