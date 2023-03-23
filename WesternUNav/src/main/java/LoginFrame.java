@@ -230,6 +230,9 @@ public class LoginFrame extends javax.swing.JFrame {
         if (loginField.getText().equals("hello")) {
             new welcomeScreenFrame().setVisible(true);
         }
+        else {
+            System.exit(0);
+        }
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     /**
