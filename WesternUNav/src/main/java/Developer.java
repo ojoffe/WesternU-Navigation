@@ -15,9 +15,13 @@ public class Developer extends User {
     }
     
     // editPOI
-    
-    
+    public POI editPOI(POI) {
+        
+    }
     
     // deletePOI
+    public void deletePOI(POI POI) {
+        
+    }
         
 }
