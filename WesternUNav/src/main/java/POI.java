@@ -9,7 +9,7 @@ public class POI {
     private int id;
     private int roomNum;
     private String name;
-    private float[] coordinate;
+    private float[] coordinate; // should always be length 2
     
     public POI(Layer layer, boolean userDefined, int id, int roomNum, String name, float[] coordinate) {
         this.layer = layer;
@@ -17,7 +17,7 @@ public class POI {
         this.id = id;
         this.roomNum = roomNum;
         this.name = name;
-        this.coordinate = coordinate;
+        this.coordinate = coordinate;  
     }
     
     public void setLayer(Layer layer) {
