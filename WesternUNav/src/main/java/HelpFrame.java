@@ -158,11 +158,13 @@ public class HelpFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-        // TODO add your handling code here:
+        new welcomeScreenFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
-        // TODO add your handling code here:
+        new CreateAccountFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
 
     /**
