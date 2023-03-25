@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import javax.swing.*;
 /**
  *
  * @author louie
@@ -15,6 +15,12 @@ public class Middlesex1 extends javax.swing.JFrame {
      */
     public Middlesex1() {
         initComponents();
+        JLabel washroomPOI = new JLabel(new ImageIcon("images/washroom.png"));
+        washroomPOI.setLayout(null);
+        JButton washroomButton = new JButton("Click me");
+        washroomButton.setBounds(935, 447, 25, 23);
+         map.add(washroomButton);
+         
     }
 //
     /**
