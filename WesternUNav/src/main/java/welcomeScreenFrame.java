@@ -213,17 +213,18 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
 
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
         if (SelectBuildingBox.getSelectedItem().toString().equals("Middlesex College")) {
+            System.out.println("hello");
             new Middlesex1().setVisible(true);
             this.dispose();
         }
-        if (SelectBuildingBox.getSelectedItem().toString().equals("University College")) {
-            new University().setVisible(true);
-            this.dispose();
-        }
-        if (SelectBuildingBox.getSelectedItem().toString().equals("Talbot College")) {
-            new Talbot1().setVisible(true);
-            this.dispose();
-        }
+//        if (SelectBuildingBox.getSelectedItem().toString().equals("University College")) {
+//            new University().setVisible(true);
+//            this.dispose();
+//        }
+//        if (SelectBuildingBox.getSelectedItem().toString().equals("Talbot College")) {
+//            new Talbot1().setVisible(true);
+//            this.dispose();
+//        }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
     private void DoneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButton1ActionPerformed
