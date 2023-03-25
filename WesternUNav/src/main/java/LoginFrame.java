@@ -271,7 +271,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 }
             }
             // User is not authenticated, show an error message
-            JOptionPane.showMessageDialog(this, "Passwords is Incorrect. Please try again.");
+            JOptionPane.showMessageDialog(this, "Password is Incorrect. Please try again.");
             passwordField.setText("");
         } 
         catch (IOException | ParseException e) {
