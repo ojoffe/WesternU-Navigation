@@ -281,6 +281,8 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "User already exists, please log in.");
                     passwordField.setText("");
                     confirmPasswordField.setText("");
+                    new LoginFrame().setVisible(true);
+                    this.dispose();
                     return;
                 }
             }
