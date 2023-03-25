@@ -26,7 +26,7 @@ public class User {
         users.put(userData);
 
         // write the users to a JSON file
-        try (FileWriter file = new FileWriter("C:dataFiles\\UserData.json")) {
+        try (FileWriter file = new FileWriter("dataFiles/UserData.json")) {
             file.write(users.toString());
             file.flush();
         } catch (IOException e) {
