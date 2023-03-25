@@ -285,6 +285,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void loginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton2ActionPerformed
         new welcomeScreenFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loginButton2ActionPerformed
 
     /**
