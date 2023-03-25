@@ -313,7 +313,22 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     private void confirmPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confirmPasswordFieldActionPerformed
-
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {                                    
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+        }
+    }
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {                                    
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+        }
+    }
+    private void confirmPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {                                    
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+        }
+    }
+    
     private void loginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton2ActionPerformed
         new LoginFrame().setVisible(true);
         this.dispose();
