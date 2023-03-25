@@ -119,7 +119,6 @@ public class Middlesex2 extends javax.swing.JFrame {
 
         floorMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        map.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Middlesex2.png"))); // NOI18N
         map.setText("Insert map here");
 
         floorMap.setLayer(map, javax.swing.JLayeredPane.DEFAULT_LAYER);
