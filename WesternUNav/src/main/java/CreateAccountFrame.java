@@ -281,8 +281,6 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "User already exists, please log in.");
                     passwordField.setText("");
                     confirmPasswordField.setText("");
-                    new LoginFrame().setVisible(true);
-                    this.dispose();
                     return;
                 }
             }
@@ -301,8 +299,10 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         }
         else {
             User user = new User(systemID, password);
-            loginField.setText(user.getID());
-            passwordField.setText(user.getPassword());
+//            loginField.setText(user.getID());
+//            passwordField.setText(user.getPassword());
+            new LoginFrame().setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_loginButton1ActionPerformed
 
