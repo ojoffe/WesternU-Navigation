@@ -126,6 +126,11 @@ public class Middlesex1 extends javax.swing.JFrame {
         floorMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         map.setIcon(new javax.swing.ImageIcon("images/Middlesex1.png"));
+        map.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapMouseClicked(evt);
+            }
+        });
 
         floorMap.setLayer(map, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -379,6 +384,13 @@ public class Middlesex1 extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void mapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapMouseClicked
+        // TODO add your handling code here:
+        int x = evt.getX();
+        int y = evt.getY();
+        System.out.println("Clicked at x = " + x + ", y = " + y);
+    }//GEN-LAST:event_mapMouseClicked
 
     /**
      * @param args the command line arguments

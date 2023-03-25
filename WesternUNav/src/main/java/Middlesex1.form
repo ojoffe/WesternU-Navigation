@@ -341,6 +341,9 @@
                           <Connection code="new javax.swing.ImageIcon(&quot;images/Middlesex1.png&quot;)" type="code"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
