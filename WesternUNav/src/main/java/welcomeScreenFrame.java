@@ -37,6 +37,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         DoneButton = new javax.swing.JButton();
         DoneButton1 = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,6 +154,16 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(102, 0, 204));
+        jButton1.setText("Exit Program");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 0, 204), 3, true));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout OtherBGLayout = new javax.swing.GroupLayout(OtherBG);
         OtherBG.setLayout(OtherBGLayout);
         OtherBGLayout.setHorizontalGroup(
@@ -161,11 +172,14 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(OtherBGLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(DoneButton1))
+                        .addComponent(DoneButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OtherBGLayout.createSequentialGroup()
                         .addGap(93, 93, 93)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(logOutButton)
@@ -178,9 +192,11 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addComponent(logOutButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(DoneButton1)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DoneButton1)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,6 +252,10 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,6 +299,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private javax.swing.JLabel HeaderTitle;
     private javax.swing.JPanel OtherBG;
     private javax.swing.JComboBox<String> SelectBuildingBox;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
