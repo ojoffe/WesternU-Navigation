@@ -38,7 +38,7 @@ public class Middlesex1 extends javax.swing.JFrame {
         goButton = new javax.swing.JButton();
         mapScrollPane = new javax.swing.JScrollPane();
         floorMap = new javax.swing.JLayeredPane();
-        jLabel7 = new javax.swing.JLabel();
+        map = new javax.swing.JLabel();
         poiLegendScrollPane = new javax.swing.JScrollPane();
         floorMap1 = new javax.swing.JLayeredPane();
         jLabel6 = new javax.swing.JLabel();
@@ -119,9 +119,9 @@ public class Middlesex1 extends javax.swing.JFrame {
 
         floorMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Middlesex1.png"))); // NOI18N
+        map.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Middlesex1.png"))); // NOI18N
 
-        floorMap.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap.setLayer(map, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout floorMapLayout = new javax.swing.GroupLayout(floorMap);
         floorMap.setLayout(floorMapLayout);
@@ -129,14 +129,14 @@ public class Middlesex1 extends javax.swing.JFrame {
             floorMapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(floorMapLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(map)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         floorMapLayout.setVerticalGroup(
             floorMapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(floorMapLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(map)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -421,11 +421,11 @@ public class Middlesex1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton logOutButton;
+    private javax.swing.JLabel map;
     private javax.swing.JScrollPane mapScrollPane;
     private javax.swing.JScrollPane poiLegendScrollPane;
     private javax.swing.JScrollPane poiLegendScrollPane1;
