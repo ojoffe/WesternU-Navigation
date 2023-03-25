@@ -259,7 +259,12 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-        // TODO add your handling code here:
+        User user = new User(loginField.getText(), passwordField.getText());
+
+        loginField.setText(user.getID());
+        passwordField.setText(user.getPassword());
+        System.out.println(user.getID());
+        System.out.println(user.getPassword());
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
