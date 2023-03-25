@@ -103,6 +103,11 @@ public class Middlesex1 extends javax.swing.JFrame {
         });
 
         searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         buildingSelectionButton.setText("Building Selection");
         buildingSelectionButton.addActionListener(new java.awt.event.ActionListener() {
@@ -370,6 +375,10 @@ public class Middlesex1 extends javax.swing.JFrame {
     private void addPOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPOIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addPOIActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
