@@ -103,10 +103,20 @@ public class LoginFrame extends javax.swing.JFrame {
                 loginFieldActionPerformed(evt);
             }
         });
+        loginField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginFieldKeyPressed(evt);
+            }
+        });
 
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
+            }
+        });
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
             }
         });
 
@@ -127,6 +137,17 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password:");
+
+        devField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devFieldActionPerformed(evt);
+            }
+        });
+        devField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                devFieldKeyPressed(evt);
+            }
+        });
 
         loginButton2.setText("Bypass");
         loginButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -263,11 +284,28 @@ public class LoginFrame extends javax.swing.JFrame {
                 String savedSystemID = (String) user.get("systemID");
                 String savedPassword = (String) user.get("password");
                 if (savedSystemID.equals(systemID) && savedPassword.equals(password)) {
-                    // User is authenticated, do something
-                    System.out.println("User authenticated");
-                    new welcomeScreenFrame().setVisible(true);
-                    this.dispose();
-                    return;
+                    String devKeyString = new String(devField.getPassword());
+                    int devKey = Integer.parseInt(devKeyString);
+                    if (devKey == 1) {
+                        System.out.println(devKey);
+                        // User is authenticated, do something
+                        int confirmation = JOptionPane.showConfirmDialog(this, "Developer Account in use. Do you want to proceed?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                        if (confirmation == JOptionPane.YES_OPTION) {
+                            //Developer dev = new Developer(systemID, password);
+                            new welcomeScreenFrame().setVisible(true);
+                            this.dispose();
+                            return;
+                        } else {
+                            passwordField.setText("");
+                            devField.setText("");
+                        }
+                    }
+                    else {
+                        // User is authenticated, do something
+                        new welcomeScreenFrame().setVisible(true);
+                        this.dispose();
+                        return;
+                    }
                 }
             }
             // User is not authenticated, show an error message
@@ -287,6 +325,28 @@ public class LoginFrame extends javax.swing.JFrame {
         new welcomeScreenFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButton2ActionPerformed
+
+    private void devFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_devFieldActionPerformed
+
+    private void loginFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginFieldKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+        }
+    }//GEN-LAST:event_loginFieldKeyPressed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void devFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_devFieldKeyPressed
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+        }
+    }//GEN-LAST:event_devFieldKeyPressed
 
     /**
      * @param args the command line arguments
