@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author louie
@@ -259,12 +259,22 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-        User user = new User(loginField.getText(), passwordField.getText());
+        String systemID = loginField.getText();
+        String password = passwordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
 
-        loginField.setText(user.getID());
-        passwordField.setText(user.getPassword());
-        System.out.println(user.getID());
-        System.out.println(user.getPassword());
+        if (!password.equals(confirmPassword)) {
+            // The passwords don't match
+            JOptionPane.showMessageDialog(this, "Passwords don't match. Please try again.");
+            passwordField.setText("");
+            confirmPasswordField.setText("");
+            return;
+        }
+        else {
+            User user = new User(systemID, password);
+            loginField.setText(user.getID());
+            passwordField.setText(user.getPassword());
+        }
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
