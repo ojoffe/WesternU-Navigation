@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 /**
  *
  * @author louie
@@ -262,7 +268,28 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         String systemID = loginField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
-
+        
+        // Read the user data from the JSON file
+        JSONParser parser = new JSONParser();
+        try (FileReader reader = new FileReader("dataFiles/UserData.json")) {
+            JSONArray users = (JSONArray) parser.parse(reader);
+            for (Object userObj : users) {
+                JSONObject user = (JSONObject) userObj;
+                String savedSystemID = (String) user.get("systemID");
+                if (savedSystemID.equals(systemID)) {
+                    // User is authenticated, do something
+                    JOptionPane.showMessageDialog(this, "User already exists, please log in.");
+                    passwordField.setText("");
+                    confirmPasswordField.setText("");
+                    return;
+                }
+            }
+        } 
+        catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        
+        
         if (!password.equals(confirmPassword)) {
             // The passwords don't match
             JOptionPane.showMessageDialog(this, "Passwords don't match. Please try again.");
