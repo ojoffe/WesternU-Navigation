@@ -8,6 +8,7 @@
  * @author louie
  */
 public class Middlesex1 extends javax.swing.JFrame {
+        //private String selectedFloor;
 
     /**
      * Creates new form Middlesex1
@@ -337,6 +338,7 @@ public class Middlesex1 extends javax.swing.JFrame {
 
     private void SelectFloorBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectFloorBox1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_SelectFloorBox1ActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
@@ -355,7 +357,10 @@ public class Middlesex1 extends javax.swing.JFrame {
     }//GEN-LAST:event_buildingSelectionButtonActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
-        
+        if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 2")) {
+            new Middlesex2().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_goButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
