@@ -119,8 +119,6 @@ public class Middlesex1 extends javax.swing.JFrame {
 
         floorMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        map.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Middlesex1.png"))); // NOI18N
-
         floorMap.setLayer(map, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout floorMapLayout = new javax.swing.GroupLayout(floorMap);
@@ -203,7 +201,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(mapScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(mapScrollPane)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
