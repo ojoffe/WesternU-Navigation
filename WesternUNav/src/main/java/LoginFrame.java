@@ -2,7 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 /**
  *
  * @author stephenkinsey
@@ -244,10 +250,31 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_loginFieldActionPerformed
 
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
-        if (loginField.getText().equals("hello")) {
-            new welcomeScreenFrame().setVisible(true);
-            this.dispose();
-        }   
+        String systemID = loginField.getText(); // Get the systemID entered in the login field
+        String password = new String(passwordField.getPassword()); // Get the password entered in the password field
+
+        // Read the user data from the JSON file
+        JSONParser parser = new JSONParser();
+        try (FileReader reader = new FileReader("dataFiles/UserData.json")) {
+            JSONArray users = (JSONArray) parser.parse(reader);
+            for (Object userObj : users) {
+                JSONObject user = (JSONObject) userObj;
+                String savedSystemID = (String) user.get("systemID");
+                String savedPassword = (String) user.get("password");
+                if (savedSystemID.equals(systemID) && savedPassword.equals(password)) {
+                    // User is authenticated, do something
+                    System.out.println("User authenticated");
+                    new welcomeScreenFrame().setVisible(true);
+                    this.dispose();
+                    return;
+                }
+            }
+            // User is not authenticated, show an error message
+            System.out.println("Invalid systemID or password");
+        } 
+        catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_loginButton1ActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
