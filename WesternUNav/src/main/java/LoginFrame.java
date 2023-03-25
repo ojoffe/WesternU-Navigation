@@ -5,6 +5,7 @@
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -270,7 +271,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 }
             }
             // User is not authenticated, show an error message
-            System.out.println("Invalid systemID or password");
+            JOptionPane.showMessageDialog(this, "Passwords is Incorrect. Please try again.");
+            passwordField.setText("");
         } 
         catch (IOException | ParseException e) {
             e.printStackTrace();
