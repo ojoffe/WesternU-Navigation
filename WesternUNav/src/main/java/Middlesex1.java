@@ -18,7 +18,7 @@ public class Middlesex1 extends javax.swing.JFrame {
         JLabel washroomPOI = new JLabel(new ImageIcon("images/washroom.png"));
         washroomPOI.setLayout(null);
         JButton washroomButton = new JButton("Click me");
-        washroomButton.setBounds(935, 447, 25, 23);
+        washroomButton.setBounds(935, 447, 25, 23); // the width and height variables correspond to the size of the image
          map.add(washroomButton);
          
     }
