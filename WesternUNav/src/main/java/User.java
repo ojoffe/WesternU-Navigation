@@ -3,6 +3,10 @@
  * @author Aaron
  */
 import java.util.LinkedList;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class User {
     private LinkedList<POI> favoritePOIs = new LinkedList<>();;  
@@ -12,6 +16,22 @@ public class User {
     public User(String systemID, String password) {
         this.systemID = systemID;
         this.password = password;
+        // create a JSONObject for the user data
+        JSONObject userData = new JSONObject();
+        userData.put("systemID", this.systemID);
+        userData.put("password", this.password);
+
+        // create a JSONArray for the users
+        JSONArray users = new JSONArray();
+        users.put(userData);
+
+        // write the users to a JSON file
+        try (FileWriter file = new FileWriter("C:\\Users\\Aaron\\Desktop\\2212\\group9\\WesternUNav\\dataFiles\\UserData.json")) {
+            file.write(users.toString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     public String getPassword() {
