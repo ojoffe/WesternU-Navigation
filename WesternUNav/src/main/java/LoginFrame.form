@@ -17,6 +17,11 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton2"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -132,7 +137,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="143" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>

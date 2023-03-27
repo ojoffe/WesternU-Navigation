@@ -34,6 +34,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
         HeaderBG = new javax.swing.JPanel();
         HeaderTitle = new javax.swing.JLabel();
         OtherBG = new javax.swing.JPanel();
@@ -54,6 +55,8 @@ public class LoginFrame extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 51, 255));
@@ -230,7 +233,7 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(OtherBGLayout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,6 +416,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel OtherBG;
     private javax.swing.JPasswordField devField;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
