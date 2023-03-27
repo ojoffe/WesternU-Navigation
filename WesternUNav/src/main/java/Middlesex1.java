@@ -17,7 +17,8 @@ public class Middlesex1 extends javax.swing.JFrame {
     /**
      * Creates new form Middlesex1
      */
-    //Components
+    //Componentss
+    //extra
     public Middlesex1() {
         initComponents();
         JLabel washroomPOI = new JLabel(new ImageIcon("images/washroom.png"));
