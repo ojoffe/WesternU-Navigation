@@ -10,6 +10,7 @@ import java.awt.*;
  *
  * @author louie
  */
+//Components
 public class Middlesex1 extends javax.swing.JFrame {
         //private String selectedFloor;
 
