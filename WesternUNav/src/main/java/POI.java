@@ -37,11 +37,17 @@ public class POI {
     
     
     public String getDescription() {
-        return "POI name: " + name + ", room number: " + roomNum + ", coordinate: " + coordinate;
+        return "POI name: " + name + ", room number: " + roomNum + ", "
+                + "coordinates: " + coordinate[0] + ", " + coordinate[1];
     }
     
     public int[] getCoordinate() {
         return this.coordinate;
+    }
+    
+    public static void main(String[] args) {
+        POI poi = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1);
+        System.out.println(poi.getDescription());
     }
  }
 
