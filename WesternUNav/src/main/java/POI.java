@@ -10,14 +10,16 @@ public class POI {
     private int roomNum;
     private String name;
     private float[] coordinate; // should always be length 2
+    private int floor;
     
-    public POI(Layer layer, boolean userDefined, int id, int roomNum, String name, float[] coordinate) {
+    public POI(Layer layer, boolean userDefined, int id, int roomNum, String name, float[] coordinate, int floor) {
         this.layer = layer;
         this.userDefined = userDefined;
         this.id = id;
         this.roomNum = roomNum;
         this.name = name;
-        this.coordinate = coordinate;  
+        this.coordinate = coordinate;
+        this.floor = floor;
     }
     
     public void setLayer(Layer layer) {
