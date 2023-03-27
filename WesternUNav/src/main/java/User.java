@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class User {
-    private LinkedList<POI> favoritePOIs = new LinkedList<>();;  
+    private LinkedList<POI> favoritePOIs = new LinkedList<>();  
     private String password;
     private String systemID;
     
@@ -69,7 +69,7 @@ public class User {
         this.systemID = systemID;
     }
     
-    public LinkedList<POI> getPOIs() {
+    public LinkedList<POI> getFavPOIs() {
         return favoritePOIs;
     }
 }
