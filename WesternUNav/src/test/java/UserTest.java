@@ -93,13 +93,13 @@ public class UserTest {
     @Test
     public void testAddFavPOI() {
         System.out.println("addFavPOI");
-        POI poi = null;
-        User instance = null;
-        POI expResult = null;
-        POI result = instance.addFavPOI(poi);
+        POI expResult = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1);
+        User instance = new User("username", "password");
+        instance.addFavPOI(expResult);
+        LinkedList<POI> favorites = instance.getFavPOIs();
+        int index = favorites.indexOf(expResult);
+        POI result = favorites.get(index);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
