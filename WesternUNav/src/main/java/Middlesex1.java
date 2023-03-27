@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.*;
+import java.io.FileReader;
+import org.json.*;
 /**
  *
  * @author louie
@@ -19,9 +21,49 @@ public class Middlesex1 extends javax.swing.JFrame {
         washroomPOI.setLayout(null);
         JButton washroomButton = new JButton("Click me");
         washroomButton.setBounds(935, 447, 25, 23); // the width and height variables correspond to the size of the image
-         map.add(washroomButton);
-         
+        map.add(washroomButton); 
+        //System.out.println("dataFiles/");
+        this.createButtonsFromJSON("dataFiles/POI.json");
     }
+    
+     public void createButtonsFromJSON(String jsonFilePath) {
+        // Read in the JSON file
+        try (FileReader reader = new FileReader(jsonFilePath)) {
+            // Parse the JSON
+            JSONObject json = new JSONObject(new JSONTokener(reader));
+            JSONArray buildings = json.getJSONArray("buildings");
+            JSONObject middlesex = buildings.getJSONObject(0);
+            
+            JSONArray pointsOfInterest = middlesex.getJSONArray("points_of_interest");
+
+            // Create a JLabel with the PNG image
+            //JLabel label = new JLabel(new ImageIcon("images/washroom.png"));
+            //label.setLayout(null);
+            //map.setLayout(null);
+
+            // Loop through the points of interest and create a button for each one
+            for (int i = 0; i < pointsOfInterest.length(); i++) {
+                JSONObject poi = pointsOfInterest.getJSONObject(i);
+
+                // Get the coordinates of the POI
+                int x = poi.getJSONObject("coordinates").getInt("latitude");
+                int y = poi.getJSONObject("coordinates").getInt("longitude");
+
+                // Create a button for the POI
+                JButton button = new JButton(poi.getString("name"));
+                button.setBackground(new java.awt.Color(255, 0, 0));
+                button.setText("");
+                button.setBounds(x, y, 15, 15); // Set the button position and size
+                map.add(button); // Add the button to the label
+            }
+
+            //getContentPane().add(map); // Add the label to the frame's content pane
+            //pack(); // Pack the frame to resize it to fit the label
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
 //
     /**
      * This method is called from within the constructor to initialize the form.
