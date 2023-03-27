@@ -9,8 +9,8 @@
           "layer": "Bathroom",
           "room_number": 19,
           "coordinates": {
-            "latitude": 311,
-            "longitude": 101
+            "latitude": 586,
+            "longitude": 194
           }
         },
         {
@@ -19,8 +19,8 @@
           "layer": "Bathroom",
           "room_number": 17,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 200,
+            "longitude": 200
           }
         },
         {
@@ -29,8 +29,8 @@
           "layer": "Bathroom",
           "room_number": 6,
           "coordinates": {
-            "latitude": 37.7749,
-            "longitude": -122.4194
+            "latitude": 600,
+            "longitude": 300
           }
         },
         {
@@ -50,7 +50,7 @@
           "room_number": 105,
           "coordinates": {
             "latitude": 310,
-            "longitude": 101
+            "longitude": 400
           }
         }  
       ]
