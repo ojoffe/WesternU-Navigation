@@ -14,7 +14,7 @@ public class Layer {
         this.description = description;
         this.POIs = POIs;
     }
-
+    
     public String getDescription(){
             return description;
     }
