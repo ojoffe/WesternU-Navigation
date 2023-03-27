@@ -258,8 +258,6 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        // Dispose of the current frame
-        this.dispose();    
     }//GEN-LAST:event_DoneButton1ActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
