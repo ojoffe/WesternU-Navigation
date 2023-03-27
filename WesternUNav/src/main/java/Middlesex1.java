@@ -29,36 +29,39 @@ public class Middlesex1 extends javax.swing.JFrame {
      public void createButtonsFromJSON(String jsonFilePath) {
         // Read in the JSON file
         try (FileReader reader = new FileReader(jsonFilePath)) {
-            // Parse the JSON
+        // Parse the JSON
             JSONObject json = new JSONObject(new JSONTokener(reader));
             JSONArray buildings = json.getJSONArray("buildings");
             JSONObject middlesex = buildings.getJSONObject(0);
-            
-            JSONArray pointsOfInterest = middlesex.getJSONArray("points_of_interest");
 
-            // Create a JLabel with the PNG image
-            //JLabel label = new JLabel(new ImageIcon("images/washroom.png"));
-            //label.setLayout(null);
-            //map.setLayout(null);
+            JSONArray pointsOfInterest = middlesex.getJSONArray("points_of_interest");
 
             // Loop through the points of interest and create a button for each one
             for (int i = 0; i < pointsOfInterest.length(); i++) {
-                JSONObject poi = pointsOfInterest.getJSONObject(i);
+                JSONObject poiJson = pointsOfInterest.getJSONObject(i);
 
-                // Get the coordinates of the POI
-                int x = poi.getJSONObject("coordinates").getInt("latitude");
-                int y = poi.getJSONObject("coordinates").getInt("longitude");
+                // Create a POI object for the point of interest
+                String layer = poiJson.getString("layer");
+                //int id = poiJson.getInt("id");
+                int roomNum = poiJson.getInt("room_number");
+                int floor = poiJson.getInt("floor");
+                String name = poiJson.getString("name");
+                int[] coordinate = new int[2];
+                coordinate[0] = poiJson.getJSONObject("coordinates").getInt("latitude");
+                coordinate[1] = poiJson.getJSONObject("coordinates").getInt("longitude");
+                POI poi = new POI(layer, 1, roomNum, name, coordinate, floor);
 
-                // Create a button for the POI
-                JButton button = new JButton(poi.getString("name"));
+                // Create a button for the POI using its coordinates
+                JButton button = new JButton(name);
                 button.setBackground(new java.awt.Color(255, 0, 0));
                 button.setText("");
+                int x = poi.getCoordinate()[0];
+                int y = poi.getCoordinate()[1];
                 button.setBounds(x, y, 15, 15); // Set the button position and size
-                map.add(button); // Add the button to the label
+                map.add(button); // Add the button to the map
+                System.out.println(poi.getDescription());
             }
 
-            //getContentPane().add(map); // Add the label to the frame's content pane
-            //pack(); // Pack the frame to resize it to fit the label
         } catch (Exception e) {
             e.printStackTrace();
         }
