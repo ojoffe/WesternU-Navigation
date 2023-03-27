@@ -9,8 +9,8 @@
           "layer": "Food",
           "room_number": 19,
           "coordinates": {
-            "latitude": 311,
-            "longitude": 101
+            "latitude": 500,
+            "longitude": 300
           }
         },
         {
@@ -19,7 +19,7 @@
           "layer": "Classroom",
           "room_number": 17,
           "coordinates": {
-            "latitude": 310,
+            "latitude": 100,
             "longitude": 400
           }
         },
@@ -29,8 +29,8 @@
           "layer": "Utility",
           "room_number": 1,
           "coordinates": {
-            "latitude": 37,
-            "longitude": 12
+            "latitude": 600,
+            "longitude": 350
           }
         },
         {
@@ -39,8 +39,8 @@
           "layer": "Food",
           "room_number": 18,
           "coordinates": {
-            "latitude": 37,
-            "longitude": 122
+            "latitude": 150,
+            "longitude": 450
           }
         },
         {
@@ -49,8 +49,8 @@
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
-            "latitude": 37,
-            "longitude": 102
+            "latitude": 250,
+            "longitude": 250
           }
         },
         {
@@ -59,8 +59,8 @@
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 250,
+            "longitude": 400
           }
         },
         {
@@ -69,43 +69,43 @@
           "layer": "Navigation",
           "room_number": 105,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 600,
+            "longitude": 50
           }
         },
         {
           "name": "Stairway 1",
-          "floor": 1,
+          "floor": 5,
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
-            "latitude": 310,
+            "latitude": 510,
             "longitude": 101
           }
         }, 
         {
           "name": "Stairway 2",
-          "floor": 1,
+          "floor": 2,
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 100,
+            "longitude": 400
           }
         }, 
         {
           "name": "Stairway 3",
-          "floor": 1,
+          "floor": 2,
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 650,
+            "longitude": 200
           }
         },
         {
           "name": "Stairway 4",
-          "floor": 1,
+          "floor": 2,
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
@@ -115,7 +115,7 @@
         },
         {
           "name": "Stairway 5",
-          "floor": 1,
+          "floor": 3,
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
@@ -125,7 +125,7 @@
         },
         {
           "name": "Stairway 6",
-          "floor": 1,
+          "floor": 4,
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
@@ -139,38 +139,38 @@
           "layer": "Classroom",
           "room_number": 110,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 100,
+            "longitude": 450
           }
         },
         {
           "name": "Computer Science Lecture Hall",
-          "floor": 2,
+          "floor": 3,
           "layer": "Classroom",
           "room_number": 105,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 654,
+            "longitude": 200
           }
         },
         {
           "name": "Math Lecture Hall",
-          "floor": 2,
+          "floor": 5,
           "layer": "Classroom",
           "room_number": 105,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 145,
+            "longitude": 346
           }
         },
         {
           "name": "2212 Lecture Hall",
-          "floor": 2,
+          "floor": 4,
           "layer": "Classroom",
           "room_number": 0,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 500,
+            "longitude": 10
           }
         }
            
