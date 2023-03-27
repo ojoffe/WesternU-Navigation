@@ -29,8 +29,8 @@
           "layer": "Utility",
           "room_number": 1,
           "coordinates": {
-            "latitude": 37.7749,
-            "longitude": 12.4194
+            "latitude": 37,
+            "longitude": 12
           }
         },
         {
@@ -39,8 +39,8 @@
           "layer": "Food",
           "room_number": 18,
           "coordinates": {
-            "latitude": 37.7749,
-            "longitude": 122.4194
+            "latitude": 37,
+            "longitude": 122
           }
         },
         {
@@ -49,8 +49,8 @@
           "layer": "Navigation",
           "room_number": 0,
           "coordinates": {
-            "latitude": 37.7749,
-            "longitude": 102.4194
+            "latitude": 37,
+            "longitude": 102
           }
         },
         {
@@ -205,8 +205,8 @@
           "layer": "Bathroom",
           "room_number": 6,
           "coordinates": {
-            "latitude": 37.7749,
-            "longitude": -122.4194
+            "latitude": 37,
+            "longitude": 122
           }
         },
         {
@@ -260,8 +260,8 @@
           "layer": "Bathroom",
           "room_number": 6,
           "coordinates": {
-            "latitude": 37.7749,
-            "longitude": -122.4194
+            "latitude": 37,
+            "longitude": 122
           }
         },
         {
