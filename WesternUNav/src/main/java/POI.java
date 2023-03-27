@@ -4,29 +4,25 @@
  */;
 
 public class POI {
-    private Layer layer;
-    private boolean userDefined;
-    private int id;
+    private String layer;
     private int roomNum;
     private String name;
-    private float[] coordinate; // should always be length 2
+    private int[] coordinate; // should always be length 2
     private int floor;
     
-    public POI(Layer layer, boolean userDefined, int id, int roomNum, String name, float[] coordinate, int floor) {
+    public POI(String layer, int id, int roomNum, String name, int[] coordinate, int floor) {
         this.layer = layer;
-        this.userDefined = userDefined;
-        this.id = id;
         this.roomNum = roomNum;
         this.name = name;
         this.coordinate = coordinate;
         this.floor = floor;
     }
     
-    public void setLayer(Layer layer) {
+    public void setLayer(String layer) {
         this.layer = layer;
     }
     
-    public void setCoordinate(float[] coordinate) {
+    public void setCoordinate(int[] coordinate) {
         this.coordinate = coordinate;
     }
     
@@ -39,15 +35,12 @@ public class POI {
         this.roomNum = roomNum;
     }
     
-    public void setID(int id) {
-        this.id = id;
-    }
     
     public String getDescription() {
         return "POI name: " + name + ", room number: " + roomNum + ", coordinate: " + coordinate;
     }
     
-    public float[] getCoordinate() {
+    public int[] getCoordinate() {
         return this.coordinate;
     }
  }
