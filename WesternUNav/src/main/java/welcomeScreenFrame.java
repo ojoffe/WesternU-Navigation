@@ -7,7 +7,11 @@ import javax.swing.JComboBox;
  *
  * @author stephenkinsey
  */
-        
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
 public class welcomeScreenFrame extends javax.swing.JFrame {
     private String selectedBuilding;
     /**
@@ -243,8 +247,19 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_DoneButtonActionPerformed
 
     private void DoneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButton1ActionPerformed
-        new HelpFrame().setVisible(true);
-        this.dispose();
+            // Load the PDF file
+        File pdfFile = new File("dataFiles/2212help.pdf");
+
+        // Open the PDF file using the default PDF viewer
+        try {
+            Desktop.getDesktop().open(pdfFile);
+        } catch (IOException ex) {
+            // Handle any errors opening the PDF file
+            ex.printStackTrace();
+        }
+
+        // Dispose of the current frame
+        this.dispose();    
     }//GEN-LAST:event_DoneButton1ActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
