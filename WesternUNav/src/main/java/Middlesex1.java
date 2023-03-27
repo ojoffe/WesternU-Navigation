@@ -5,6 +5,7 @@
 import javax.swing.*;
 import java.io.FileReader;
 import org.json.*;
+import java.awt.*;
 /**
  *
  * @author louie
@@ -39,27 +40,43 @@ public class Middlesex1 extends javax.swing.JFrame {
             // Loop through the points of interest and create a button for each one
             for (int i = 0; i < pointsOfInterest.length(); i++) {
                 JSONObject poiJson = pointsOfInterest.getJSONObject(i);
-
-                // Create a POI object for the point of interest
-                String layer = poiJson.getString("layer");
-                //int id = poiJson.getInt("id");
-                int roomNum = poiJson.getInt("room_number");
                 int floor = poiJson.getInt("floor");
-                String name = poiJson.getString("name");
-                int[] coordinate = new int[2];
-                coordinate[0] = poiJson.getJSONObject("coordinates").getInt("latitude");
-                coordinate[1] = poiJson.getJSONObject("coordinates").getInt("longitude");
-                POI poi = new POI(layer, 1, roomNum, name, coordinate, floor);
+                if (floor == 1) {
+                    // Create a POI object for the point of interest
+                    String layer = poiJson.getString("layer");
+                    //int id = poiJson.getInt("id");
+                    int roomNum = poiJson.getInt("room_number");
+                    String name = poiJson.getString("name");
+                    int[] coordinate = new int[2];
+                    coordinate[0] = poiJson.getJSONObject("coordinates").getInt("latitude");
+                    coordinate[1] = poiJson.getJSONObject("coordinates").getInt("longitude");
+                    POI poi = new POI(layer, 1, roomNum, name, coordinate, floor);
 
-                // Create a button for the POI using its coordinates
-                JButton button = new JButton(name);
-                button.setBackground(new java.awt.Color(255, 0, 0));
-                button.setText("");
-                int x = poi.getCoordinate()[0];
-                int y = poi.getCoordinate()[1];
-                button.setBounds(x, y, 15, 15); // Set the button position and size
-                map.add(button); // Add the button to the map
-                System.out.println(poi.getDescription());
+                        // Create a button for the POI using its coordinates
+                    JButton button = new JButton(name);
+                    if (layer.equals("Navigation")) {
+                        button.setBackground(new java.awt.Color(0, 0, 0));
+                    } else if (layer.equals("Food")){
+                        button.setBackground(new java.awt.Color(0, 255, 0));
+                    } else if (layer.equals("Bashroom")){
+                        button.setBackground(new java.awt.Color(0, 255, 255));
+                    } else if (layer.equals("Classroom")){
+                        button.setBackground(new java.awt.Color(0, 0, 255));
+                    } else if (layer.equals("Lab")){
+                        button.setBackground(new java.awt.Color(255, 0, 0));
+                    } else {
+                        button.setBackground(new java.awt.Color(128, 128, 128));
+                    }
+                    //button.setBackground(new java.awt.Color(255, 0, 0));
+                    button.setText("");
+                    int x = poi.getCoordinate()[0];
+                    int y = poi.getCoordinate()[1];
+                    button.setBounds(x, y, 15, 15); // Set the button position and size
+                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                    map.add(button); // Add the button to the map
+                    //System.out.println(poi.getDescription());
+                }
+                
             }
 
         } catch (Exception e) {
