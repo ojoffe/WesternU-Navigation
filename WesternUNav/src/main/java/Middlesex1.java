@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.io.FileReader;
 import org.json.*;
 import java.awt.*;
+import java.awt.event.*;
 /**
  *
  * @author louie
@@ -71,6 +72,13 @@ public class Middlesex1 extends javax.swing.JFrame {
                     int y = poi.getCoordinate()[1];
                     button.setBounds(x, y, 15, 15); // Set the button position and size
                     button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                    // Add ActionListener to the button
+                    button.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            // Show the POI description in a dialog popup
+                            JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    });
                     map.add(button); // Add the button to the map
                     //System.out.println(poi.getDescription());
                 }
