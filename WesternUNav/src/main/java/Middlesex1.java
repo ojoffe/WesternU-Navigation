@@ -322,8 +322,8 @@ public class Middlesex1 extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel11))))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel13))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jLayeredPane3Layout.setVerticalGroup(
@@ -349,9 +349,7 @@ public class Middlesex1 extends javax.swing.JFrame {
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 114, Short.MAX_VALUE))
+            .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
