@@ -10,13 +10,15 @@ import java.awt.*;
  *
  * @author louie
  */
+//Components
 public class Middlesex1 extends javax.swing.JFrame {
         //private String selectedFloor;
 
     /**
      * Creates new form Middlesex1
      */
-    //Components
+    //Componentss
+    //extra
     public Middlesex1() {
         initComponents();
         JLabel washroomPOI = new JLabel(new ImageIcon("images/washroom.png"));
