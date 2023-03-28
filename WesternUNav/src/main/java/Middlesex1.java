@@ -7,6 +7,9 @@ import java.io.FileReader;
 import org.json.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author louie
@@ -48,9 +51,14 @@ public class Middlesex1 extends javax.swing.JFrame {
                     int roomNum = poiJson.getInt("room_number");
                     String name = poiJson.getString("name");
                     int[] coordinate = new int[2];
+                    int fav = poiJson.getInt("favourite");
+                    Boolean bool = false;
+                    if (fav == 1){
+                        bool = true;
+                    }
                     coordinate[0] = poiJson.getJSONObject("coordinates").getInt("latitude");
                     coordinate[1] = poiJson.getJSONObject("coordinates").getInt("longitude");
-                    POI poi = new POI(layer, 1, roomNum, name, coordinate, floor);
+                    POI poi = new POI(layer, 1, roomNum, name, coordinate, floor, bool);
 
                         // Create a button for the POI using its coordinates
                     JButton button = new JButton(name);
@@ -72,14 +80,41 @@ public class Middlesex1 extends javax.swing.JFrame {
                     int x = poi.getCoordinate()[0];
                     int y = poi.getCoordinate()[1];
                     button.setBounds(x, y, 15, 15); // Set the button position and size
-                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                    if (bool == false) {
+                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                    } else {
+                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                    }
                     // Add ActionListener to the button
                     button.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            // Show the POI description in a dialog popup
-                            JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+                            Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
+                            int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+                            if (result == 0) {
+                                POI selectedPOI = poi;
+                                selectedPOI.setFav(true);
+                                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                                poiJson.put("favourite", 1);
+                                try {
+                                    FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                    fileWriter.write(json.toString());
+                                    fileWriter.flush();
+                                    fileWriter.close();
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            } else if (result == 1) {
+                                POI selectedPOI = poi;
+                                selectedPOI.setFav(false);
+                                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                                poiJson.put("favourite", 0);
+                            } else if (result == 2) {
+                                return;
+                            }
                         }
                     });
+
                     map.add(button); // Add the button to the map
                     //System.out.println(poi.getDescription());
                 }
