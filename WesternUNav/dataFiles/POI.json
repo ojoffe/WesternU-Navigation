@@ -8,6 +8,7 @@
           "floor": 1,
           "layer": "Food",
           "room_number": 19,
+          "favourite": 0,
           "coordinates": {
             "latitude": 574,
             "longitude": 208
@@ -18,6 +19,7 @@
           "floor": 1,
           "layer": "Classroom",
           "room_number": 17,
+          "favourite": 0,
           "coordinates": {
             "latitude": 303,
             "longitude": 332
@@ -28,6 +30,7 @@
           "floor": 1,
           "layer": "Classroom",
           "room_number": 6,
+          "favourite": 0,
           "coordinates": {
             "latitude": 430,
             "longitude": 363
@@ -38,6 +41,7 @@
           "floor": 1,
           "layer": "Food",
           "room_number": 18,
+          "favourite": 0,
           "coordinates": {
             "latitude": 435,
             "longitude": 249
@@ -48,6 +52,7 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 63,
             "longitude": 514
@@ -58,6 +63,7 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 236,
             "longitude": 460
@@ -68,9 +74,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 105,
+          "favourite": 0,
           "coordinates": {
-            "latitude": 310,
-            "longitude": 101
+            "latitude": 712,
+            "longitude": 338
           }
         },
         {
@@ -78,6 +85,7 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 1082,
             "longitude": 523
@@ -88,9 +96,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
-            "latitude": 666,
-            "longitude": 322
+            "latitude": 659,
+            "longitude": 314
           }
         }, 
         {
@@ -98,9 +107,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
-            "latitude": 960,
-            "longitude": 460
+            "latitude": 952,
+            "longitude": 450
           }
         },
         {
@@ -108,9 +118,10 @@
           "floor": 1,
           "layer": "Other",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
-            "latitude": 850,
-            "longitude": 415
+            "latitude": 844,
+            "longitude": 407
           }
         },
         {
@@ -118,6 +129,7 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -128,6 +140,7 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -138,6 +151,7 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 320,
             "longitude": 252
@@ -148,9 +162,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
-            "latitude":404,
-            "longitude": 232
+            "latitude":395,
+            "longitude": 223
           }
         },
         {
@@ -158,9 +173,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
-            "latitude": 493,
-            "longitude": 163
+            "latitude": 489,
+            "longitude": 153
           }
         },
         {
@@ -168,9 +184,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
-            "latitude": 606,
-            "longitude": 144
+            "latitude": 600,
+            "longitude": 137
           }
         },
         {
@@ -178,9 +195,10 @@
           "floor": 1,
           "layer": "Navigation",
           "room_number": 0,
+          "favourite": 0,
           "coordinates": {
             "latitude": 717,
-            "longitude": 164
+            "longitude": 154
           }
         },
         {
@@ -188,10 +206,55 @@
           "floor": 1,
           "layer": "Other",
           "room_number": 1,
+          "favourite": 0,
           "coordinates": {
             "latitude": 606,
             "longitude": 369
           }
+        },
+        {
+          "name": "Exit 8",
+          "floor": 1,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 717,
+            "longitude": 154
+          }
+        },
+        {
+          "name": "Men's Bathroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 5,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 481,
+            "longitude": 348
+          }       
+        },
+        {
+          "name": "Woman's Bathroom",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 5,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 518,
+            "longitude": 342
+          }       
+        },
+        {
+          "name": "Men's Bathroom 2",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 5,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 980,
+            "longitude": 480
+          }       
         }
       ]
     },
@@ -203,6 +266,7 @@
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 19,
+          "favourite": 0,
           "coordinates": {
             "latitude": 311,
             "longitude": 101
@@ -213,6 +277,7 @@
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 17,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -223,6 +288,7 @@
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 6,
+          "favourite": 0,
           "coordinates": {
             "latitude": 37,
             "longitude": 122
@@ -233,6 +299,7 @@
           "floor": 2,
           "layer": "Bathroom",
           "room_number": 110,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -243,6 +310,7 @@
           "floor": 2,
           "layer": "Bathroom",
           "room_number": 105,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -251,13 +319,14 @@
       ]
     },
     {
-      "name": "Middlesex College",
+      "name": "Talbot College",
       "points_of_interest": [
         {
           "name": "Grad Club",
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 19,
+          "favourite": 0,
           "coordinates": {
             "latitude": 311,
             "longitude": 101
@@ -268,6 +337,7 @@
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 17,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -278,6 +348,7 @@
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 6,
+          "favourite": 0,
           "coordinates": {
             "latitude": 37,
             "longitude": 122
@@ -288,6 +359,7 @@
           "floor": 2,
           "layer": "Bathroom",
           "room_number": 110,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
@@ -298,6 +370,7 @@
           "floor": 2,
           "layer": "Bathroom",
           "room_number": 105,
+          "favourite": 0,
           "coordinates": {
             "latitude": 310,
             "longitude": 101
