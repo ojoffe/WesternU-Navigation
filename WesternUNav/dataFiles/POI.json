@@ -125,17 +125,6 @@
           }
         },
         {
-          "name": "Stairway 5",
-          "floor": 1,
-          "layer": "Navigation",
-          "room_number": 0,
-          "favourite": 0,
-          "coordinates": {
-            "latitude": 310,
-            "longitude": 101
-          }
-        },
-        {
           "name": "Stairway 6",
           "floor": 1,
           "layer": "Navigation",
