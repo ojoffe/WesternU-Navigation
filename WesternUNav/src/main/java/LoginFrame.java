@@ -50,7 +50,6 @@ public class LoginFrame extends javax.swing.JFrame {
         devField = new javax.swing.JPasswordField();
         loginButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -249,21 +248,12 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Password:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HeaderBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(OtherBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(367, 367, 367)
-                    .addComponent(jLabel4)
-                    .addContainerGap(368, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,11 +261,6 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(HeaderBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OtherBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(265, 265, 265)
-                    .addComponent(jLabel4)
-                    .addContainerGap(266, Short.MAX_VALUE)))
         );
 
         pack();
@@ -305,7 +290,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 String savedPassword = (String) user.get("password");
                 if (savedSystemID.equals(systemID) && savedPassword.equals(password)) {
                     String devKeyString = new String(devField.getPassword());
-                    int devKey = Integer.parseInt(devKeyString);
+                    int devKey = 0;
+                    if (!devKeyString.isEmpty()) {
+                        devKey = Integer.parseInt(devKeyString);
+                    }
                     if (devKey == 1) {
                         System.out.println(devKey);
                         // User is authenticated, do something
@@ -420,7 +408,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
