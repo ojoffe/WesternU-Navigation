@@ -1,3 +1,8 @@
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -452,8 +457,15 @@ public class Middlesex2 extends javax.swing.JFrame {
     }//GEN-LAST:event_addPOIActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        new HelpFrame().setVisible(true);
-        this.dispose();
+        File pdfFile = new File("dataFiles/2212help.pdf");
+
+        // Open the PDF file using the default PDF viewer
+        try {
+            Desktop.getDesktop().open(pdfFile);
+        } catch (IOException ex) {
+            // Handle any errors opening the PDF file
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
