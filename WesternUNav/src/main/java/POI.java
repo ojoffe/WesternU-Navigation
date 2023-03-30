@@ -11,7 +11,7 @@ public class POI {
     private int floor;
     private Boolean fav;
     
-    public POI(String layer, int id, int roomNum, String name, int[] coordinate, int floor, Boolean fav) {
+    public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav) {
         this.layer = layer;
         this.roomNum = roomNum;
         this.name = name;
