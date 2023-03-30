@@ -316,6 +316,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         }
         else {
             User user = new User(systemID, password);
+            
 //            loginField.setText(user.getID());
 //            passwordField.setText(user.getPassword());
             new LoginFrame().setVisible(true);
