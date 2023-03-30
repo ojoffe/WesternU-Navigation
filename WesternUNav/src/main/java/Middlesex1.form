@@ -204,7 +204,7 @@
                                   <Component id="poiLegendScrollPane" min="-2" pref="82" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="mapScrollPane" pref="306" max="32767" attributes="0"/>
+                              <Component id="mapScrollPane" pref="310" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
