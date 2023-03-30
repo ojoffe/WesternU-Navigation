@@ -78,7 +78,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                         button.setBackground(new java.awt.Color(0, 0, 0));
                     } else if (layer.equals("Food")){
                         button.setBackground(new java.awt.Color(0, 255, 0));
-                    } else if (layer.equals("Bashroom")){
+                    } else if (layer.equals("Bathroom")){
                         button.setBackground(new java.awt.Color(0, 255, 255));
                     } else if (layer.equals("Classroom")){
                         button.setBackground(new java.awt.Color(0, 0, 255));
