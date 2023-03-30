@@ -28,27 +28,34 @@ public class POI {
         this.coordinate = coordinate;
     }
     
+    public int[] getCoordinate() {
+        return this.coordinate;
+    }
+    
     public String setName(String name) {
         this.name = name;
         return name;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     public void setRoomNum(int roomNum) {
         this.roomNum = roomNum;
     }
     
+    public int getRoomNum() {
+        return this.roomNum;
+    }
+    
     public void setFloor(int floor) {
         this.floor = floor;
     }
     
-    
     public String getDescription() {
         return "POI name: " + name + ", room number: " + roomNum + ", "
                 + "coordinates: " + coordinate[0] + ", " + coordinate[1];
-    }
-    
-    public int[] getCoordinate() {
-        return this.coordinate;
     }
     
     public void setFav(boolean bool) {
