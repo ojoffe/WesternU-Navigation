@@ -10,6 +10,7 @@ public class POI {
     private int[] coordinate; // should always be length 2
     private int floor;
     private Boolean fav;
+    private String building = "";
     
     public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav) {
         this.layer = layer;
@@ -18,6 +19,16 @@ public class POI {
         this.coordinate = coordinate;
         this.floor = floor;
         this.fav = false;
+    }
+    
+    public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav, String building) {
+        this.layer = layer;
+        this.roomNum = roomNum;
+        this.name = name;
+        this.coordinate = coordinate;
+        this.floor = floor;
+        this.fav = false;
+        this.building = building;
     }
     
     public void setLayer(String layer) {
@@ -66,9 +77,18 @@ public class POI {
         return this.fav;
     }
     
-    public static void main(String[] args) {
-        POI poi = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1, false);
-        System.out.println(poi.getDescription());
+    public String getLayer() {
+        return this.layer;
     }
+    
+    public int getFloor() {
+        return this.floor;
+    }
+    
+    public String getBuilding() {
+        return this.building;
+    }
+    
+    
  }
 
