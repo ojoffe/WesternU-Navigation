@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
 
 /**
  *
@@ -28,11 +29,21 @@ public class Middlesex1 extends javax.swing.JFrame {
     //Beginning
     public Middlesex1() {
         initComponents();
-        this.createButtonsFromJSON("dataFiles/POI.json");
+        LinkedList<String> ll = new LinkedList<String>();
+        ll.add("Bathrooms");
+        ll.add("Food");
+        ll.add("Other");
+        ll.add("Navigation");
+        ll.add("Labs");
+        this.createButtonsFromJSON("dataFiles/POI.json", ll);
     }
     
-     public void createButtonsFromJSON(String jsonFilePath) {
-         //hi
+    public Middlesex1(LinkedList<String> ll) {
+        initComponents();
+        this.createButtonsFromJSON("dataFiles/POI.json", ll);
+    }
+    
+     public void createButtonsFromJSON(String jsonFilePath, LinkedList<String> ll) {
         // Read in the JSON file
         try (FileReader reader = new FileReader(jsonFilePath)) {
         // Parse the JSON
@@ -46,9 +57,8 @@ public class Middlesex1 extends javax.swing.JFrame {
             for (int i = 0; i < pointsOfInterest.length(); i++) {
                 JSONObject poiJson = pointsOfInterest.getJSONObject(i);
                 int floor = poiJson.getInt("floor");
-                if (floor == 1) {
-                    // Create a POI object for the point of interest
-                    String layer = poiJson.getString("layer");
+                String layer = poiJson.getString("layer");
+                if ((floor == 1) && (ll.contains(layer))) {
                     //int id = poiJson.getInt("id");
                     int roomNum = poiJson.getInt("room_number");
                     String name = poiJson.getString("name");
@@ -434,6 +444,11 @@ public class Middlesex1 extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
         jButton2.setText("SUBMIT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -499,7 +514,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 47, Short.MAX_VALUE))
-                    .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                    .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buildingSelectionButton, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -698,6 +713,33 @@ public class Middlesex1 extends javax.swing.JFrame {
     private void bathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bathActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bathActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LinkedList<String> selected = new LinkedList<>();
+        if (bath.isSelected()) {
+            selected.add("Bathroom");
+        }
+        if (food.isSelected()){
+            selected.add("Food");
+        }
+        if (nav.isSelected()){
+            selected.add("Navigation");
+        }
+        if (other.isSelected()){
+            selected.add("Other");
+        }
+        if (labs.isSelected()){
+            selected.add("Lab");
+        }
+        if (classroom.isSelected()){
+            selected.add("Classroom");
+        }
+        for (String str : selected) {
+            System.out.println(str);
+        }
+        new Middlesex1(selected).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
