@@ -1,7 +1,7 @@
 /**
  *
  * @author Aaron
- */;
+ */
 
 public class POI {
     private String layer;
@@ -12,6 +12,15 @@ public class POI {
     private Boolean fav;
     private String building = "";
     
+    /**
+     * Normal constructor that is used
+     * @param layer
+     * @param roomNum
+     * @param name
+     * @param coordinate
+     * @param floor
+     * @param fav 
+     */
     public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav) {
         this.layer = layer;
         this.roomNum = roomNum;
@@ -21,6 +30,16 @@ public class POI {
         this.fav = false;
     }
     
+    /**
+     * Constructor used when adding a POI
+     * @param layer
+     * @param roomNum
+     * @param name
+     * @param coordinate
+     * @param floor
+     * @param fav
+     * @param building 
+     */
     public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav, String building) {
         this.layer = layer;
         this.roomNum = roomNum;
