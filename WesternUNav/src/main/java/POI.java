@@ -37,6 +37,10 @@ public class POI {
         this.roomNum = roomNum;
     }
     
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
+    
     
     public String getDescription() {
         return "POI name: " + name + ", room number: " + roomNum + ", "
