@@ -152,19 +152,24 @@ public class Middlesex1 extends javax.swing.JFrame {
         map = new javax.swing.JLabel();
         poiLegendScrollPane = new javax.swing.JScrollPane();
         floorMap1 = new javax.swing.JLayeredPane();
-        jLabel6 = new javax.swing.JLabel();
+        classroom = new javax.swing.JCheckBox();
+        food = new javax.swing.JCheckBox();
+        bath = new javax.swing.JCheckBox();
+        labs = new javax.swing.JCheckBox();
+        nav = new javax.swing.JCheckBox();
+        other = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         addPOI = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         poiLegendScrollPane1 = new javax.swing.JScrollPane();
         jLayeredPane2 = new javax.swing.JLayeredPane();
-        jLayeredPane3 = new javax.swing.JLayeredPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -178,23 +183,6 @@ public class Middlesex1 extends javax.swing.JFrame {
         HeaderTitle.setForeground(new java.awt.Color(255, 255, 255));
         HeaderTitle.setText("WesternU Building Navigation System");
 
-        javax.swing.GroupLayout HeaderBGLayout = new javax.swing.GroupLayout(HeaderBG);
-        HeaderBG.setLayout(HeaderBGLayout);
-        HeaderBGLayout.setHorizontalGroup(
-            HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderBGLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(HeaderTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        HeaderBGLayout.setVerticalGroup(
-            HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderBGLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(HeaderTitle)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
         OtherBG1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(153, 51, 255));
@@ -207,6 +195,7 @@ public class Middlesex1 extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Change Floor");
 
+        SelectFloorBox1.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
         SelectFloorBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5" }));
         SelectFloorBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,6 +216,7 @@ public class Middlesex1 extends javax.swing.JFrame {
             }
         });
 
+        buildingSelectionButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         buildingSelectionButton.setText("Building Selection");
         buildingSelectionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +224,7 @@ public class Middlesex1 extends javax.swing.JFrame {
             }
         });
 
+        goButton.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
         goButton.setText("Go");
         goButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,55 +250,106 @@ public class Middlesex1 extends javax.swing.JFrame {
             .addGroup(floorMapLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(map)
-                .addContainerGap(436, Short.MAX_VALUE))
+                .addContainerGap(696, Short.MAX_VALUE))
         );
         floorMapLayout.setVerticalGroup(
             floorMapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(floorMapLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(map)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(296, Short.MAX_VALUE))
         );
 
         mapScrollPane.setViewportView(floorMap);
 
         floorMap1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel6.setText("Insert map here");
+        classroom.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        classroom.setText("Classrooms");
 
-        floorMap1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        food.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        food.setText("Food");
+        food.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foodActionPerformed(evt);
+            }
+        });
+
+        bath.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        bath.setText("Bathrooms");
+        bath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bathActionPerformed(evt);
+            }
+        });
+
+        labs.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        labs.setText("Labs");
+
+        nav.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        nav.setText("Navigation");
+
+        other.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        other.setText("Other");
+
+        floorMap1.setLayer(classroom, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap1.setLayer(food, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap1.setLayer(bath, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap1.setLayer(labs, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap1.setLayer(nav, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap1.setLayer(other, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout floorMap1Layout = new javax.swing.GroupLayout(floorMap1);
         floorMap1.setLayout(floorMap1Layout);
         floorMap1Layout.setHorizontalGroup(
             floorMap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(floorMap1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(floorMap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(food, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bath, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labs, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nav, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(other, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(classroom, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 301, Short.MAX_VALUE))
         );
         floorMap1Layout.setVerticalGroup(
             floorMap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(floorMap1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addComponent(bath, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(classroom, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(food, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labs, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nav, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(other, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         poiLegendScrollPane.setViewportView(floorMap1);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("POI Legend");
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel3.setText("Layer Legend");
+        jLabel3.setOpaque(true);
 
-        addPOI.setText("Add POI");
+        addPOI.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
+        addPOI.setText("ADD POI");
         addPOI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPOIActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Layers");
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel5.setText("Select Layers:");
+        jLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel5.setOpaque(true);
 
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -321,6 +363,12 @@ public class Middlesex1 extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel8.setText("Food");
         jLabel8.setOpaque(true);
+
+        jLabel11.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Labs");
+        jLabel11.setOpaque(true);
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 255));
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -338,145 +386,127 @@ public class Middlesex1 extends javax.swing.JFrame {
         jLabel13.setText("Other");
         jLabel13.setOpaque(true);
 
-        jLabel11.setBackground(new java.awt.Color(255, 0, 0));
-        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Labs");
-        jLabel11.setOpaque(true);
-
-        jLayeredPane3.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane3.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jLayeredPane3Layout = new javax.swing.GroupLayout(jLayeredPane3);
-        jLayeredPane3.setLayout(jLayeredPane3Layout);
-        jLayeredPane3Layout.setHorizontalGroup(
-            jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                        .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13))))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jLayeredPane3Layout.setVerticalGroup(
-            jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane3Layout.createSequentialGroup()
-                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel11))
-                .addGap(1, 1, 1)
-                .addGroup(jLayeredPane3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLayeredPane2.setLayer(jLayeredPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
         jLayeredPane2Layout.setHorizontalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLayeredPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addGap(53, 53, 53))
         );
 
         poiLegendScrollPane1.setViewportView(jLayeredPane2);
+
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
+        jButton2.setText("SUBMIT");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(mapScrollPane)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mapScrollPane))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addPOI, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(buildingSelectionButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SelectFloorBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(goButton)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(addPOI))
+                                    .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(buildingSelectionButton)
+                        .addGap(256, 256, 256)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(SelectFloorBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(goButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buildingSelectionButton)
-                            .addComponent(jLabel2)
-                            .addComponent(SelectFloorBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(goButton)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addPOI))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addGap(12, 12, 12))
+                        .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 47, Short.MAX_VALUE))
+                    .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buildingSelectionButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(SelectFloorBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(goButton))
+                        .addContainerGap())))
         );
 
         helpButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -511,33 +541,45 @@ public class Middlesex1 extends javax.swing.JFrame {
             OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OtherBG1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(logOutButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(helpButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logOutButton)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         OtherBG1Layout.setVerticalGroup(
             OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBG1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(OtherBG1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(helpButton)
-                        .addGap(41, 41, 41))
-                    .addGroup(OtherBG1Layout.createSequentialGroup()
-                        .addGroup(OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(OtherBG1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(OtherBG1Layout.createSequentialGroup()
-                                .addComponent(logOutButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(38, 38, 38))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logOutButton)
+                    .addComponent(helpButton)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+        );
+
+        javax.swing.GroupLayout HeaderBGLayout = new javax.swing.GroupLayout(HeaderBG);
+        HeaderBG.setLayout(HeaderBGLayout);
+        HeaderBGLayout.setHorizontalGroup(
+            HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderBGLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(HeaderTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(OtherBG1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        HeaderBGLayout.setVerticalGroup(
+            HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderBGLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(HeaderTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(OtherBG1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -545,15 +587,10 @@ public class Middlesex1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(HeaderBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(OtherBG1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(HeaderBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(OtherBG1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(HeaderBG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -591,7 +628,43 @@ public class Middlesex1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void addPOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPOIActionPerformed
-        // TODO add your handling code here:
+
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+
+
+        JTextField nameField = new JTextField();
+        panel.add(new JLabel("Name:"));
+        panel.add(nameField);
+        
+        JTextField floorField = new JTextField();
+        panel.add(new JLabel("Floor:"));
+        panel.add(floorField);
+
+        JTextField roomNumField = new JTextField();
+        panel.add(new JLabel("Room Number:"));
+        panel.add(roomNumField);
+        
+
+        String[] layerOptions = {"Navigation", "Food", "Bathroom", "Classroom", "Lab", "Other"};
+        JComboBox<String> layerComboBox = new JComboBox<>(layerOptions);
+        panel.add(new JLabel("Layer:"));
+        panel.add(layerComboBox);
+
+        // Show the input dialog to the user
+        int result = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+        // Process the user input if they clicked OK
+        if (result == JOptionPane.OK_OPTION) {
+            String name = nameField.getText();
+            int roomNum = Integer.parseInt(roomNumField.getText());
+            int floor = Integer.parseInt(floorField.getText());
+            String layer = (String) layerComboBox.getSelectedItem();
+            int[] coordinate = new int[2];
+            coordinate[0] = 0;
+            coordinate[1] = 0;
+            POI poi = new POI(layer, 1, roomNum, name, coordinate, floor, false);
+            JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_addPOIActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -608,6 +681,14 @@ public class Middlesex1 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void foodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foodActionPerformed
+
+    private void bathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bathActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bathActionPerformed
 
     /**
      * @param args the command line arguments
@@ -650,12 +731,16 @@ public class Middlesex1 extends javax.swing.JFrame {
     private javax.swing.JPanel OtherBG1;
     private javax.swing.JComboBox<String> SelectFloorBox1;
     private javax.swing.JButton addPOI;
+    private javax.swing.JCheckBox bath;
     private javax.swing.JButton buildingSelectionButton;
+    private javax.swing.JCheckBox classroom;
     private javax.swing.JLayeredPane floorMap;
     private javax.swing.JLayeredPane floorMap1;
+    private javax.swing.JCheckBox food;
     private javax.swing.JButton goButton;
     private javax.swing.JButton helpButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -664,16 +749,17 @@ public class Middlesex1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JLayeredPane jLayeredPane3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JCheckBox labs;
     private javax.swing.JButton logOutButton;
     private javax.swing.JLabel map;
     private javax.swing.JScrollPane mapScrollPane;
+    private javax.swing.JCheckBox nav;
+    private javax.swing.JCheckBox other;
     private javax.swing.JScrollPane poiLegendScrollPane;
     private javax.swing.JScrollPane poiLegendScrollPane1;
     private javax.swing.JButton searchButton;
