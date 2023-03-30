@@ -345,6 +345,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void loginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton2ActionPerformed
+        isDev = false;
         new welcomeScreenFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButton2ActionPerformed
