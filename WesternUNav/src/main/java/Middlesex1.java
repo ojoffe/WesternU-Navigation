@@ -18,6 +18,7 @@ import java.util.LinkedList;
  */
 //Components
 public class Middlesex1 extends javax.swing.JFrame {
+    
     /**
      * Creates new form Middlesex1
      */
@@ -28,11 +29,12 @@ public class Middlesex1 extends javax.swing.JFrame {
     public Middlesex1() {
         initComponents();
         LinkedList<String> ll = new LinkedList<String>();
-        ll.add("Bathrooms");
+        ll.add("Bathroom");
         ll.add("Food");
         ll.add("Other");
         ll.add("Navigation");
-        ll.add("Labs");
+        ll.add("Lab");
+        ll.add("Classroom");
         this.createButtonsFromJSON("dataFiles/POI.json", ll);
     }
     
