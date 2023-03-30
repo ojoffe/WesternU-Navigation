@@ -18,8 +18,6 @@ import java.util.LinkedList;
  */
 //Components
 public class Middlesex1 extends javax.swing.JFrame {
-        //private String selectedFloor;
-
     /**
      * Creates new form Middlesex1
      */
@@ -100,30 +98,109 @@ public class Middlesex1 extends javax.swing.JFrame {
                     // Add ActionListener to the button
                     button.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
-                            int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                            if (LoginFrame.isDev) {
+                                Object[] options = {"Set Favourite", "Unfavourite", "Close", "Edit"}; 
+                                int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                                if (result == 0) {
+                                    POI selectedPOI = poi;
+                                    selectedPOI.setFav(true);
+                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                                    poiJson.put("favourite", 1);
+                                    try {
+                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                        fileWriter.write(json.toString());
+                                        fileWriter.flush();
+                                        fileWriter.close();
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                } else if (result == 1) {
+                                    POI selectedPOI = poi;
+                                    selectedPOI.setFav(false);
+                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                                    poiJson.put("favourite", 0);
+                                } else if (result == 2) {
+                                    return;
+                                } else if (result == 3) {
+                                    POI selectedPOI = poi;
+                                    JPanel panel = new JPanel(new GridLayout(0, 1));
+                                    JTextField nameField = new JTextField();
+                                    panel.add(new JLabel("Name:"));
+                                    panel.add(nameField);
 
-                            if (result == 0) {
-                                POI selectedPOI = poi;
-                                selectedPOI.setFav(true);
-                                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
-                                poiJson.put("favourite", 1);
-                                try {
-                                    FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
-                                    fileWriter.write(json.toString());
-                                    fileWriter.flush();
-                                    fileWriter.close();
-                                } catch (IOException ex) {
-                                    ex.printStackTrace();
+                                    JTextField floorField = new JTextField();
+                                    panel.add(new JLabel("Floor:"));
+                                    panel.add(floorField);
+
+                                    JTextField roomNumField = new JTextField();
+                                    panel.add(new JLabel("Room Number:"));
+                                    panel.add(roomNumField);
+
+
+                                    String[] layerOptions = {"Navigation", "Food", "Bathroom", "Classroom", "Lab", "Other"};
+                                    JComboBox<String> layerComboBox = new JComboBox<>(layerOptions);
+                                    panel.add(new JLabel("Layer:"));
+                                    panel.add(layerComboBox);
+
+                                    // Show the input dialog to the user
+                                    int res = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+                                    // Process the user input if they clicked OK
+                                    if (res == JOptionPane.OK_OPTION) {
+                                        String name = nameField.getText();
+                                        int roomNum = Integer.parseInt(roomNumField.getText());
+                                        int floor = Integer.parseInt(floorField.getText());
+                                        String layer = (String) layerComboBox.getSelectedItem();
+                                        int[] coordinate = new int[2];
+                                        coordinate[0] = 0;
+                                        coordinate[1] = 0;
+                                        poi.setLayer(layer);
+                                        poi.setFloor(floor);
+                                        poi.setName(name);
+                                        poi.setRoomNum(roomNum);
+                                        JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+                                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                                        poiJson.put("room_number", roomNum);
+                                        poiJson.put("name", name);
+                                        poiJson.put("floor", floor);
+                                        poiJson.put("layer", layer);
+                                        new Middlesex1(ll).setVisible(true);
+                                        try {
+                                            FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                            fileWriter.write(json.toString());
+                                            fileWriter.flush();
+                                            fileWriter.close();
+                                        } catch (IOException ex) {
+                                            ex.printStackTrace();
+                                        }
+                                    }
                                 }
-                            } else if (result == 1) {
-                                POI selectedPOI = poi;
-                                selectedPOI.setFav(false);
-                                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
-                                poiJson.put("favourite", 0);
-                            } else if (result == 2) {
-                                return;
-                            }
+                            } else {
+                                Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
+                                int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                                if (result == 0) {
+                                    POI selectedPOI = poi;
+                                    selectedPOI.setFav(true);
+                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                                    poiJson.put("favourite", 1);
+                                    try {
+                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                        fileWriter.write(json.toString());
+                                        fileWriter.flush();
+                                        fileWriter.close();
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                } else if (result == 1) {
+                                    POI selectedPOI = poi;
+                                    selectedPOI.setFav(false);
+                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                                    poiJson.put("favourite", 0);
+                                } else if (result == 2) {
+                                    return;
+                                }
+                            } 
+                            
                         }
                     });
 
@@ -740,7 +817,9 @@ public class Middlesex1 extends javax.swing.JFrame {
         new Middlesex1(selected).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+    
 
+    
     /**
      * @param args the command line arguments
      */
