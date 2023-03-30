@@ -70,7 +70,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                     }
                     coordinate[0] = poiJson.getJSONObject("coordinates").getInt("latitude");
                     coordinate[1] = poiJson.getJSONObject("coordinates").getInt("longitude");
-                    POI poi = new POI(layer, 1, roomNum, name, coordinate, floor, bool);
+                    POI poi = new POI(layer, roomNum, name, coordinate, floor, bool);
 
                         // Create a button for the POI using its coordinates
                     JButton button = new JButton(name);
@@ -765,7 +765,7 @@ public class Middlesex1 extends javax.swing.JFrame {
             int[] coordinate = new int[2];
             coordinate[0] = 0;
             coordinate[1] = 0;
-            POI poi = new POI(layer, 1, roomNum, name, coordinate, floor, false);
+            POI poi = new POI(layer, roomNum, name, coordinate, floor, false);
             JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_addPOIActionPerformed
