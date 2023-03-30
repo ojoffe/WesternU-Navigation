@@ -7,6 +7,7 @@ import java.io.FileReader;
 import org.json.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -603,8 +604,15 @@ public class Middlesex1 extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectFloorBox1ActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        new HelpFrame().setVisible(true);
-        this.dispose();
+        File pdfFile = new File("dataFiles/2212help.pdf");
+
+        // Open the PDF file using the default PDF viewer
+        try {
+            Desktop.getDesktop().open(pdfFile);
+        } catch (IOException ex) {
+            // Handle any errors opening the PDF file
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
