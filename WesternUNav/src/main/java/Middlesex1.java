@@ -124,6 +124,14 @@ public class Middlesex1 extends javax.swing.JFrame {
                                     selectedPOI.setFav(false);
                                     button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
                                     poiJson.put("favourite", 0);
+                                    try {
+                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                        fileWriter.write(json.toString());
+                                        fileWriter.flush();
+                                        fileWriter.close();
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
+                                    }
                                 } else if (result == 2) {
                                     return;
                                 } else if (result == 3) {
@@ -201,6 +209,14 @@ public class Middlesex1 extends javax.swing.JFrame {
                                     selectedPOI.setFav(false);
                                     button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
                                     poiJson.put("favourite", 0);
+                                    try {
+                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                        fileWriter.write(json.toString());
+                                        fileWriter.flush();
+                                        fileWriter.close();
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
+                                    }
                                 } else if (result == 2) {
                                     return;
                                 }
