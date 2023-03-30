@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
  * @author stephenkinsey
  */
 public class LoginFrame extends javax.swing.JFrame {
-
+    public static Boolean isDev = false;
     /**
      * Creates new form MainFrame
      */
@@ -313,7 +313,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         // User is authenticated, do something
                         int confirmation = JOptionPane.showConfirmDialog(this, "Developer Account in use. Do you want to proceed?", "Confirmation", JOptionPane.YES_NO_OPTION);
                         if (confirmation == JOptionPane.YES_OPTION) {
-                            //Developer dev = new Developer(systemID, password);
+                            isDev = true;
                             new welcomeScreenFrame().setVisible(true);
                             this.dispose();
                             return;
@@ -323,6 +323,7 @@ public class LoginFrame extends javax.swing.JFrame {
                         }
                     }
                     else {
+                        isDev = false;
                         // User is authenticated, do something
                         new welcomeScreenFrame().setVisible(true);
                         this.dispose();
