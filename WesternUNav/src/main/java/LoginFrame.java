@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -50,6 +52,7 @@ public class LoginFrame extends javax.swing.JFrame {
         devField = new javax.swing.JPasswordField();
         loginButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        HelpButton = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -225,6 +228,13 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        HelpButton.setText("Help");
+        HelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HelpButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout OtherBGLayout = new javax.swing.GroupLayout(OtherBG);
         OtherBG.setLayout(OtherBGLayout);
         OtherBGLayout.setHorizontalGroup(
@@ -234,7 +244,9 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(HelpButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -244,7 +256,9 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(103, 103, 103)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HelpButton))
                 .addContainerGap())
         );
 
@@ -360,6 +374,18 @@ public class LoginFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void HelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpButtonActionPerformed
+        File pdfFile = new File("dataFiles/2212help.pdf");
+
+        // Open the PDF file using the default PDF viewer
+        try {
+            Desktop.getDesktop().open(pdfFile);
+        } catch (IOException ex) {
+            // Handle any errors opening the PDF file
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_HelpButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -401,6 +427,7 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HeaderBG;
     private javax.swing.JLabel HeaderTitle;
+    private javax.swing.JButton HelpButton;
     private javax.swing.JPanel OtherBG;
     private javax.swing.JPasswordField devField;
     private javax.swing.JButton jButton1;
