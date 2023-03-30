@@ -54,8 +54,8 @@ public class POITest {
     @Test
     public void testGetCoordinate() {
         System.out.println("getCoordinate");
-        POI instance = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1);
         int[] expResult = {1,2};
+        POI instance = new POI("Bathroom", 1, "Bathroom1", expResult, 1, false);
         int[] result = instance.getCoordinate();
         assertArrayEquals(expResult, result);
     }
@@ -66,7 +66,7 @@ public class POITest {
     @Test
     public void testSetCoordinate() {
         System.out.println("setCoordinate");
-        POI instance = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1);
+        POI instance = new POI("Bathroom", 1, "Bathroom1", new int[]{1,2}, 1, false);
         int[] expResult = {3,4}; // coordinates
         instance.setCoordinate(expResult);
         int[] result = instance.getCoordinate();
@@ -79,13 +79,10 @@ public class POITest {
     @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
-        POI instance = null;
-        String expResult = "";
-        String result = instance.setName(name);
+        POI instance = new POI("Bathroom", 1, "Bathroom1", new int[]{1,2}, 1, false);
+        String expResult = "Classroom";
+        String result = instance.setName(expResult);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -95,23 +92,11 @@ public class POITest {
     public void testSetRoomNum() {
         System.out.println("setRoomNum");
         int roomNum = 0;
-        POI instance = null;
-        instance.setRoomNum(roomNum);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setID method, of class POI.
-     */
-    @Test
-    public void testSetID() {
-        System.out.println("setID");
-        int id = 0;
-        POI instance = null;
-        instance.setID(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        POI instance = new POI("Bathroom", 1, "Bathroom1", new int[]{1,2}, 1, false);
+        int expResult = 1;
+        instance.setRoomNum(expResult);
+        int result = instance.getRoomNum();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -120,12 +105,108 @@ public class POITest {
     @Test
     public void testGetDescription() {
         System.out.println("getDescription");
-        POI instance = null;
-        String expResult = "";
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        String expResult = "POI name: Bathroom1, room number: 1, coordinates: 1, 2";
         String result = instance.getDescription();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getName method, of class POI.
+     */
+    @Test
+    public void testGetName() {
+        System.out.println("getName");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        String expResult = "Bathroom1";
+        String result = instance.getName();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getRoomNum method, of class POI.
+     */
+    @Test
+    public void testGetRoomNum() {
+        System.out.println("getRoomNum");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        int expResult = 1;
+        int result = instance.getRoomNum();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setFloor method, of class POI.
+     */
+    @Test
+    public void testSetFloor() {
+        System.out.println("setFloor");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        int expResult = 2;
+        instance.setFloor(2);
+        int result = instance.getFloor();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setFav method, of class POI.
+     */
+    @Test
+    public void testSetFav() {
+        System.out.println("setFav");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        boolean expResult = true;
+        instance.setFav(true);
+        boolean result = instance.getFav();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getFav method, of class POI.
+     */
+    @Test
+    public void testGetFav() {
+        System.out.println("getFav");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        boolean expResult = false;
+        boolean result = instance.getFav();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getLayer method, of class POI.
+     */
+    @Test
+    public void testGetLayer() {
+        System.out.println("getLayer");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        String expResult = "Bathroom";
+        String result = instance.getLayer();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getFloor method, of class POI.
+     */
+    @Test
+    public void testGetFloor() {
+        System.out.println("getFloor");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
+        int expResult = 1;
+        int result = instance.getFloor();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getBuilding method, of class POI.
+     */
+    @Test
+    public void testGetBuilding() {
+        System.out.println("getBuilding");
+        POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false, "Middlesex");
+        String expResult = "Middlesex";
+        String result = instance.getBuilding();
+        assertEquals(expResult, result);
     }
     
 }
