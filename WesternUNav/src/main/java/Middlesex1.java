@@ -871,6 +871,8 @@ public class Middlesex1 extends javax.swing.JFrame {
                 ex.printStackTrace();
             }
         }
+        new Middlesex1().setVisible(true);
+        this.dispose();
     }
     
     /**
