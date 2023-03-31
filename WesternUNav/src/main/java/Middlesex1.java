@@ -4,6 +4,7 @@
  */
 import javax.swing.*;
 import java.io.FileReader;
+import java.io.FileWriter;
 import org.json.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,6 +12,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
+
+
 
 /**
  *
@@ -775,10 +778,11 @@ public class Middlesex1 extends javax.swing.JFrame {
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void mapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapMouseClicked
-        // TODO add your handling code here:
+
         int x = evt.getX();
         int y = evt.getY();
-        System.out.println("Clicked at x = " + x + ", y = " + y);
+        int[] coordinates = new int[]{x,y};
+        addPoiPopUp(coordinates);
     }//GEN-LAST:event_mapMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -820,7 +824,54 @@ public class Middlesex1 extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
     
+    public void addPoiPopUp(int[] coordinates) {
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        JTextField nameField = new JTextField();
+        panel.add(new JLabel("Name:"));
+        panel.add(nameField);
+        
 
+        JTextField roomNumField = new JTextField();
+        panel.add(new JLabel("Room Number:"));
+        panel.add(roomNumField);
+
+        
+        String[] layerOptions = {"Navigation", "Food", "Bathroom", "Classroom", "Lab", "Other"};
+        JComboBox<String> layerComboBox = new JComboBox<>(layerOptions);
+        panel.add(new JLabel("Layer:"));
+        panel.add(layerComboBox);
+        int result = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            String name = nameField.getText();
+            int roomNum = Integer.parseInt(roomNumField.getText());
+            String layer = (String) layerComboBox.getSelectedItem();
+            try (FileReader reader = new FileReader("dataFiles/POI.json")) {
+                JSONObject json = new JSONObject(new JSONTokener(reader));
+                JSONArray buildings = json.getJSONArray("buildings");
+                JSONObject middlesex = buildings.getJSONObject(0);
+                JSONArray pois = middlesex.getJSONArray("points_of_interest");
+
+                // Create a new POI instance and add it to the "Middlesex" section
+                POI addPoi = new POI(layer, roomNum, name, coordinates, 1, false);
+                JSONObject poiJson = new JSONObject();
+                poiJson.put("layer", layer);
+                poiJson.put("room_number", roomNum);
+                poiJson.put("name", name);
+                poiJson.put("coordinates", new JSONObject().put("latitude", coordinates[0]).put("longitude", coordinates[1]));
+                poiJson.put("floor", addPoi.getFloor());
+                poiJson.put("favourite", 0);
+                pois.put(poiJson);
+
+                // Write the updated JSON back to the file
+                FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                fileWriter.write(json.toString());
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException | JSONException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
     
     /**
      * @param args the command line arguments
