@@ -1,7 +1,7 @@
 /**
  *
  * @author Aaron
- */;
+ */
 
 public class POI {
     private String layer;
@@ -10,14 +10,44 @@ public class POI {
     private int[] coordinate; // should always be length 2
     private int floor;
     private Boolean fav;
+    private String building = "";
     
-    public POI(String layer, int id, int roomNum, String name, int[] coordinate, int floor, Boolean fav) {
+    /**
+     * Normal constructor that is used
+     * @param layer
+     * @param roomNum
+     * @param name
+     * @param coordinate
+     * @param floor
+     * @param fav 
+     */
+    public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav) {
         this.layer = layer;
         this.roomNum = roomNum;
         this.name = name;
         this.coordinate = coordinate;
         this.floor = floor;
         this.fav = false;
+    }
+    
+    /**
+     * Constructor used when adding a POI
+     * @param layer
+     * @param roomNum
+     * @param name
+     * @param coordinate
+     * @param floor
+     * @param fav
+     * @param building 
+     */
+    public POI(String layer, int roomNum, String name, int[] coordinate, int floor, Boolean fav, String building) {
+        this.layer = layer;
+        this.roomNum = roomNum;
+        this.name = name;
+        this.coordinate = coordinate;
+        this.floor = floor;
+        this.fav = false;
+        this.building = building;
     }
     
     public void setLayer(String layer) {
@@ -28,23 +58,34 @@ public class POI {
         this.coordinate = coordinate;
     }
     
+    public int[] getCoordinate() {
+        return this.coordinate;
+    }
+    
     public String setName(String name) {
         this.name = name;
         return name;
+    }
+    
+    public String getName() {
+        return this.name;
     }
     
     public void setRoomNum(int roomNum) {
         this.roomNum = roomNum;
     }
     
+    public int getRoomNum() {
+        return this.roomNum;
+    }
+    
+    public void setFloor(int floor) {
+        this.floor = floor;
+    }
     
     public String getDescription() {
         return "POI name: " + name + ", room number: " + roomNum + ", "
                 + "coordinates: " + coordinate[0] + ", " + coordinate[1];
-    }
-    
-    public int[] getCoordinate() {
-        return this.coordinate;
     }
     
     public void setFav(boolean bool) {
@@ -55,9 +96,18 @@ public class POI {
         return this.fav;
     }
     
-    public static void main(String[] args) {
-        POI poi = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1, false);
-        System.out.println(poi.getDescription());
+    public String getLayer() {
+        return this.layer;
     }
+    
+    public int getFloor() {
+        return this.floor;
+    }
+    
+    public String getBuilding() {
+        return this.building;
+    }
+    
+    
  }
 
