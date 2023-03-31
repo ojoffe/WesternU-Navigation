@@ -8,19 +8,19 @@ public class Developer extends User {
         super(systemID, password);
     }
     
-    public POI addPOI(Layer layer, int id, int roomNum, String name, float[] coordinate) {
-        POI newPOI = new POI(layer, false, id, roomNum, name, coordinate);
+    public POI addPOI(String layer, int id, int roomNum, String name, int[] coordinate) {
+        POI newPOI = new POI(layer, roomNum, name, coordinate, 1, false);
         // ENTER INTO MAIN POI JSON HERE
         return newPOI;
     }
     
     // editPOI
-    public POI editPOI(POI) {
+    public void editPOI(POI poi) {
         
     }
     
     // deletePOI
-    public void deletePOI(POI POI) {
+    public void deletePOI(POI poi) {
         
     }
         
