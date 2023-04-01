@@ -222,6 +222,8 @@ public class Middlesex1 extends javax.swing.JFrame {
                             } else {
                                 if (poi.getLayer().equals("User Defined")) {
                                     removePOI(poi,button, poiJson, json, pointsOfInterest, ll);
+                                    hideFrame();
+                                    new Middlesex1(ll).setVisible(true);
                                 } else {
                                     Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
                                     int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
