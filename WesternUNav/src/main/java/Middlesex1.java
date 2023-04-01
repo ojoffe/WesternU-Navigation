@@ -271,7 +271,6 @@ public class Middlesex1 extends javax.swing.JFrame {
         nav = new javax.swing.JCheckBox();
         other = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
-        addPOI = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         poiLegendScrollPane1 = new javax.swing.JScrollPane();
         jLayeredPane2 = new javax.swing.JLayeredPane();
@@ -488,16 +487,9 @@ public class Middlesex1 extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel3.setText("Layer Legend");
+        jLabel3.setText("Layer Legend:");
+        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel3.setOpaque(true);
-
-        addPOI.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
-        addPOI.setText("ADD POI");
-        addPOI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPOIActionPerformed(evt);
-            }
-        });
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -562,7 +554,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel13))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -579,7 +571,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
-                .addGap(53, 53, 53))
+                .addContainerGap())
         );
 
         poiLegendScrollPane1.setViewportView(jLayeredPane2);
@@ -623,17 +615,13 @@ public class Middlesex1 extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(addPOI))
-                                    .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3))
                             .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(buildingSelectionButton)
@@ -659,9 +647,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPOI))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -774,46 +760,6 @@ public class Middlesex1 extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void addPOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPOIActionPerformed
-
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-
-
-        JTextField nameField = new JTextField();
-        panel.add(new JLabel("Name:"));
-        panel.add(nameField);
-        
-        JTextField floorField = new JTextField();
-        panel.add(new JLabel("Floor:"));
-        panel.add(floorField);
-
-        JTextField roomNumField = new JTextField();
-        panel.add(new JLabel("Room Number:"));
-        panel.add(roomNumField);
-        
-
-        String[] layerOptions = {"Navigation", "Food", "Bathroom", "Classroom", "Lab", "Other"};
-        JComboBox<String> layerComboBox = new JComboBox<>(layerOptions);
-        panel.add(new JLabel("Layer:"));
-        panel.add(layerComboBox);
-
-        // Show the input dialog to the user
-        int result = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-        // Process the user input if they clicked OK
-        if (result == JOptionPane.OK_OPTION) {
-            String name = nameField.getText();
-            int roomNum = Integer.parseInt(roomNumField.getText());
-            int floor = Integer.parseInt(floorField.getText());
-            String layer = (String) layerComboBox.getSelectedItem();
-            int[] coordinate = new int[2];
-            coordinate[0] = 0;
-            coordinate[1] = 0;
-            POI poi = new POI(layer, roomNum, name, coordinate, floor, false);
-            JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_addPOIActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
@@ -997,7 +943,6 @@ public class Middlesex1 extends javax.swing.JFrame {
     private javax.swing.JPanel OtherBG1;
     private javax.swing.JPanel OtherBG2;
     private javax.swing.JComboBox<String> SelectFloorBox1;
-    private javax.swing.JButton addPOI;
     private javax.swing.JCheckBox bath;
     private javax.swing.JButton buildingSelectionButton;
     private javax.swing.JCheckBox classroom;
