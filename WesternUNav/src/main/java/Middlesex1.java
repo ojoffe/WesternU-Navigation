@@ -256,7 +256,7 @@ public class Middlesex1 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         SelectFloorBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        searchBarTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         buildingSelectionButton = new javax.swing.JButton();
         mapScrollPane = new javax.swing.JScrollPane();
@@ -364,9 +364,9 @@ public class Middlesex1 extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        searchBarTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                searchBarTextFieldActionPerformed(evt);
             }
         });
 
@@ -621,7 +621,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                                             .addComponent(jLabel5)
                                             .addGap(74, 74, 74))
                                         .addComponent(poiLegendScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchBarTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3))
                                 .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -645,12 +645,12 @@ public class Middlesex1 extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchBarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(searchButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                        .addComponent(mapScrollPane)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buildingSelectionButton)
@@ -762,13 +762,13 @@ public class Middlesex1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_goButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void searchBarTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_searchBarTextFieldActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        String searchTerm = jTextField1.getText();
+        String searchTerm = searchBarTextField.getText();
         searchTerm = searchTerm.toLowerCase();
         try (FileReader reader = new FileReader("dataFiles/POI.json")) {
         // Parse the JSON
@@ -805,6 +805,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                     timer.start(); // start the timer
                 }              
             }
+            searchBarTextField.setText("");
         } catch (Exception e) {
             e.printStackTrace();
         }    
@@ -972,7 +973,6 @@ public class Middlesex1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JCheckBox labs;
     private javax.swing.JButton logOutButton;
     private javax.swing.JLabel map;
@@ -981,6 +981,7 @@ public class Middlesex1 extends javax.swing.JFrame {
     private javax.swing.JCheckBox other;
     private javax.swing.JScrollPane poiLegendScrollPane;
     private javax.swing.JScrollPane poiLegendScrollPane1;
+    private javax.swing.JTextField searchBarTextField;
     private javax.swing.JButton searchButton;
     // End of variables declaration//GEN-END:variables
 }
