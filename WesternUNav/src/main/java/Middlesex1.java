@@ -785,52 +785,7 @@ public class Middlesex1 extends javax.swing.JFrame {
     }//GEN-LAST:event_goButtonActionPerformed
 
     private void searchBarTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarTextFieldActionPerformed
-        // TODO add your handling code here:
-         String searchTerm = searchBarTextField.getText();
-        searchTerm = searchTerm.toLowerCase();
-        try (FileReader reader = new FileReader("dataFiles/POI.json")) {
-        // Parse the JSON
-            JSONObject json = new JSONObject(new JSONTokener(reader));
-            JSONArray buildings = json.getJSONArray("buildings");
-            JSONObject middlesex = buildings.getJSONObject(0);
-            boolean found = false;
-            JSONArray pointsOfInterest = middlesex.getJSONArray("points_of_interest");
-
-            // Loop through the points of interest to find button
-            for (int i = 0; i < pointsOfInterest.length(); i++) {
-                JSONObject poiJson = pointsOfInterest.getJSONObject(i);
-                String info = poiJson.getString("name");
-                info = info.toLowerCase();
-                if (info.equals(searchTerm)){
-                    found = true;
-                    int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
-                    int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
-                    int width = 30;
-                    int height = 30;
-                    Highlighter highlight = new Highlighter(x, y, width, height);
-                    map.remove(highlight);
-                    map.add(highlight); // Add the highlight component to your JFrame
-                    map.repaint();
-                    Timer timer = new Timer(10000, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                        // Remove the component from the map
-                            map.remove(highlight);
-                            map.revalidate();
-                            map.repaint();
-                        }
-                    });
-                    timer.setRepeats(false); // set the timer to execute only once
-                    timer.start(); // start the timer
-                }
-            }
-            if (!found){
-                JOptionPane.showMessageDialog(null, "POI does not exist, check your spelling and try again", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            searchBarTextField.setText("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        searchButtonActionPerformed(evt);
     }//GEN-LAST:event_searchBarTextFieldActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
