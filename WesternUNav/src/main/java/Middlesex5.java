@@ -954,7 +954,7 @@ public class Middlesex5 extends javax.swing.JFrame {
                 JSONArray pois = middlesex.getJSONArray("points_of_interest");
                 String layer = "User Defined";
                 // Create a new POI instance and add it to the "Middlesex" section
-                POI addPoi = new POI(layer, roomNum, name, coordinates, 1, false);
+                POI addPoi = new POI(layer, roomNum, name, coordinates, 5, false);
                 JSONObject poiJson = new JSONObject();
                 poiJson.put("layer", layer);
                 poiJson.put("room_number", roomNum);
