@@ -593,7 +593,7 @@ public class Middlesex1 extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 3, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 0, 204));
-        jLabel6.setText("ADD POI: click on the map where you want to insert");
+        jLabel6.setText("ADD POI: click on the map where you want to inser");
         jLabel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel6.setOpaque(true);
 
