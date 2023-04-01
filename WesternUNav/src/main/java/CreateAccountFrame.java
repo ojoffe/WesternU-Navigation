@@ -343,7 +343,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void confirmPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordFieldActionPerformed
-        // TODO add your handling code here:
+        loginButton1ActionPerformed(evt);
     }//GEN-LAST:event_confirmPasswordFieldActionPerformed
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {                                    
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
