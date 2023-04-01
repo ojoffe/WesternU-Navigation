@@ -47,6 +47,10 @@ public class Talbot3 extends javax.swing.JFrame {
         this.createButtonsFromJSON("dataFiles/POI.json", ll);
     }
     
+    public JLabel getMapLabel() {
+        return map;
+    }
+    
      public void createButtonsFromJSON(String jsonFilePath, LinkedList<String> ll) {
         // Read in the JSON file
         try (FileReader reader = new FileReader(jsonFilePath)) {
