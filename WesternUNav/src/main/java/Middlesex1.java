@@ -104,7 +104,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                     button.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             if (LoginFrame.isDev) {
-                                Object[] options = {"Set Favourite", "Unfavourite", "Close", "Edit"}; 
+                                Object[] options = {"Set Favourite", "Unfavourite", "Close", "Edit", "Remove"}; 
                                 int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                                 if (result == 0) {
                                     POI selectedPOI = poi;
@@ -185,6 +185,33 @@ public class Middlesex1 extends javax.swing.JFrame {
                                             fileWriter.close();
                                         } catch (IOException ex) {
                                             ex.printStackTrace();
+                                        }
+                                    }
+                                } else if (result == 4) {
+                                    int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the selected POI?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+                                    if (confirm == JOptionPane.YES_OPTION) {
+                                        int indexToRemove = -1;
+                                        for (int i = 0; i < pointsOfInterest.length(); i++) {
+                                            JSONObject currentPoi = (JSONObject) pointsOfInterest.get(i);
+                                            if (currentPoi.get("name").equals(poi.getName())) {
+                                                indexToRemove = i;
+                                                break;
+                                            }
+                                        }
+                                        if (indexToRemove != -1) {
+                                            pointsOfInterest.remove(indexToRemove);
+                                            try {
+                                                FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                                fileWriter.write(json.toString());
+                                                fileWriter.flush();
+                                                fileWriter.close();
+                                            } catch (IOException ex) {
+                                                ex.printStackTrace();
+                                            }
+                                            JOptionPane.showMessageDialog(null, "POI deleted successfully", "POI Deleted", JOptionPane.INFORMATION_MESSAGE);
+                                            new Middlesex1(ll).setVisible(true);
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Unable to find POI in JSON file", "Error", JOptionPane.ERROR_MESSAGE);
                                         }
                                     }
                                 }
