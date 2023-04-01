@@ -13,8 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-
-
 /**
  *
  * @author louie
@@ -38,6 +36,7 @@ public class Middlesex3 extends javax.swing.JFrame {
         ll.add("Navigation");
         ll.add("Lab");
         ll.add("Classroom");
+        ll.add("User Defined");
         this.createButtonsFromJSON("dataFiles/POI.json", ll);
     }
     
@@ -49,7 +48,6 @@ public class Middlesex3 extends javax.swing.JFrame {
      public void createButtonsFromJSON(String jsonFilePath, LinkedList<String> ll) {
         // Read in the JSON file
         try (FileReader reader = new FileReader(jsonFilePath)) {
-        // Parse the JSON
             JSONObject json = new JSONObject(new JSONTokener(reader));
             JSONArray buildings = json.getJSONArray("buildings");
             JSONObject middlesex = buildings.getJSONObject(0);
@@ -87,6 +85,8 @@ public class Middlesex3 extends javax.swing.JFrame {
                         button.setBackground(new java.awt.Color(0, 0, 255));
                     } else if (layer.equals("Lab")){
                         button.setBackground(new java.awt.Color(255, 0, 0));
+                    } else if (layer.equals("User Defined")){
+                        button.setBackground(new java.awt.Color(255, 0, 255));
                     } else {
                         button.setBackground(new java.awt.Color(128, 128, 128));
                     }
@@ -218,36 +218,42 @@ public class Middlesex3 extends javax.swing.JFrame {
                                     }
                                 }
                             } else {
-                                Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
-                                int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                                if (result == 0) {
-                                    POI selectedPOI = poi;
-                                    selectedPOI.setFav(true);
-                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
-                                    poiJson.put("favourite", 1);
-                                    try {
-                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
-                                        fileWriter.write(json.toString());
-                                        fileWriter.flush();
-                                        fileWriter.close();
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
+                                if (poi.getLayer().equals("User Defined")) {
+                                    removePOI(poi,button, poiJson, json, pointsOfInterest, ll);
+                                    hideFrame();
+                                    new Middlesex3(ll).setVisible(true);
+                                } else {
+                                    Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
+                                    int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                                    if (result == 0) {
+                                        POI selectedPOI = poi;
+                                        selectedPOI.setFav(true);
+                                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                                        poiJson.put("favourite", 1);
+                                        try {
+                                            FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                            fileWriter.write(json.toString());
+                                            fileWriter.flush();
+                                            fileWriter.close();
+                                        } catch (IOException ex) {
+                                            ex.printStackTrace();
+                                        }
+                                    } else if (result == 1) {
+                                        POI selectedPOI = poi;
+                                        selectedPOI.setFav(false);
+                                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                                        poiJson.put("favourite", 0);
+                                        try {
+                                            FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                            fileWriter.write(json.toString());
+                                            fileWriter.flush();
+                                            fileWriter.close();
+                                        } catch (IOException ex) {
+                                            ex.printStackTrace();
+                                        }
+                                    } else if (result == 2) {
+                                        return;
                                     }
-                                } else if (result == 1) {
-                                    POI selectedPOI = poi;
-                                    selectedPOI.setFav(false);
-                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
-                                    poiJson.put("favourite", 0);
-                                    try {
-                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
-                                        fileWriter.write(json.toString());
-                                        fileWriter.flush();
-                                        fileWriter.close();
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
-                                    }
-                                } else if (result == 2) {
-                                    return;
                                 }
                             } 
                             
@@ -299,6 +305,7 @@ public class Middlesex3 extends javax.swing.JFrame {
         labs = new javax.swing.JCheckBox();
         nav = new javax.swing.JCheckBox();
         other = new javax.swing.JCheckBox();
+        userdef = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         poiLegendScrollPane1 = new javax.swing.JScrollPane();
@@ -309,6 +316,7 @@ public class Middlesex3 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         goButton = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -366,13 +374,10 @@ public class Middlesex3 extends javax.swing.JFrame {
         );
         OtherBG1Layout.setVerticalGroup(
             OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBG1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(logOutButton)
-                    .addComponent(helpButton)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+            .addGroup(OtherBG1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(logOutButton)
+                .addComponent(helpButton)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 51, 255));
@@ -440,7 +445,7 @@ public class Middlesex3 extends javax.swing.JFrame {
             .addGroup(floorMapLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(map)
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(475, Short.MAX_VALUE))
         );
 
         mapScrollPane.setViewportView(floorMap);
@@ -474,6 +479,14 @@ public class Middlesex3 extends javax.swing.JFrame {
 
         other.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         other.setText("Other");
+        other.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otherActionPerformed(evt);
+            }
+        });
+
+        userdef.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        userdef.setText("User Defined");
 
         floorMap1.setLayer(classroom, javax.swing.JLayeredPane.DEFAULT_LAYER);
         floorMap1.setLayer(food, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -481,19 +494,21 @@ public class Middlesex3 extends javax.swing.JFrame {
         floorMap1.setLayer(labs, javax.swing.JLayeredPane.DEFAULT_LAYER);
         floorMap1.setLayer(nav, javax.swing.JLayeredPane.DEFAULT_LAYER);
         floorMap1.setLayer(other, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        floorMap1.setLayer(userdef, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout floorMap1Layout = new javax.swing.GroupLayout(floorMap1);
         floorMap1.setLayout(floorMap1Layout);
         floorMap1Layout.setHorizontalGroup(
             floorMap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(floorMap1Layout.createSequentialGroup()
-                .addGroup(floorMap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(floorMap1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(food, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bath, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labs, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nav, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(other, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(classroom, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(classroom, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                    .addComponent(userdef, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 301, Short.MAX_VALUE))
         );
         floorMap1Layout.setVerticalGroup(
@@ -508,9 +523,11 @@ public class Middlesex3 extends javax.swing.JFrame {
                 .addComponent(labs, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nav, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(userdef, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(other, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         poiLegendScrollPane.setViewportView(floorMap1);
@@ -562,12 +579,18 @@ public class Middlesex3 extends javax.swing.JFrame {
         jLabel13.setText("Other");
         jLabel13.setOpaque(true);
 
+        jLabel14.setBackground(new java.awt.Color(255, 0, 255));
+        jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel14.setText("User Defined");
+        jLabel14.setOpaque(true);
+
         jLayeredPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jLabel13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -581,8 +604,9 @@ public class Middlesex3 extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel11))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel14))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,8 +622,10 @@ public class Middlesex3 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         poiLegendScrollPane1.setViewportView(jLayeredPane2);
@@ -637,7 +663,7 @@ public class Middlesex3 extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
+                    .addComponent(mapScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(buildingSelectionButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -661,7 +687,7 @@ public class Middlesex3 extends javax.swing.JFrame {
                             .addComponent(searchBarTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -674,7 +700,7 @@ public class Middlesex3 extends javax.swing.JFrame {
                         .addComponent(searchBarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(searchButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -682,16 +708,16 @@ public class Middlesex3 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(mapScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(poiLegendScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mapScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(goButton)
                     .addComponent(SelectFloorBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(buildingSelectionButton))
+                    .addComponent(buildingSelectionButton)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -705,7 +731,7 @@ public class Middlesex3 extends javax.swing.JFrame {
         );
         OtherBG2Layout.setVerticalGroup(
             OtherBG2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 13, Short.MAX_VALUE)
+            .addGap(0, 7, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout HeaderBGLayout = new javax.swing.GroupLayout(HeaderBG);
@@ -715,19 +741,19 @@ public class Middlesex3 extends javax.swing.JFrame {
             .addGroup(HeaderBGLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(HeaderTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
+            .addComponent(OtherBG2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(HeaderBGLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(OtherBG1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(OtherBG1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(OtherBG2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         HeaderBGLayout.setVerticalGroup(
             HeaderBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderBGLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(HeaderTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OtherBG2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -735,7 +761,7 @@ public class Middlesex3 extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OtherBG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -786,6 +812,14 @@ public class Middlesex3 extends javax.swing.JFrame {
         }
         if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 2")) {
             new Middlesex2().setVisible(true);
+            this.dispose();
+        }
+        if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 4")) {
+            new Middlesex4().setVisible(true);
+            this.dispose();
+        }
+        if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 5")) {
+            new Middlesex5().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_goButtonActionPerformed
@@ -883,12 +917,17 @@ public class Middlesex3 extends javax.swing.JFrame {
         if (classroom.isSelected()){
             selected.add("Classroom");
         }
-        for (String str : selected) {
-            System.out.println(str);
+        if (userdef.isSelected()){
+            selected.add("User Defined");
         }
-        new Middlesex1(selected).setVisible(true);
+
+        new Middlesex3(selected).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void otherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_otherActionPerformed
     
     public void addPoiPopUp(int[] coordinates) {
         JPanel panel = new JPanel(new GridLayout(0, 1));
@@ -901,24 +940,18 @@ public class Middlesex3 extends javax.swing.JFrame {
         panel.add(new JLabel("Room Number:"));
         panel.add(roomNumField);
 
-        
-        String[] layerOptions = {"Navigation", "Food", "Bathroom", "Classroom", "Lab", "Other"};
-        JComboBox<String> layerComboBox = new JComboBox<>(layerOptions);
-        panel.add(new JLabel("Layer:"));
-        panel.add(layerComboBox);
         int result = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
             String name = nameField.getText();
             int roomNum = Integer.parseInt(roomNumField.getText());
-            String layer = (String) layerComboBox.getSelectedItem();
             try (FileReader reader = new FileReader("dataFiles/POI.json")) {
                 JSONObject json = new JSONObject(new JSONTokener(reader));
                 JSONArray buildings = json.getJSONArray("buildings");
                 JSONObject middlesex = buildings.getJSONObject(0);
                 JSONArray pois = middlesex.getJSONArray("points_of_interest");
-
+                String layer = "User Defined";
                 // Create a new POI instance and add it to the "Middlesex" section
-                POI addPoi = new POI(layer, roomNum, name, coordinates, 3, false);
+                POI addPoi = new POI(layer, roomNum, name, coordinates, 3, false);  //HEREEEE
                 JSONObject poiJson = new JSONObject();
                 poiJson.put("layer", layer);
                 poiJson.put("room_number", roomNum);
@@ -943,6 +976,113 @@ public class Middlesex3 extends javax.swing.JFrame {
     
     public void hideFrame() {
         this.dispose();
+    }
+    
+    public void removePOI(POI poi, JButton button, JSONObject poiJson, JSONObject json, JSONArray pointsOfInterest, LinkedList<String> ll) {
+        Object[] options = {"Set Favourite", "Unfavourite", "Edit","Remove", "Close"}; // additional options
+        int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if (result == 0) {
+            POI selectedPOI = poi;
+            selectedPOI.setFav(true);
+            button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+            poiJson.put("favourite", 1);
+            try {
+                FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                fileWriter.write(json.toString());
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else if (result == 1) {
+            POI selectedPOI = poi;
+            selectedPOI.setFav(false);
+            button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+            poiJson.put("favourite", 0);
+            try {
+                FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                fileWriter.write(json.toString());
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else if (result == 4) {
+            return;
+        } else if (result == 3) {
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the selected POI?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                int indexToRemove = -1;
+                for (int i = 0; i < pointsOfInterest.length(); i++) {
+                    JSONObject currentPoi = (JSONObject) pointsOfInterest.get(i);
+                    if (currentPoi.get("name").equals(poi.getName())) {
+                        indexToRemove = i;
+                        break;
+                    }
+                }
+                if (indexToRemove != -1) {
+                    pointsOfInterest.remove(indexToRemove);
+                    try {
+                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                        fileWriter.write(json.toString());
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    JOptionPane.showMessageDialog(null, "POI deleted successfully", "POI Deleted", JOptionPane.INFORMATION_MESSAGE);
+                    hideFrame();
+                    new Middlesex3(ll).setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Unable to find POI in JSON file", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else if (result == 2) {
+            POI selectedPOI = poi;
+            JPanel panel = new JPanel(new GridLayout(0, 1));
+            JTextField nameField = new JTextField();
+            panel.add(new JLabel("Name:"));
+            panel.add(nameField);
+
+
+            JTextField roomNumField = new JTextField();
+            panel.add(new JLabel("Room Number:"));
+            panel.add(roomNumField);
+
+            // Show the input dialog to the user
+            int res = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            // Process the user input if they clicked OK
+            if (res == JOptionPane.OK_OPTION) {
+                String name = nameField.getText();
+                int roomNum = Integer.parseInt(roomNumField.getText());
+                int floor = poi.getFloor();
+                String layer = "User Defined";
+                int[] coordinate = new int[2];
+                coordinate[0] = 0;
+                coordinate[1] = 0;
+                poi.setLayer(layer);
+                poi.setFloor(floor);
+                poi.setName(name);
+                poi.setRoomNum(roomNum);
+                JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                poiJson.put("room_number", roomNum);
+                poiJson.put("name", name);
+                poiJson.put("floor", floor);
+                poiJson.put("layer", layer);
+                hideFrame();
+                new Middlesex3(ll).setVisible(true);
+                try {
+                    FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                    fileWriter.write(json.toString());
+                    fileWriter.flush();
+                    fileWriter.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
     }
     
     /**
@@ -1001,6 +1141,7 @@ public class Middlesex3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1020,5 +1161,6 @@ public class Middlesex3 extends javax.swing.JFrame {
     private javax.swing.JScrollPane poiLegendScrollPane1;
     private javax.swing.JTextField searchBarTextField;
     private javax.swing.JButton searchButton;
+    private javax.swing.JCheckBox userdef;
     // End of variables declaration//GEN-END:variables
 }
