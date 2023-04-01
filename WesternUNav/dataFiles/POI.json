@@ -268,17 +268,6 @@
           "layer": "Classroom"
         },
         {
-          "name": "Exit 1",
-          "coordinates": {
-            "latitude": 314,
-            "longitude": 437
-          },
-          "room_number": 0,
-          "floor": 2,
-          "favourite": 0,
-          "layer": "Navigation"
-        },
-        {
           "name": "Exit 2",
           "coordinates": {
             "latitude": 256,
@@ -574,6 +563,358 @@
           "floor": 3,
           "favourite": 0,
           "layer": "Lab"
+        },
+        {
+          "name": "Exit 1",
+          "coordinates": {
+            "latitude": 600,
+            "longitude": 441
+          },
+          "room_number": 0,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "MC 106",
+          "coordinates": {
+            "latitude": 231,
+            "longitude": 371
+          },
+          "room_number": 106,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 107",
+          "coordinates": {
+            "latitude": 281,
+            "longitude": 334
+          },
+          "room_number": 107,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 108",
+          "coordinates": {
+            "latitude": 354,
+            "longitude": 293
+          },
+          "room_number": 108,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 105",
+          "coordinates": {
+            "latitude": 95,
+            "longitude": 406
+          },
+          "room_number": 105,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Classroom"
+        },
+        {
+          "name": "MC 105",
+          "coordinates": {
+            "latitude": 162,
+            "longitude": 504
+          },
+          "room_number": 105,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Classroom"
+        },
+        {
+          "name": "Exit 10",
+          "coordinates": {
+            "latitude": 939,
+            "longitude": 483
+          },
+          "room_number": 0,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Exit 9",
+          "coordinates": {
+            "latitude": 1097,
+            "longitude": 534
+          },
+          "room_number": 0,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Mechanical Room",
+          "coordinates": {
+            "latitude": 591,
+            "longitude": 308
+          },
+          "room_number": 1100,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Other"
+        },
+        {
+          "name": "MC 118",
+          "coordinates": {
+            "latitude": 877,
+            "longitude": 359
+          },
+          "room_number": 118,
+          "floor": 2,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "Server Room",
+          "coordinates": {
+            "latitude": 594,
+            "longitude": 236
+          },
+          "room_number": 351,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Other"
+        },
+        {
+          "name": "Elevator A",
+          "coordinates": {
+            "latitude": 665,
+            "longitude": 314
+          },
+          "room_number": 0,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "MC 320",
+          "coordinates": {
+            "latitude": 285,
+            "longitude": 434
+          },
+          "room_number": 320,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 316",
+          "coordinates": {
+            "latitude": 355,
+            "longitude": 417
+          },
+          "room_number": 316,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 342",
+          "coordinates": {
+            "latitude": 421,
+            "longitude": 261
+          },
+          "room_number": 342,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "Elevator B",
+          "coordinates": {
+            "latitude": 954,
+            "longitude": 455
+          },
+          "room_number": 0,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Men's Bathroom Fourth Floor",
+          "coordinates": {
+            "latitude": 488,
+            "longitude": 360
+          },
+          "room_number": 311,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Bathroom"
+        },
+        {
+          "name": "Woman's Bathroom Fourth Floor",
+          "coordinates": {
+            "latitude": 755,
+            "longitude": 361
+          },
+          "room_number": 388,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Bathroom"
+        },
+        {
+          "name": "MC 325",
+          "coordinates": {
+            "latitude": 155,
+            "longitude": 518
+          },
+          "room_number": 325,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 334",
+          "coordinates": {
+            "latitude": 226,
+            "longitude": 377
+          },
+          "room_number": 334,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 336",
+          "coordinates": {
+            "latitude": 284,
+            "longitude": 341
+          },
+          "room_number": 336,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 340",
+          "coordinates": {
+            "latitude": 379,
+            "longitude": 292
+          },
+          "room_number": 340,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 338",
+          "coordinates": {
+            "latitude": 339,
+            "longitude": 308
+          },
+          "room_number": 338,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "MC 312",
+          "coordinates": {
+            "latitude": 411,
+            "longitude": 388
+          },
+          "room_number": 312,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Lab"
+        },
+        {
+          "name": "Stairway 2",
+          "coordinates": {
+            "latitude": 243,
+            "longitude": 476
+          },
+          "room_number": 0,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Stairway 1",
+          "coordinates": {
+            "latitude": 54,
+            "longitude": 508
+          },
+          "room_number": 0,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Stairway 3",
+          "coordinates": {
+            "latitude": 719,
+            "longitude": 357
+          },
+          "room_number": 0,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Stairway 5",
+          "coordinates": {
+            "latitude": 1082,
+            "longitude": 527
+          },
+          "room_number": 0,
+          "floor": 4,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Stairway 3",
+          "coordinates": {
+            "latitude": 717,
+            "longitude": 352
+          },
+          "room_number": 0,
+          "floor": 5,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Elevator B Fifth Floor",
+          "coordinates": {
+            "latitude": 953,
+            "longitude": 450
+          },
+          "room_number": 0,
+          "floor": 5,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Stairway 3 Fifth Floor",
+          "coordinates": {
+            "latitude": 1071,
+            "longitude": 526
+          },
+          "room_number": 0,
+          "floor": 5,
+          "favourite": 0,
+          "layer": "Navigation"
+        },
+        {
+          "name": "Accessible Bathroom",
+          "coordinates": {
+            "latitude": 491,
+            "longitude": 310
+          },
+          "room_number": 4,
+          "floor": 1,
+          "favourite": 0,
+          "layer": "Bathroom"
         }
       ]
     },
