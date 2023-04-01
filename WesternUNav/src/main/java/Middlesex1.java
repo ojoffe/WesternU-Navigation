@@ -775,7 +775,7 @@ public class Middlesex1 extends javax.swing.JFrame {
             JSONObject json = new JSONObject(new JSONTokener(reader));
             JSONArray buildings = json.getJSONArray("buildings");
             JSONObject middlesex = buildings.getJSONObject(0);
-
+            boolean found = false;
             JSONArray pointsOfInterest = middlesex.getJSONArray("points_of_interest");
 
             // Loop through the points of interest to find button
@@ -784,6 +784,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                 String info = poiJson.getString("name");
                 info = info.toLowerCase();
                 if (info.equals(searchTerm)){
+                    found = true;
                     int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
                     int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
                     int width = 30;
@@ -803,7 +804,10 @@ public class Middlesex1 extends javax.swing.JFrame {
                     });
                     timer.setRepeats(false); // set the timer to execute only once
                     timer.start(); // start the timer
-                }              
+                }
+            }
+            if (!found){
+                JOptionPane.showMessageDialog(null, "POI does not exist, check your spelling and try again", "Error", JOptionPane.ERROR_MESSAGE);
             }
             searchBarTextField.setText("");
         } catch (Exception e) {
