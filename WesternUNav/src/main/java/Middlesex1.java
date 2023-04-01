@@ -177,6 +177,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                                         poiJson.put("name", name);
                                         poiJson.put("floor", floor);
                                         poiJson.put("layer", layer);
+                                        hideFrame();
                                         new Middlesex1(ll).setVisible(true);
                                         try {
                                             FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
@@ -209,6 +210,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                                                 ex.printStackTrace();
                                             }
                                             JOptionPane.showMessageDialog(null, "POI deleted successfully", "POI Deleted", JOptionPane.INFORMATION_MESSAGE);
+                                            hideFrame();
                                             new Middlesex1(ll).setVisible(true);
                                         } else {
                                             JOptionPane.showMessageDialog(null, "Unable to find POI in JSON file", "Error", JOptionPane.ERROR_MESSAGE);
@@ -620,7 +622,7 @@ public class Middlesex1 extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 3, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 0, 204));
-        jLabel6.setText("ADD POI: click on the map where you want to inser");
+        jLabel6.setText("ADD POI: click on the map where you want to insert");
         jLabel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel6.setOpaque(true);
 
@@ -935,6 +937,10 @@ public class Middlesex1 extends javax.swing.JFrame {
         this.dispose();
     }
     
+    public void hideFrame() {
+        this.dispose();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -969,6 +975,7 @@ public class Middlesex1 extends javax.swing.JFrame {
             }
         });
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HeaderBG;
