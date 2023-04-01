@@ -816,6 +816,14 @@ public class Middlesex1 extends javax.swing.JFrame {
             new Middlesex3().setVisible(true);
             this.dispose();
         }
+        if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 4")) {
+            new Middlesex4().setVisible(true);
+            this.dispose();
+        }
+        if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 5")) {
+            new Middlesex5().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_goButtonActionPerformed
 
     private void searchBarTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarTextFieldActionPerformed
