@@ -835,49 +835,7 @@ public class Talbot4 extends javax.swing.JFrame {
         // TODO add your handling code here:
         String searchTerm = searchBarTextField.getText();
         searchTerm = searchTerm.toLowerCase();
-        try (FileReader reader = new FileReader("dataFiles/POI.json")) {
-        // Parse the JSON
-            JSONObject json = new JSONObject(new JSONTokener(reader));
-            JSONArray buildings = json.getJSONArray("buildings");
-            JSONObject talbot = buildings.getJSONObject(2);
-            boolean found = false;
-            JSONArray pointsOfInterest = talbot.getJSONArray("points_of_interest");
-
-            // Loop through the points of interest to find button
-            for (int i = 0; i < pointsOfInterest.length(); i++) {
-                JSONObject poiJson = pointsOfInterest.getJSONObject(i);
-                String info = poiJson.getString("name");
-                info = info.toLowerCase();
-                if (info.equals(searchTerm)){
-                    found = true;
-                    int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
-                    int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
-                    int width = 30;
-                    int height = 30;
-                    Highlighter highlight = new Highlighter(x, y, width, height);
-                    map.remove(highlight);
-                    map.add(highlight); // Add the highlight component to your JFrame
-                    map.repaint();
-                    Timer timer = new Timer(10000, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                        // Remove the component from the map
-                            map.remove(highlight);
-                            map.revalidate();
-                            map.repaint();
-                        }
-                    });
-                    timer.setRepeats(false); // set the timer to execute only once
-                    timer.start(); // start the timer
-                }
-            }
-            if (!found){
-                JOptionPane.showMessageDialog(null, "POI does not exist, check your spelling and try again", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            searchBarTextField.setText("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }    
+        SearchFunc search = new SearchFunc(searchTerm, "dataFiles/POI.json", 2, map, searchBarTextField, this);     
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void mapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapMouseClicked
