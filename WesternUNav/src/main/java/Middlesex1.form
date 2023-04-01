@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="HeaderBG" min="-2" pref="638" max="-2" attributes="0"/>
+          <Component id="HeaderBG" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -46,7 +46,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="HeaderTitle" min="-2" pref="675" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="321" max="32767" attributes="0"/>
               </Group>
               <Component id="OtherBG2" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
@@ -70,7 +70,7 @@
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="OtherBG1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -741,7 +741,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
