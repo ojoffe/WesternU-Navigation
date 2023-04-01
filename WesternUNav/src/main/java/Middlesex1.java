@@ -769,7 +769,7 @@ public class Middlesex1 extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         String searchTerm = jTextField1.getText();
-        
+        searchTerm = searchTerm.toLowerCase();
         try (FileReader reader = new FileReader("dataFiles/POI.json")) {
         // Parse the JSON
             JSONObject json = new JSONObject(new JSONTokener(reader));
@@ -782,6 +782,7 @@ public class Middlesex1 extends javax.swing.JFrame {
             for (int i = 0; i < pointsOfInterest.length(); i++) {
                 JSONObject poiJson = pointsOfInterest.getJSONObject(i);
                 String info = poiJson.getString("name");
+                info = info.toLowerCase();
                 if (info.equals(searchTerm)){
                     int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
                     int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
