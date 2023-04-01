@@ -220,36 +220,40 @@ public class Middlesex1 extends javax.swing.JFrame {
                                     }
                                 }
                             } else {
-                                Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
-                                int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                                if (result == 0) {
-                                    POI selectedPOI = poi;
-                                    selectedPOI.setFav(true);
-                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
-                                    poiJson.put("favourite", 1);
-                                    try {
-                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
-                                        fileWriter.write(json.toString());
-                                        fileWriter.flush();
-                                        fileWriter.close();
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
+                                if (poi.getLayer().equals("User Defined")) {
+                                    removePOI(poi,button, poiJson, json, pointsOfInterest, ll);
+                                } else {
+                                    Object[] options = {"Set Favourite", "Unfavourite", "Close"}; // additional options
+                                    int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                                    if (result == 0) {
+                                        POI selectedPOI = poi;
+                                        selectedPOI.setFav(true);
+                                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                                        poiJson.put("favourite", 1);
+                                        try {
+                                            FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                            fileWriter.write(json.toString());
+                                            fileWriter.flush();
+                                            fileWriter.close();
+                                        } catch (IOException ex) {
+                                            ex.printStackTrace();
+                                        }
+                                    } else if (result == 1) {
+                                        POI selectedPOI = poi;
+                                        selectedPOI.setFav(false);
+                                        button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+                                        poiJson.put("favourite", 0);
+                                        try {
+                                            FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                                            fileWriter.write(json.toString());
+                                            fileWriter.flush();
+                                            fileWriter.close();
+                                        } catch (IOException ex) {
+                                            ex.printStackTrace();
+                                        }
+                                    } else if (result == 2) {
+                                        return;
                                     }
-                                } else if (result == 1) {
-                                    POI selectedPOI = poi;
-                                    selectedPOI.setFav(false);
-                                    button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
-                                    poiJson.put("favourite", 0);
-                                    try {
-                                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
-                                        fileWriter.write(json.toString());
-                                        fileWriter.flush();
-                                        fileWriter.close();
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
-                                    }
-                                } else if (result == 2) {
-                                    return;
                                 }
                             } 
                             
@@ -967,6 +971,113 @@ public class Middlesex1 extends javax.swing.JFrame {
     
     public void hideFrame() {
         this.dispose();
+    }
+    
+    public void removePOI(POI poi, JButton button, JSONObject poiJson, JSONObject json, JSONArray pointsOfInterest, LinkedList<String> ll) {
+        Object[] options = {"Set Favourite", "Unfavourite", "Edit","Remove", "Close"}; // additional options
+        int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if (result == 0) {
+            POI selectedPOI = poi;
+            selectedPOI.setFav(true);
+            button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+            poiJson.put("favourite", 1);
+            try {
+                FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                fileWriter.write(json.toString());
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else if (result == 1) {
+            POI selectedPOI = poi;
+            selectedPOI.setFav(false);
+            button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(0,0,0), 2));
+            poiJson.put("favourite", 0);
+            try {
+                FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                fileWriter.write(json.toString());
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } else if (result == 4) {
+            return;
+        } else if (result == 3) {
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the selected POI?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                int indexToRemove = -1;
+                for (int i = 0; i < pointsOfInterest.length(); i++) {
+                    JSONObject currentPoi = (JSONObject) pointsOfInterest.get(i);
+                    if (currentPoi.get("name").equals(poi.getName())) {
+                        indexToRemove = i;
+                        break;
+                    }
+                }
+                if (indexToRemove != -1) {
+                    pointsOfInterest.remove(indexToRemove);
+                    try {
+                        FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                        fileWriter.write(json.toString());
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    JOptionPane.showMessageDialog(null, "POI deleted successfully", "POI Deleted", JOptionPane.INFORMATION_MESSAGE);
+                    hideFrame();
+                    new Middlesex1(ll).setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Unable to find POI in JSON file", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else if (result == 2) {
+            POI selectedPOI = poi;
+            JPanel panel = new JPanel(new GridLayout(0, 1));
+            JTextField nameField = new JTextField();
+            panel.add(new JLabel("Name:"));
+            panel.add(nameField);
+
+
+            JTextField roomNumField = new JTextField();
+            panel.add(new JLabel("Room Number:"));
+            panel.add(roomNumField);
+
+            // Show the input dialog to the user
+            int res = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            // Process the user input if they clicked OK
+            if (res == JOptionPane.OK_OPTION) {
+                String name = nameField.getText();
+                int roomNum = Integer.parseInt(roomNumField.getText());
+                int floor = poi.getFloor();
+                String layer = "User Defined";
+                int[] coordinate = new int[2];
+                coordinate[0] = 0;
+                coordinate[1] = 0;
+                poi.setLayer(layer);
+                poi.setFloor(floor);
+                poi.setName(name);
+                poi.setRoomNum(roomNum);
+                JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+                button.setBorder(BorderFactory.createLineBorder(new java.awt.Color(255,215,0), 2));
+                poiJson.put("room_number", roomNum);
+                poiJson.put("name", name);
+                poiJson.put("floor", floor);
+                poiJson.put("layer", layer);
+                hideFrame();
+                new Middlesex1(ll).setVisible(true);
+                try {
+                    FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
+                    fileWriter.write(json.toString());
+                    fileWriter.flush();
+                    fileWriter.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
     }
     
     /**
