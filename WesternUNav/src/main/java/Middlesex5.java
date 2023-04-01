@@ -394,6 +394,7 @@ public class Middlesex5 extends javax.swing.JFrame {
 
         SelectFloorBox1.setFont(new java.awt.Font("Helvetica Neue", 1, 10)); // NOI18N
         SelectFloorBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5" }));
+        SelectFloorBox1.setSelectedIndex(4);
         SelectFloorBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectFloorBox1ActionPerformed(evt);
