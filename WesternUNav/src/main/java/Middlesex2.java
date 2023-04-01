@@ -929,6 +929,9 @@ public class Middlesex2 extends javax.swing.JFrame {
     private void otherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_otherActionPerformed
+    public JLabel getMapLabel() {
+        return map;
+    }
     
     public void addPoiPopUp(int[] coordinates) {
         JPanel panel = new JPanel(new GridLayout(0, 1));
