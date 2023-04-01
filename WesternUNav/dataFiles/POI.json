@@ -125,17 +125,6 @@
           }
         },
         {
-          "name": "Stairway 6",
-          "floor": 1,
-          "layer": "Navigation",
-          "room_number": 0,
-          "favourite": 0,
-          "coordinates": {
-            "latitude": 310,
-            "longitude": 101
-          }
-        },
-        {
           "name": "Exit 4",
           "floor": 1,
           "layer": "Navigation",
@@ -239,6 +228,161 @@
           "floor": 1,
           "layer": "Bathroom",
           "room_number": 5,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 980,
+            "longitude": 480
+          }       
+        },
+        {
+          "name": "Lab 5",
+          "floor": 1,
+          "layer": "Lab",
+          "room_number": 5,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 375,
+            "longitude": 403
+          }       
+        },
+        {
+          "name": "Lab 10",
+          "floor": 1,
+          "layer": "Bathroom",
+          "room_number": 10,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 314,
+            "longitude": 437
+          }       
+        },
+        {
+          "name": "Grand Lecture Hall",
+          "floor": 2,
+          "layer": "Classroom",
+          "room_number": 110,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 602,
+            "longitude": 223
+          }       
+        },
+        {
+          "name": "Exit 1",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 314,
+            "longitude": 437
+          }       
+        },
+        {
+          "name": "Exit 2",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 256,
+            "longitude": 508
+          }       
+        },
+        {
+          "name": "Exit 3",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 32,
+            "longitude": 523
+          }       
+        },
+        {
+          "name": "Exit 11",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 733,
+            "longitude": 381
+          }       
+        },
+        {
+          "name": "Exit 12",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 668,
+            "longitude": 413
+          }       
+        },
+        {
+          "name": "Stairway 1",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 63,
+            "longitude": 514
+          }       
+        },
+        {
+          "name": "Stairway 2",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 236,
+            "longitude": 460
+          }       
+        },
+        {
+          "name": "Elevator 1",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 659,
+            "longitude": 314
+          }       
+        },
+        {
+          "name": "Elevator 2",
+          "floor": 2,
+          "layer": "Navigation",
+          "room_number": 0,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 952,
+            "longitude": 450
+          }       
+        }
+        ,
+        {
+          "name": "Men's Bathroom",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 100,
+          "favourite": 0,
+          "coordinates": {
+            "latitude": 481,
+            "longitude": 348
+          }       
+        },
+        {
+          "name": "Woman's Bathroom",
+          "floor": 2,
+          "layer": "Bathroom",
+          "room_number": 139,
           "favourite": 0,
           "coordinates": {
             "latitude": 980,
@@ -353,18 +497,7 @@
             "latitude": 310,
             "longitude": 101
           }
-        },
-        {
-          "name": "Classroom",
-          "floor": 2,
-          "layer": "Bathroom",
-          "room_number": 105,
-          "favourite": 0,
-          "coordinates": {
-            "latitude": 310,
-            "longitude": 101
-          }
-        }  
+        }
       ]
     }
   ]
