@@ -11,6 +11,15 @@ import javax.swing.JComboBox;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class welcomeScreenFrame extends javax.swing.JFrame {
     private String selectedBuilding;
@@ -42,6 +51,8 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         DoneButton1 = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,6 +179,17 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("dataFiles/weatherImage.png"));
+
+        String weather = "";
+        try {
+            weather = WeatherAPI.getWeather("London, Ontario");
+        } catch (Exception e) {
+            weather = "Can't Acess Weather,please try again later.";
+        }
+        jLabel4.setText(weather);
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout OtherBGLayout = new javax.swing.GroupLayout(OtherBG);
         OtherBG.setLayout(OtherBGLayout);
         OtherBGLayout.setHorizontalGroup(
@@ -178,6 +200,8 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(DoneButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(212, 212, 212)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OtherBGLayout.createSequentialGroup()
                         .addGap(93, 93, 93)
@@ -185,9 +209,14 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(logOutButton)
-                .addGap(14, 14, 14))
+                .addGap(100, 100, 100)
+                .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
+                        .addComponent(logOutButton)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(100, 100, 100))))
         );
         OtherBGLayout.setVerticalGroup(
             OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,8 +228,11 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DoneButton1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,7 +253,8 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+   
     private void AboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutUsButtonActionPerformed
         new AboutUsFrame().setVisible(true);
         this.dispose();
@@ -314,7 +347,9 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> SelectBuildingBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton logOutButton;
     // End of variables declaration//GEN-END:variables
