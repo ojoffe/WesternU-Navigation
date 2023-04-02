@@ -254,7 +254,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-   
+   // test comment
     private void AboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutUsButtonActionPerformed
         new AboutUsFrame().setVisible(true);
         this.dispose();
