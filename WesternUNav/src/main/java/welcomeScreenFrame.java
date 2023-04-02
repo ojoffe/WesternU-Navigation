@@ -185,7 +185,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         try {
             weather = WeatherAPI.getWeather("London, Ontario");
         } catch (Exception e) {
-            weather = "Can't Acess Weather,please try again later.";
+            weather = "Can't Access Weather,please try again later.";
         }
         jLabel4.setText(weather);
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

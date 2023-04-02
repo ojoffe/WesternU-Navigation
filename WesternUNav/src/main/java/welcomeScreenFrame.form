@@ -324,7 +324,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String weather = &quot;&quot;;&#xa;try {&#xa;    weather = WeatherAPI.getWeather(&quot;London, Ontario&quot;);&#xa;} catch (Exception e) {&#xa;     weather = &quot;Can&apos;t Acess Weather,please try again later.&quot;;&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String weather = &quot;&quot;;&#xa;try {&#xa;    weather = WeatherAPI.getWeather(&quot;London, Ontario&quot;);&#xa;} catch (Exception e) {&#xa;     weather = &quot;Can&apos;t Access Weather,please try again later.&quot;;&#xa;}"/>
           </AuxValues>
         </Component>
       </SubComponents>
