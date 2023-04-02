@@ -166,12 +166,19 @@ public class SearchFunc {
     private void light(JLabel map1, JSONObject poiJson) {
         int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
         int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
+        int roomNum = poiJson.getInt("room_number");
+        String name = poiJson.getString("name");
+        int[] coord = new int[2];
+        coord[0] = x;
+        coord[1] = y;
         int width = 30;
         int height = 30;
+        POI poi = new POI(name,coord, roomNum);
         Highlighter highlight = new Highlighter(x, y, width, height);
         map1.remove(highlight);
         map1.add(highlight); // Add the highlight component to your JFrame
         map1.repaint();
+        JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
         Timer timer = new Timer(10000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

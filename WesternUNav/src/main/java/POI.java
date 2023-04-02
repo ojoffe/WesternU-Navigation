@@ -29,6 +29,12 @@ public class POI {
         this.floor = floor;
         this.fav = false;
     }
+    public POI(String name, int[] coordinate, int roomNum) {
+        this.roomNum = roomNum;
+        this.name = name;
+        this.coordinate = coordinate;
+        this.fav = false;
+    }
     
     /**
      * Constructor used when adding a POI
