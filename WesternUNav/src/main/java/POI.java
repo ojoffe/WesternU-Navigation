@@ -90,8 +90,8 @@ public class POI {
     }
     
     public String getDescription() {
-        return "POI name: " + name + ", room number: " + roomNum + ", "
-                + "coordinates: " + coordinate[0] + ", " + coordinate[1];
+        return "POI: " + name + ", Room Number: " + roomNum + ", "
+                + "Coordinates: " + coordinate[0] + ", " + coordinate[1];
     }
     
     public void setFav(boolean bool) {
