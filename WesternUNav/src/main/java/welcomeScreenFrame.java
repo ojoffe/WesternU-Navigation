@@ -64,8 +64,8 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         DoneButton1 = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        weatherImage = new javax.swing.JLabel();
+        weatherText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,16 +226,28 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("dataFiles/weatherImage.png"));
-
+        Boolean weatherBool = true;
         String weather = "";
+        try {
+            weather = WeatherAPI.getWeather("London, Ontario");
+        } catch (Exception e) {
+            weatherBool = false;
+        }
+        String filePath;
+        if (weatherBool == false) {
+            filePath = "dataFiles/noInternet.png";
+        } else {
+            filePath = "dataFiles/weatherImage.png";
+        }
+        weatherImage.setIcon(new javax.swing.ImageIcon(filePath));
+
         try {
             weather = WeatherAPI.getWeather("London, Ontario");
         } catch (Exception e) {
             weather = "Can't Access Weather,please try again later.";
         }
-        jLabel4.setText(weather);
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        weatherText.setText(weather);
+        weatherText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout OtherBGLayout = new javax.swing.GroupLayout(OtherBG);
         OtherBG.setLayout(OtherBGLayout);
@@ -247,7 +259,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(DoneButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
+                        .addComponent(weatherImage)
                         .addGap(212, 212, 212)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(OtherBGLayout.createSequentialGroup()
@@ -262,7 +274,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                         .addComponent(logOutButton)
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OtherBGLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(weatherText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(100, 100, 100))))
         );
         OtherBGLayout.setVerticalGroup(
@@ -276,9 +288,9 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DoneButton1)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(weatherImage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(weatherText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -604,12 +616,12 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> favouritesList;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton logOutButton;
     private javax.swing.JButton submit;
+    private javax.swing.JLabel weatherImage;
+    private javax.swing.JLabel weatherText;
     // End of variables declaration//GEN-END:variables
 }

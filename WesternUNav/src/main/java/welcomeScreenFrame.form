@@ -99,7 +99,7 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="DoneButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="weatherImage" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
@@ -119,7 +119,7 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel4" max="32767" attributes="0"/>
+                          <Component id="weatherText" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -137,10 +137,10 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="DoneButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="weatherImage" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel4" max="32767" attributes="0"/>
+                  <Component id="weatherText" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -360,14 +360,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="weatherImage">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(&quot;dataFiles/weatherImage.png&quot;)" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(filePath)" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Boolean weatherBool = true;&#xa;String weather = &quot;&quot;;&#xa;try {&#xa;    weather = WeatherAPI.getWeather(&quot;London, Ontario&quot;);&#xa;} catch (Exception e) {&#xa;    weatherBool = false;&#xa;}&#xa;String filePath;&#xa;if (weatherBool == false) {&#xa;    filePath = &quot;dataFiles/noInternet.png&quot;;&#xa;} else {&#xa;    filePath = &quot;dataFiles/weatherImage.png&quot;;&#xa;}"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="weatherText">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="weather" type="code"/>
@@ -375,7 +378,7 @@
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String weather = &quot;&quot;;&#xa;try {&#xa;    weather = WeatherAPI.getWeather(&quot;London, Ontario&quot;);&#xa;} catch (Exception e) {&#xa;     weather = &quot;Can&apos;t Access Weather,please try again later.&quot;;&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try {&#xa;    weather = WeatherAPI.getWeather(&quot;London, Ontario&quot;);&#xa;} catch (Exception e) {&#xa;     weather = &quot;Can&apos;t Access Weather,please try again later.&quot;;&#xa;}"/>
           </AuxValues>
         </Component>
       </SubComponents>
