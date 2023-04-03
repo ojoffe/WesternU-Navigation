@@ -9,17 +9,27 @@ import javax.swing.JComboBox;
  */
 
 import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 public class welcomeScreenFrame extends javax.swing.JFrame {
     private String selectedBuilding;
@@ -48,6 +58,9 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         AboutUsButton = new javax.swing.JButton();
         SelectBuildingBox = new javax.swing.JComboBox<>();
         DoneButton = new javax.swing.JButton();
+        favouritesList = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        submit = new javax.swing.JButton();
         DoneButton1 = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -115,6 +128,28 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             }
         });
 
+        String[] items;
+        items = this.getFavourites("dataFiles/POI.json");
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(items);
+        favouritesList.setModel(model);
+        favouritesList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                favouritesListActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Favourites Navigation:");
+
+        submit.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        submit.setText("Submit");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -133,9 +168,16 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                                 .addGap(209, 209, 209)
                                 .addComponent(jLabel3))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(AboutUsButton)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AboutUsButton)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(favouritesList, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(submit)))))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,9 +190,14 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                     .addComponent(SelectBuildingBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DoneButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AboutUsButton)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(favouritesList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(submit))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         DoneButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -302,6 +349,145 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        String jsonFilePath = "dataFiles/POI.json";
+        String fav = favouritesList.getSelectedItem().toString();
+        try (FileReader reader = new FileReader(jsonFilePath)) {
+            JSONObject json = new JSONObject(new JSONTokener(reader));
+            JSONArray buildings = json.getJSONArray("buildings");
+            for (int buildIndex = 0; buildIndex < 3; buildIndex++) {
+                JSONObject building = buildings.getJSONObject(buildIndex);
+                JSONArray pois = building.getJSONArray("points_of_interest");
+                Boolean found = false;
+                for (int j = 0; j < pois.length(); j++) {
+                    JSONObject poiJson = pois.getJSONObject(j);
+                    String info = poiJson.getString("name");
+                    if (info.equals(fav)) {
+                        found = true;
+                        int floor = poiJson.getInt("floor");
+                        if (buildIndex == 0) {
+                            if (floor == 1) {
+                                this.dispose();
+                                Middlesex1 newF = new Middlesex1();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 2) {
+                                this.dispose();
+                                Middlesex2 newF = new Middlesex2();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 3) {
+                                this.dispose();
+                                Middlesex2 newF = new Middlesex2();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 4) {
+                                this.dispose();
+                                Middlesex4 newF = new Middlesex4();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 5) {
+                                this.dispose();
+                                Middlesex5 newF = new Middlesex5();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                        } else if (buildIndex == 1) {
+                            if (floor == 1) {
+                                this.dispose();
+                                UC1 newF = new UC1();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 2) {
+                                this.dispose();
+                                UC2 newF = new UC2();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 3) {
+                                this.dispose();
+                                UC3 newF = new UC3();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 4) {
+                                this.dispose();
+                                UC4 newF = new UC4();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                        } else if (buildIndex == 2) {
+                            if (floor == 1) {
+                                this.dispose();
+                                Talbot1 newF = new Talbot1();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 2) {
+                                this.dispose();
+                                Talbot2 newF = new Talbot2();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 3) {
+                                this.dispose();
+                                Talbot3 newF = new Talbot3();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                            if (floor == 4) {
+                                this.dispose();
+                                Talbot4 newF = new Talbot4();
+                                JLabel map1 = newF.getMapLabel();
+                                newF.setVisible(true);
+                                light(map1, poiJson);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (found == true) {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_submitActionPerformed
+
+    private void favouritesListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_favouritesListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_favouritesListActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +522,76 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             }
         });
     }
+    public String[] getFavourites(String jsonFilePath) {
+        int size = 0;
+        try (FileReader reader = new FileReader(jsonFilePath)) {
+            JSONObject json = new JSONObject(new JSONTokener(reader));
+            JSONArray buildings = json.getJSONArray("buildings");
+            for (int i = 0;i < 3; i++) {
+                JSONObject building = buildings.getJSONObject(i);
+                JSONArray pois = building.getJSONArray("points_of_interest");
+                for (int j = 0; j < pois.length(); j++) {
+                    JSONObject poiJson = pois.getJSONObject(j);
+                    if (poiJson.getInt("favourite") == 1) {
+                        size += 1;
+                    } 
+                }
+            }
+            String[] items = new String[size];
+            if (size == 0) {
+                items = new String[1];
+                items[0] = "No Favourites Yet";
+                return items;
+            } else {
+                int index = 0;
+                for (int i = 0;i < 3; i++) {
+                    JSONObject building = buildings.getJSONObject(i);
+                    JSONArray pois = building.getJSONArray("points_of_interest");
+                    for (int j = 0; j < pois.length(); j++) {
+                        JSONObject poiJson = pois.getJSONObject(j);
+                        String name = poiJson.getString("name");
+                        if (poiJson.getInt("favourite") == 1) {
+                            items[index] = name;
+                            index++;
+                        } 
+                    }
+                }
+                return items;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private void light(JLabel map1, JSONObject poiJson) {
+        int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
+        int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
+        int roomNum = poiJson.getInt("room_number");
+        String name = poiJson.getString("name");
+        int[] coord = new int[2];
+        coord[0] = x;
+        coord[1] = y;
+        int width = 30;
+        int height = 30;
+        POI poi = new POI(name,coord, roomNum);
+        Highlighter highlight = new Highlighter(x, y, width, height);
+        map1.remove(highlight);
+        map1.add(highlight); // Add the highlight component to your JFrame
+        map1.repaint();
+        JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
+        Timer timer = new Timer(10000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            // Remove the component from the map
+                map1.remove(highlight);
+                map1.revalidate();
+                map1.repaint();
+            }
+        });
+        timer.setRepeats(false); // set the timer to execute only once
+        timer.start(); // start the timer
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AboutUsButton;
@@ -345,12 +601,15 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private javax.swing.JLabel HeaderTitle;
     private javax.swing.JPanel OtherBG;
     private javax.swing.JComboBox<String> SelectBuildingBox;
+    private javax.swing.JComboBox<String> favouritesList;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton logOutButton;
+    private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }
