@@ -373,7 +373,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         Boolean hasFav = true;
         if (fav.equals("No Favourites Yet")) {
             hasFav = false;
-            JOptionPane.showMessageDialog(null, "No Favourites had been made yet...");
+            JOptionPane.showMessageDialog(this, "No Favourites had been made yet...");
         }
         try (FileReader reader = new FileReader(jsonFilePath)) {
             JSONObject json = new JSONObject(new JSONTokener(reader));
