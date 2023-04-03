@@ -370,6 +370,11 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         String jsonFilePath = "dataFiles/POI.json";
         String fav = favouritesList.getSelectedItem().toString();
+        Boolean hasFav = true;
+        if (fav.equals("No Favourites Yet")) {
+            hasFav = false;
+            JOptionPane.showMessageDialog(null, "No Favourites had been made yet...");
+        }
         try (FileReader reader = new FileReader(jsonFilePath)) {
             JSONObject json = new JSONObject(new JSONTokener(reader));
             JSONArray buildings = json.getJSONArray("buildings");
