@@ -36,19 +36,6 @@ public class POITest {
     }
 
     /**
-     * Test of setLayer method, of class POI.
-     */
-    @Test
-    public void testSetLayer() {
-        System.out.println("setLayer");
-        Layer layer = null;
-        POI instance = null;
-        instance.setLayer(layer);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getCoordinate method, of class POI.
      */
     @Test
