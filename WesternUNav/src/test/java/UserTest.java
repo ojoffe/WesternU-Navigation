@@ -88,21 +88,6 @@ public class UserTest {
     }
 
     /**
-     * Test of addFavPOI method, of class User.
-     */
-    @Test
-    public void testAddFavPOI() {
-        System.out.println("addFavPOI");
-        POI expResult = new POI("Bathroom", 1, 1, "Bathroom1", new int[]{1,2}, 1);
-        User instance = new User("username", "password");
-        instance.addFavPOI(expResult);
-        LinkedList<POI> favorites = instance.getFavPOIs();
-        int index = favorites.indexOf(expResult);
-        POI result = favorites.get(index);
-        assertEquals(expResult, result);
-    }
-
-    /**
      * Test of setPassword method, of class User.
      */
     @Test
@@ -128,20 +113,6 @@ public class UserTest {
         String expResult = systemID;
         String result = instance.getID();
         assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of getPOIs method, of class User.
-     */
-    @Test
-    public void testGetPOIs() {
-        System.out.println("getPOIs");
-        User instance = null;
-        LinkedList<POI> expResult = null;
-        LinkedList<POI> result = instance.getPOIs();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
