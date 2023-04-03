@@ -926,6 +926,28 @@
           "floor": 4,
           "favourite": 0,
           "layer": "Other"
+        },
+        {
+          "name": "Grad Club Kitchen",
+          "coordinates": {
+            "latitude": 379,
+            "longitude": 272
+          },
+          "room_number": 18,
+          "floor": 1,
+          "favourite": 0,
+          "layer": "Food"
+        },
+        {
+          "name": "Grad Club Patio",
+          "coordinates": {
+            "latitude": 565,
+            "longitude": 87
+          },
+          "room_number": 0,
+          "floor": 1,
+          "favourite": 0,
+          "layer": "Other"
         }
       ]
     },
