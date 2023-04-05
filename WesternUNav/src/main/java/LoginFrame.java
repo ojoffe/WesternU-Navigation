@@ -13,10 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 /**
- *
+ * This class represents our login page where the user can enter their credentials which are checked with the User json file
  * @author stephenkinsey
  */
 public class LoginFrame extends javax.swing.JFrame {
+    /** is developer boolean to determine whether or not the user is in dev mode */
     public static Boolean isDev = false;
     /**
      * Creates new form MainFrame
