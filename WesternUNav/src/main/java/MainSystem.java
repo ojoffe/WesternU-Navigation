@@ -59,14 +59,4 @@ public class MainSystem {
         // Return null if it hasn't been found
         return null;
     }
-
-    public String getWeather() {
-        try {
-            String weatherData = WeatherAPI.getWeatherData("London, Ontario");
-            System.out.println(weatherData);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
