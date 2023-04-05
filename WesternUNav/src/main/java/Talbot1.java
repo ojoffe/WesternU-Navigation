@@ -992,7 +992,6 @@ public class Talbot1 extends javax.swing.JFrame {
                     }
                     JOptionPane.showMessageDialog(null, "POI deleted successfully", "POI Deleted", JOptionPane.INFORMATION_MESSAGE);
                     hideFrame();
-                    new Talbot1(ll).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Unable to find POI in JSON file", "Error", JOptionPane.ERROR_MESSAGE);
                 }
