@@ -895,10 +895,15 @@ public class Middlesex1 extends javax.swing.JFrame {
         panel.add(new JLabel("Name:"));
         panel.add(nameField);
         
-
         JTextField roomNumField = new JTextField();
         panel.add(new JLabel("Room Number:"));
         panel.add(roomNumField);
+        
+        JTextField layerField = new JTextField();
+        if (LoginFrame.isDev) {
+            panel.add(new JLabel("Layer:"));
+            panel.add(layerField);
+        }
 
         int result = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
@@ -909,7 +914,12 @@ public class Middlesex1 extends javax.swing.JFrame {
                 JSONArray buildings = json.getJSONArray("buildings");
                 JSONObject middlesex = buildings.getJSONObject(0);
                 JSONArray pois = middlesex.getJSONArray("points_of_interest");
-                String layer = "User Defined";
+                String layer = "";
+                if (LoginFrame.isDev) {
+                    layer = layerField.getText();
+                } else {
+                    layer = "User Defined";
+                }
                 // Create a new POI instance and add it to the "Middlesex" section
                 POI addPoi = new POI(layer, roomNum, name, coordinates, 1, false);
                 JSONObject poiJson = new JSONObject();
@@ -992,7 +1002,7 @@ public class Middlesex1 extends javax.swing.JFrame {
                     }
                     JOptionPane.showMessageDialog(null, "POI deleted successfully", "POI Deleted", JOptionPane.INFORMATION_MESSAGE);
                     hideFrame();
-                    new Middlesex1(ll).setVisible(true);
+                    //new Middlesex1(ll).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "Unable to find POI in JSON file", "Error", JOptionPane.ERROR_MESSAGE);
                 }
