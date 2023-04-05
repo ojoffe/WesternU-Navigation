@@ -3,11 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import javax.swing.JComboBox;
-/**
- *
- * @author stephenkinsey
- */
-
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +26,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+/**
+ * This class represents the welcome screen frame where users can both select favourites or navigate to different floors
+ * @author stephenkinsey
+ */
 public class welcomeScreenFrame extends javax.swing.JFrame {
+    /** the current selected building */
     private String selectedBuilding;
     /**
      * Creates new form welcomeScreenFrame
@@ -61,7 +61,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         favouritesList = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         submit = new javax.swing.JButton();
-        DoneButton1 = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
         logOutButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         weatherImage = new javax.swing.JLabel();
@@ -206,11 +206,11 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        DoneButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        DoneButton1.setText("Help");
-        DoneButton1.addActionListener(new java.awt.event.ActionListener() {
+        helpButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        helpButton.setText("Help");
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoneButton1ActionPerformed(evt);
+                helpButtonActionPerformed(evt);
             }
         });
 
@@ -263,7 +263,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(OtherBGLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(DoneButton1)
+                        .addComponent(helpButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(weatherImage)
                         .addGap(212, 212, 212)
@@ -292,7 +292,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(OtherBGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DoneButton1)
+                    .addComponent(helpButton)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(weatherImage))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,7 +319,10 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-   // test comment
+    /**
+     * Brings up the about us page to learn more about the developers.
+     * @param evt about us button event
+     */
     private void AboutUsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutUsButtonActionPerformed
         new AboutUsFrame().setVisible(true);
         this.dispose();
@@ -329,6 +332,10 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_SelectBuildingBoxActionPerformed
 
+    /**
+     * Confirms the selected building in the drop-down menu and navigates to that frame
+     * @param evt done button event
+     */
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
         if (SelectBuildingBox.getSelectedItem().toString().equals("Middlesex College")) {
             new Middlesex1().setVisible(true);
@@ -344,7 +351,11 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
-    private void DoneButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButton1ActionPerformed
+    /**
+     * Pops-ups external help page pdf
+     * @param evt Help button action
+     */
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
             // Load the PDF file
         File pdfFile = new File("dataFiles/2212help.pdf");
 
@@ -356,17 +367,29 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-    }//GEN-LAST:event_DoneButton1ActionPerformed
+    }//GEN-LAST:event_helpButtonActionPerformed
 
+    /**
+     * Logs out the user and sends then to the create account frame
+     * @param evt log out button event
+     */
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         new CreateAccountFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
 
+    /**
+     * Exits the program
+     * @param evt Exit event
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Navigates the user to the selected favourite on the drop-down menu
+     * @param evt favourites submission event
+     */
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         String jsonFilePath = "dataFiles/POI.json";
         String fav = favouritesList.getSelectedItem().toString();
@@ -375,6 +398,7 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             hasFav = false;
             JOptionPane.showMessageDialog(this, "No Favourites had been made yet...");
         }
+        //iterates through the Json file and retrieves the favourites
         try (FileReader reader = new FileReader(jsonFilePath)) {
             JSONObject json = new JSONObject(new JSONTokener(reader));
             JSONArray buildings = json.getJSONArray("buildings");
@@ -545,6 +569,11 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             }
         });
     }
+    /**
+     * 
+     * @param jsonFilePath file path of the POI json file
+     * @return string array of the current favourites of the user
+     */
     public String[] getFavourites(String jsonFilePath) {
         int size = 0;
         try (FileReader reader = new FileReader(jsonFilePath)) {
@@ -586,7 +615,12 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
             return null;
         }
     }
-    
+    /**
+     * 
+     * Performs the highlight functionality when the favourite is selected
+     * @param map1 current map/floor png in use 
+     * @param poiJson Json object from file which represents a specific POI favourite selected
+     */
     private void light(JLabel map1, JSONObject poiJson) {
         int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
         int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
@@ -619,12 +653,12 @@ public class welcomeScreenFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AboutUsButton;
     private javax.swing.JButton DoneButton;
-    private javax.swing.JButton DoneButton1;
     private javax.swing.JPanel HeaderBG;
     private javax.swing.JLabel HeaderTitle;
     private javax.swing.JPanel OtherBG;
     private javax.swing.JComboBox<String> SelectBuildingBox;
     private javax.swing.JComboBox<String> favouritesList;
+    private javax.swing.JButton helpButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
