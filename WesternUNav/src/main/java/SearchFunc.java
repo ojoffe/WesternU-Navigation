@@ -18,17 +18,32 @@ import org.json.JSONTokener;
  */
 
 /**
- *
+ * This class carries out the functionality of the searching for a POI. The search feature takes in text-based input and navigates to the searched POI.
  * @author stephenkinsey
  */
 public class SearchFunc {
+    /** search text field where input is stored */
     private String searchText;
+    /** file name string for POI json */
     private String fName;
+    /** building index value on Json file */
     private int buildIndex;
+    /** JLabel object which represents the current png of the selected floor/building */
     private JLabel map;
+    /** searchField object where the search is performed on the various map frame */
     private JTextField searchField;
+    /** current map frame in use, used to dispose of when navigating to a new frame */
     private JFrame frame;
     
+    /**
+     * Constructor of the Search Function class which creates a search object necessary to perform the search
+     * @param searchText search text field where input is stored
+     * @param fName file name string for POI json
+     * @param buildIndex building index value on Json file
+     * @param map JLabel object which represents the current png of the selected floor/building
+     * @param searchField searchField object where the search is performed on the various map frame
+     * @param frame current map frame in use, used to dispose of when navigating to a new frame
+     */
     public SearchFunc(String searchText, String fName, int buildIndex, JLabel map, JTextField searchField, JFrame frame) {
         this.searchText = searchText;
         this.fName = fName;
@@ -39,6 +54,15 @@ public class SearchFunc {
         SearchPerformed(searchText, fName, buildIndex, map, searchField, frame);
     }
     
+    /**
+     * Search perform method which performs the search functionality and navigates the user to the selected POI.
+     * @param searchText search text field where input is stored
+     * @param fName file name string for POI json
+     * @param buildIndex building index value on Json file
+     * @param map JLabel object which represents the current png of the selected floor/building
+     * @param searchField searchField object where the search is performed on the various map frame
+     * @param frame current map frame in use, used to dispose of when navigating to a new frame
+     */
     private void SearchPerformed(String searchText, String fName, int buildIndex, JLabel map, JTextField searchField, JFrame frame) {
         try (FileReader reader = new FileReader("dataFiles/POI.json")) {
         // Parse the JSON
@@ -163,6 +187,11 @@ public class SearchFunc {
         } 
     }
     
+    /**
+     * Performs the highlight functionality when the item is searched for
+     * @param map1 current map/floor png in use 
+     * @param poiJson Json object from file which represents a specific POI searched for
+     */
     private void light(JLabel map1, JSONObject poiJson) {
         int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
         int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
