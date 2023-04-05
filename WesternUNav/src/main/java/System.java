@@ -14,7 +14,7 @@ public class System {
         this.users = new LinkedList<>();
         this.devs = new LinkedList<>();
     }
-    //hello
+    //goodbye
     /**
      * Adds user to the System.
      * @param systemID
