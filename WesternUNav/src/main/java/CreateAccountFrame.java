@@ -319,6 +319,13 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         catch (IOException | ParseException e) {
             e.printStackTrace();
         }
+        if (password.equals("") || systemID.equals("")){
+            // user didnt enter anything
+            JOptionPane.showMessageDialog(this, "Username and Password must be at least one character long.");
+            passwordField.setText("");
+            confirmPasswordField.setText("");
+            return;
+        }
         
         
         if (!password.equals(confirmPassword)) {
