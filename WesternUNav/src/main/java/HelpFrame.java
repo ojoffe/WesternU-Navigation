@@ -174,16 +174,28 @@ public class HelpFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handling for when the home button is pressed
+     * @param evt button click event to trigger function 
+     */
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         new welcomeScreenFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_homeButtonActionPerformed
 
+    /**
+     * Handling for when the logout button is pressed
+     * @param evt button click event to trigger function  
+     */
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         new CreateAccountFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
 
+    /**
+     * Handling for when the exit program button is pressed
+     * @param evt button click event to trigger function  
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
