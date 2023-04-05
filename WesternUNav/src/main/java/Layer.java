@@ -13,8 +13,8 @@ public class Layer {
 
     /**
      * This is the constructor for the layer
-     * @param description
-     * @param POIs 
+     * @param description This represents the description of the layer
+     * @param POIs This represents the POIs in this layer
      */
     public Layer(String description, LinkedList<POI> POIs) {
         this.description = description;

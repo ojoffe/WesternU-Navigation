@@ -193,6 +193,7 @@ public class SearchFunc {
      * @param poiJson Json object from file which represents a specific POI searched for
      */
     private void light(JLabel map1, JSONObject poiJson) {
+        //Get the x and y cordinates of the poi from the JSON file, and then center it
         int x = poiJson.getJSONObject("coordinates").getInt("latitude") - 7;
         int y = poiJson.getJSONObject("coordinates").getInt("longitude") - 7;
         int roomNum = poiJson.getInt("room_number");
@@ -200,12 +201,14 @@ public class SearchFunc {
         int[] coord = new int[2];
         coord[0] = x;
         coord[1] = y;
+        //Set width of the highlight
         int width = 30;
         int height = 30;
         POI poi = new POI(name,coord, roomNum);
+        //Create a new highlighter to highlight the POI
         Highlighter highlight = new Highlighter(x, y, width, height);
         map1.remove(highlight);
-        map1.add(highlight); // Add the highlight component to your JFrame
+        map1.add(highlight); // Add the highlight component to the JFrame
         map1.repaint();
         JOptionPane.showMessageDialog(null, poi.getDescription(), "POI Description", JOptionPane.INFORMATION_MESSAGE);
         Timer timer = new Timer(10000, new ActionListener() {
