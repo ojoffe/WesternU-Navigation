@@ -285,16 +285,29 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt button click event to trigger function
+     *
+     */
     private void loginFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginFieldActionPerformed
 
+    /**
+     * Erases login information from previous use
+     * @param evt button click event to trigger function
+     */
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         loginField.setText("");
         passwordField.setText("");
         confirmPasswordField.setText("");
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    /**
+     * In the event of a login, parses user data Json file to authenticate user
+     * @param evt button click event to trigger function
+     */
     private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
         String systemID = loginField.getText();
         String password = passwordField.getText();
@@ -345,38 +358,70 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButton1ActionPerformed
 
+    /**
+     * Handling for when the password field is activated
+     * @param evt button click event to trigger function
+     */
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
 
+    /**
+     * Handling for when the password is confirmed
+     * @param evt button click event to trigger function 
+     */
     private void confirmPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordFieldActionPerformed
         loginButton1ActionPerformed(evt);
     }//GEN-LAST:event_confirmPasswordFieldActionPerformed
+    /**
+     * Handling for when the username field is pressed
+     * @param evt button click event to trigger function 
+     */
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {                                    
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
         }
     }
+    /**
+     * Handling for when the password field is pressed
+     * @param evt button click event to trigger function 
+     */
     private void passwordKeyPressed(java.awt.event.KeyEvent evt) {                                    
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
         }
     }
+    /**
+     * Confirms the password field is pressed and accurate
+     * @param evt button click event to trigger function 
+     */
     private void confirmPasswordFieldKeyPressed(java.awt.event.KeyEvent evt) {                                    
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
             loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
         }
     }
-    
+    /**
+     * Handling for when the second login button is pressed
+     * @param evt button click event to trigger function 
+     */
     private void loginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton2ActionPerformed
         new LoginFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButton2ActionPerformed
 
+    /**
+     * Handling for when the exit program button is pressed
+     * @param evt button click event to trigger function 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Handling for when the help button is pressed
+     * Displays help information
+     * @param evt button click event to trigger function 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         File pdfFile = new File("dataFiles/2212help.pdf");
 
