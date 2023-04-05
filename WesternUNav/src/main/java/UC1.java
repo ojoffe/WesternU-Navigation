@@ -895,10 +895,15 @@ public class UC1 extends javax.swing.JFrame {
         panel.add(new JLabel("Name:"));
         panel.add(nameField);
         
-
         JTextField roomNumField = new JTextField();
         panel.add(new JLabel("Room Number:"));
         panel.add(roomNumField);
+        
+        JTextField layerField = new JTextField();
+        if (LoginFrame.isDev) {
+            panel.add(new JLabel("Layer:"));
+            panel.add(layerField);
+        }
 
         int result = JOptionPane.showConfirmDialog(null, panel, "Add POI", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (result == JOptionPane.OK_OPTION) {
@@ -909,7 +914,12 @@ public class UC1 extends javax.swing.JFrame {
                 JSONArray buildings = json.getJSONArray("buildings");
                 JSONObject uc = buildings.getJSONObject(1);
                 JSONArray pois = uc.getJSONArray("points_of_interest");
-                String layer = "User Defined";
+                String layer = "";
+                if (LoginFrame.isDev) {
+                    layer = layerField.getText();
+                } else {
+                    layer = "User Defined";
+                }
                 // Create a new POI instance and add it to the "UC" section
                 POI addPoi = new POI(layer, roomNum, name, coordinates, 1, false);
                 JSONObject poiJson = new JSONObject();
