@@ -6,6 +6,7 @@
 /**
  *
  * @author Aaron
+ * This class represents the weather API and contains the method to call on it
  */
 import com.fasterxml.jackson.core.JsonParser;
 import java.net.URI;
@@ -31,11 +32,17 @@ import java.io.File;
 import java.io.IOException;
 
 
-
 public class WeatherAPI {
     private static final String ENDPOINT = "https://weatherapi-com.p.rapidapi.com/current.json";
     private static final String API_KEY = "601c08e0e0msh1dc185f80ea6d59p13e2eajsnbc5f2f1e5341";
     
+    /**
+     * This method get the weather from the weather API
+     * @param city
+     * @return it returns a string with the important weather details
+     * @throws IOException
+     * @throws InterruptedException 
+     */
     public static String getWeather(String city) throws IOException, InterruptedException {
     String url = String.format("%s?q=%s", ENDPOINT, URLEncoder.encode(city, "UTF-8"));
     HttpRequest request = HttpRequest.newBuilder()
@@ -93,13 +100,7 @@ public class WeatherAPI {
 
 }
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(WeatherAPI.getWeather("London, Ontario"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+   
 }
 
 
