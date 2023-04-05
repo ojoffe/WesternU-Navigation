@@ -12,8 +12,8 @@ public class Building {
     
     /**
      * This is the constructor for the building
-     * @param name
-     * @param floorMaps 
+     * @param name represents the name of the building
+     * @param floorMaps  represents the floor maps of the building
      */
     public Building(String name, LinkedList<Map> floorMaps) {
         this.name = name;
@@ -27,7 +27,7 @@ public class Building {
     public String getName() {
         return this.name;
     }
-    
+   
     /**
      * This method returns the maps of the building
      * @return floorMaps
