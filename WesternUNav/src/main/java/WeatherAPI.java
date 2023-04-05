@@ -37,7 +37,7 @@ public class WeatherAPI {
     private static final String API_KEY = "601c08e0e0msh1dc185f80ea6d59p13e2eajsnbc5f2f1e5341";
     
     /**
-     * This class get the weather from the weather API
+     * This method get the weather from the weather API
      * @param city
      * @return it returns a string with the important weather details
      * @throws IOException
