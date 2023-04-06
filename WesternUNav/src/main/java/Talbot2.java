@@ -16,19 +16,16 @@ import java.util.LinkedList;
 
 
 /**
- *
+ * This class represents Middlesex1 frame
  * @author louie
  */
 //Components
 public class Talbot2 extends javax.swing.JFrame {
     
     /**
-     * Creates new form Talbot2
+     * This default constructor creates a linked list with all layers and then
+     * call the createButtonsFromJSON method with the created linked list
      */
-    //Componentss
-    //extra
-    //Extras
-    //Beginning
     public Talbot2() {
         initComponents();
         LinkedList<String> ll = new LinkedList<String>();
@@ -41,16 +38,30 @@ public class Talbot2 extends javax.swing.JFrame {
         ll.add("User Defined");
         this.createButtonsFromJSON("dataFiles/POI.json", ll);
     }
-    
+    /**
+     * This constructor takes in a linked list and calls the createButtonsFromJSON
+     * with said linked list
+     * @param ll this linked list contains the strings of all the layers
+     * to be shown on the map
+     */
     public Talbot2(LinkedList<String> ll) {
         initComponents();
         this.createButtonsFromJSON("dataFiles/POI.json", ll);
     }
-    
+    /**
+     * method returns the JLabel that our map png is placed on
+     * @return returns the Jlabel that our map png is placed on
+     */
     public JLabel getMapLabel() {
         return map;
     }
-    
+    /**
+     * This method is used to add the POI's to the map from the JSON file
+     * See comments within code for more detail to individual parts of method
+     * @param jsonFilePath this string is the path to the POI.Json file
+     * @param ll this linked list contains the strings of all the layers
+     * to be shown on the map
+     */
      public void createButtonsFromJSON(String jsonFilePath, LinkedList<String> ll) {
         // Read in the JSON file
         try (FileReader reader = new FileReader(jsonFilePath)) {
@@ -66,7 +77,7 @@ public class Talbot2 extends javax.swing.JFrame {
                 int floor = poiJson.getInt("floor");
                 String layer = poiJson.getString("layer");
                 if ((floor == 2) && (ll.contains(layer))) {
-                    //int id = poiJson.getInt("id");
+                    // ensures that the POI is on this floor and the layer is in the linked list layer
                     int roomNum = poiJson.getInt("room_number");
                     String name = poiJson.getString("name");
                     int[] coordinate = new int[2];
@@ -789,7 +800,10 @@ public class Talbot2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_SelectFloorBox1ActionPerformed
-
+    /**
+     * this method opens our help pdf when the help button is clicked
+     * @param evt not used
+     */
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         File pdfFile = new File("dataFiles/2212help.pdf");
 
@@ -801,17 +815,27 @@ public class Talbot2 extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_helpButtonActionPerformed
-
+    /**
+     * this method returns users to the create account frame when the lot out button is clicked
+     * @param evt not used
+     */
     private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
         new CreateAccountFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logOutButtonActionPerformed
-
+    /**
+     * this method returns the user back to the building selection frame
+     * @param evt not used
+     */
     private void buildingSelectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buildingSelectionButtonActionPerformed
         new welcomeScreenFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buildingSelectionButtonActionPerformed
-
+    /**
+     * This method allows users to switch floors within the building by taking the text from the
+     * selectFloorBox and switching the user to that frame
+     * @param evt not used
+     */
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         if (SelectFloorBox1.getSelectedItem().toString().equals("Floor 1")) {
             new Talbot1().setVisible(true);
@@ -826,18 +850,29 @@ public class Talbot2 extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_goButtonActionPerformed
-
+    /**
+     * performs the same function as the search button action but does so when the user
+     * clicks the enter key rather than clicking the search button
+     * @param evt passed to satisfy the parameters for the searchButton action function but not used
+     */
     private void searchBarTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarTextFieldActionPerformed
         searchButtonActionPerformed(evt);
     }//GEN-LAST:event_searchBarTextFieldActionPerformed
-
+    /**
+     * this method gets the string from the search bar text field, disregards case sensitivity, 
+     * and performs the search functionality via the searchFunc class
+     * @param evt not used
+     */
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         String searchTerm = searchBarTextField.getText();
         searchTerm = searchTerm.toLowerCase();
         SearchFunc search = new SearchFunc(searchTerm, "dataFiles/POI.json", 2, map, searchBarTextField, this); 
     }//GEN-LAST:event_searchButtonActionPerformed
-
+    /**
+     * this function gets the coordinates of where the user clicked on the map and calls the addPoiPopUp method
+     * @param evt allows the method to get the x and y coordinates of where the user clicked
+     */
     private void mapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapMouseClicked
 
         int x = evt.getX();
@@ -845,7 +880,10 @@ public class Talbot2 extends javax.swing.JFrame {
         int[] coordinates = new int[]{x,y};
         addPoiPopUp(coordinates);
     }//GEN-LAST:event_mapMouseClicked
-
+    /**
+     * this method exits the program 
+     * @param evt not used
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -857,7 +895,11 @@ public class Talbot2 extends javax.swing.JFrame {
     private void bathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bathActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bathActionPerformed
-
+    /**
+     * this method determines which layers have been selected and calls the alt
+     * constructor to display the POI's that fit in the desired layers
+     * @param evt not used
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         LinkedList<String> selected = new LinkedList<>();
         if (bath.isSelected()) {
@@ -889,7 +931,10 @@ public class Talbot2 extends javax.swing.JFrame {
     private void otherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_otherActionPerformed
-    
+    /**
+     * This method adds a POI to the map and ensures its added to the JSON file
+     * @param coordinates represents the pixels of where the user wants the POI to be
+     */
     public void addPoiPopUp(int[] coordinates) {
         JPanel panel = new JPanel(new GridLayout(0, 1));
         JTextField nameField = new JTextField();
@@ -944,11 +989,21 @@ public class Talbot2 extends javax.swing.JFrame {
         new Talbot2().setVisible(true);
         this.dispose();
     }
-    
+    /**
+     * allows us to dispose this frame when we dont have access to an instance of this frame
+     */
     public void hideFrame() {
         this.dispose();
     }
-    
+    /**
+     * This method allows the user and/or developers to remove a POI from the map and the POI.Json file
+     * @param poi
+     * @param button
+     * @param poiJson
+     * @param json
+     * @param pointsOfInterest
+     * @param ll 
+     */
     public void removePOI(POI poi, JButton button, JSONObject poiJson, JSONObject json, JSONArray pointsOfInterest, LinkedList<String> ll) {
         Object[] options = {"Set Favourite", "Unfavourite", "Edit","Remove", "Close"}; // additional options
         int result = JOptionPane.showOptionDialog(null, poi.getDescription(), "POI Description", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
