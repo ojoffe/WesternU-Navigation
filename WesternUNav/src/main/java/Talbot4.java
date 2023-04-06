@@ -16,7 +16,7 @@ import java.util.LinkedList;
 
 
 /**
- * This class represents Middlesex4 frame
+ * This class represents Talbot4 frame
  * @author louie
  */
 //Components
