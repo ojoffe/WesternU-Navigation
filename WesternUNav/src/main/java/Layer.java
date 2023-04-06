@@ -39,7 +39,7 @@ public class Layer {
     
     /** 
      * This method adds a poi 
-     * @param POI 
+     * @param POI a poi that is desired to be added to this layer
      */
     public void addPOI(POI POI) {
         this.POIs.add(POI);
