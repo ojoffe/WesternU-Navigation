@@ -4,7 +4,10 @@
  */
 import java.util.LinkedList;
 
-
+/**
+ * this class denotes a layer object
+ * @author louie
+ */
 public class Layer {
     /** This String represents the layer's description*/
     private String description;
