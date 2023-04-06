@@ -31,7 +31,12 @@ public class MainSystem {
         this.users.add(newUser);
         return newUser;
     }
-    
+    /**
+     * adds a new developer to the devs linked list
+     * @param systemID stores this devs user ID
+     * @param password stores this devs password
+     * @return this new Developer
+     */
     public Developer addDeveloper(String systemID, String password) {
         Developer newDev = new Developer(systemID, password);
         this.devs.add(newDev);
