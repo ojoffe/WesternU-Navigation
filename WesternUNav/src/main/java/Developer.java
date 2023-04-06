@@ -20,7 +20,7 @@ public class Developer extends User {
      * @param roomNum represents the room number
      * @param name represents the poi name
      * @param coordinate represents the coordinates on the map
-     * @return 
+     * @return the new POI created
      */
     public POI addPOI(String layer, int id, int roomNum, String name, int[] coordinate) {
         POI newPOI = new POI(layer, roomNum, name, coordinate, 1, false);
