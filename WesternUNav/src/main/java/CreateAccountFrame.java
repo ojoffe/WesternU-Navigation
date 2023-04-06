@@ -12,7 +12,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 /**
- *
+ * This is the class for the create account frame
  * @author louie
  */
 public class CreateAccountFrame extends javax.swing.JFrame {
