@@ -23,7 +23,7 @@ public class Layer {
     
     /**
      * this method gets the description
-     * @return 
+     * @return the attribute description for this layer
      */
     public String getDescription(){
             return description;
