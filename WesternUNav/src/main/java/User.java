@@ -15,7 +15,6 @@ import org.json.JSONObject;
  * systemID stores a users systemID
  */
 public class User {
-    private LinkedList<POI> favoritePOIs = new LinkedList<>();  
     private String password;
     private String systemID;
     
@@ -61,39 +60,6 @@ public class User {
         return systemID;
     }
     
-     /**
-     * Deletes a point of interest from the user's favorites.
-     * @param poi the point of interest to delete
-     */
-    public void deleteFavPOI(POI poi) {
-        favoritePOIs.remove(poi);
-    }
-    
-    /**
-    * Edits a point of interest in the user's favorites.
-    * @param poi the point of interest to edit
-    * @return the edited point of interest if found, or null if not found
-    */
-    public POI editFavPOI(POI poi) {  //FIXME: is this correct for editing
-        int index = favoritePOIs.indexOf(poi);
-        if (index >= 0) {
-            favoritePOIs.set(index, poi);
-            return poi;
-        } else {
-            return null;
-        }
-    }
-    
-    /**
-     * Adds a point of interest to the user's favorites.
-     * @param poi the point of interest to add
-     * @return the added point of interest
-     */
-    public POI addFavPOI(POI poi) {
-        favoritePOIs.add(poi);
-        return poi;
-    }
-    
     /**
      * Sets the password for the user.
      * @param password the new password for the user
@@ -108,14 +74,6 @@ public class User {
      */
     public void setID(String systemID) {
         this.systemID = systemID;
-    }
-    
-    /**
-     * Returns a linked list of the user's favorite points of interest.
-     * @return a linked list of the user's favorite points of interest
-     */
-    public LinkedList<POI> getFavPOIs() {
-        return favoritePOIs;
     }
 }
 
