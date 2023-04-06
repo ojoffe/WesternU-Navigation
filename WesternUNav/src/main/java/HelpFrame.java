@@ -4,7 +4,8 @@
  */
 
 /**
- *
+ * This Help Frame class is no longer used but we are unable to delete it because 
+ * our bitbucket is restricted
  * @author louie
  */
 public class HelpFrame extends javax.swing.JFrame {
