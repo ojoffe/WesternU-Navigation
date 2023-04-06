@@ -3,7 +3,10 @@
  * @author orenj
  */
 import java.util.LinkedList;
-
+/**
+ * This class represents a building object
+ * @author louie
+ */
 public class Building {
     /**  This string represents the name of the building*/
     private String name;
