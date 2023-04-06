@@ -1,7 +1,6 @@
 WesternU Navigation System
 
 Welcome to the WesternU Navigation System! This application is designed to help students, faculty, and visitors navigate the campus of Western University with ease. It provides detailed maps, and information about various buildings and facilities on campus.
-Features
 
 Getting Started
 
