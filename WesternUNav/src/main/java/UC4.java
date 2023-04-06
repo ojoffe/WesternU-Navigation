@@ -998,12 +998,12 @@ public class UC4 extends javax.swing.JFrame {
     }
     /**
      * This method allows the user and/or developers to remove a POI from the map and the POI.Json file
-     * @param poi
-     * @param button
-     * @param poiJson
-     * @param json
-     * @param pointsOfInterest
-     * @param ll 
+     * @param poi The POI to be removed from the map
+     * @param button the button representing the POI on the map
+     * @param poiJson the JSONObject for putting
+     * @param json JSONObject for writing to the json file
+     * @param pointsOfInterest the JSONArray for the POI's for the given building
+     * @param ll the linked list denoting which layers to be shown on the updated floor map
      */
     public void removePOI(POI poi, JButton button, JSONObject poiJson, JSONObject json, JSONArray pointsOfInterest, LinkedList<String> ll) {
         Object[] options = {"Set Favourite", "Unfavourite", "Edit","Remove", "Close"}; // additional options
@@ -1112,6 +1112,7 @@ public class UC4 extends javax.swing.JFrame {
     }
     
     /**
+     * test
      * @param args the command line arguments
      */
     public static void main(String args[]) {
