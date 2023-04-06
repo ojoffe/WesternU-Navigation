@@ -120,7 +120,7 @@ public class POI {
     
     /**
      * Getter for room number of POI
-     * @return 
+     * @return this POI's room number
      */
     public int getRoomNum() {
         return this.roomNum;
