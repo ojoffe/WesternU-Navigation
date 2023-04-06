@@ -60,34 +60,6 @@ public class UserTest {
     }
 
     /**
-     * Test of deleteFavPOI method, of class User.
-     */
-    @Test
-    public void testDeleteFavPOI() {
-        System.out.println("deleteFavPOI");
-        POI poi = null;
-        User instance = null;
-        instance.deleteFavPOI(poi);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of editFavPOI method, of class User.
-     */
-    @Test
-    public void testEditFavPOI() {
-        System.out.println("editFavPOI");
-        POI poi = null;
-        User instance = null;
-        POI expResult = null;
-        POI result = instance.editFavPOI(poi);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of setPassword method, of class User.
      */
     @Test
