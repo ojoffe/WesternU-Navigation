@@ -17,8 +17,8 @@ public class MainSystem {
 
     /**
      * Adds user to the System.
-     * @param systemID
-     * @param password
+     * @param systemID string of this users ID
+     * @param password string of this users password
      * @return 
      */
     public User addUser(String systemID, String password) {
