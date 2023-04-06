@@ -68,7 +68,8 @@ public class POITest {
         System.out.println("setName");
         POI instance = new POI("Bathroom", 1, "Bathroom1", new int[]{1,2}, 1, false);
         String expResult = "Classroom";
-        String result = instance.setName(expResult);
+        instance.setName(expResult);
+        String result = instance.getName();
         assertEquals(expResult, result);
     }
 
@@ -93,7 +94,7 @@ public class POITest {
     public void testGetDescription() {
         System.out.println("getDescription");
         POI instance = new POI("Bathroom",1, "Bathroom1", new int[]{1,2}, 1, false);
-        String expResult = "POI name: Bathroom1, room number: 1, coordinates: 1, 2";
+        String expResult = "POI: Bathroom1, Room Number: 1, Coordinates: 1, 2";
         String result = instance.getDescription();
         assertEquals(expResult, result);
     }
