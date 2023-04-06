@@ -40,8 +40,7 @@ public class POI {
      * Secondary constructor for adding POIs
      * @param name name of the POI
      * @param coordinate coordinate vector of the POI (x,y)
-     * @param floor floor of the POI
-     * @param fav favourite attributes (true if favourite)
+     * @param roomNum the room number of this POI
      */
     public POI(String name, int[] coordinate, int roomNum) {
         this.roomNum = roomNum;
