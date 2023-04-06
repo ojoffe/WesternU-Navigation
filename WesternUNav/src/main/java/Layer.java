@@ -1,6 +1,6 @@
 /**
  * This class represents a layer in our map
- * @author Aaron
+ * @author Aaron Pogrin
  */
 import java.util.LinkedList;
 
