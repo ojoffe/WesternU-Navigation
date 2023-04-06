@@ -14,31 +14,35 @@ public class UserEncryptor {
     private Key key;
     private String filename;
 
-    public UserEncryptor(String password, String filename)  {
+    //public UserEncryptor(String password, String filename)  {
+    public UserEncryptor()  {    
         try{
-            this.filename = filename;
-            KeyGenerator generator;
-            generator = KeyGenerator.getInstance("DES");
-            SecureRandom sec = new SecureRandom(password.getBytes());
-            generator.init(sec);
-            key = generator.generateKey();
+            // Initialize a basic key without randomization
+            byte[] keyBytes = { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08 }; // Replace with your desired key values
+            this.key = new SecretKeySpec(keyBytes, "DES");
+            
+            //this.filename = filename;
+            //KeyGenerator generator;
+            //generator = KeyGenerator.getInstance("DES");
+            //SecureRandom sec = new SecureRandom(password.getBytes());
+            //generator.init(sec);
+            //key = generator.generateKey();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    public byte[] encrypt(String systemID, String password) throws Exception {
-        String accountJson = "[{\"systemID\": \"" + systemID + "\", \"password\": \"" + password + "\"}]";
+    public byte[] encrypt(String userInfo) throws Exception {
+        //String accountJson = "[{\"systemID\": \"" + systemID + "\", \"password\": \"" + password + "\"}]";
         try{
-            Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-            byte[] encryptedAccount = cipher.doFinal(accountJson.getBytes(StandardCharsets.UTF_8));
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.ENCRYPT_MODE, this.key);
+            byte[] encryptedAccount = cipher.doFinal(userInfo.getBytes(StandardCharsets.UTF_8));
             //String encryptedID = cipher.doFinal(systemID);
             // Save the encrypted user account data, the key, and the IV to a file
-            FileOutputStream fos = new FileOutputStream(filename);
-            fos.write(encryptedAccount);
-            fos.close();
+            //FileOutputStream fos = new FileOutputStream(filename);
+            //fos.write(encryptedAccount);
+            //fos.close();
             return encryptedAccount;
         } catch (Exception e) { 
             e.printStackTrace();
@@ -48,8 +52,8 @@ public class UserEncryptor {
 
     public String decrypt(byte[] encryptedAccount) throws Exception{
         try{
-            Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, key);
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.DECRYPT_MODE, this.key);
             
             byte[] decryptedAccount = cipher.doFinal(encryptedAccount);
             // Check if the decrypted user account data matches the given username and password
@@ -64,16 +68,18 @@ public class UserEncryptor {
     
     public static void main(String[] args) {
         try {
-            UserEncryptor encryptor = new UserEncryptor("password", "dataFiles/UserData.json");
-            byte[] encryptedUser = encryptor.encrypt("orenj", "hello");
+            UserEncryptor encryptor1 = new UserEncryptor();
+            byte[] encryptedUser = encryptor1.encrypt("hello");
             System.out.println(encryptedUser);
-            String decryptedUser = encryptor.decrypt(encryptedUser);
+            
+            UserEncryptor encryptor2 = new UserEncryptor();
+            byte[] encryptedID = new byte[] {26,-18,101,107,31,-31,37,82};
+            String decryptedUser = encryptor2.decrypt(encryptedUser);
             System.out.println(decryptedUser);
             //System.out.println(encryptor.login("ojoffe", "hello","dataFiles/UserData.json"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 }
 
