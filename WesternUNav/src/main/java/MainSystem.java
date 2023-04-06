@@ -12,7 +12,9 @@ public class MainSystem {
     private int developerKey = 1;
     private LinkedList<User> users;
     private LinkedList<Developer> devs;
-
+    /**
+     * constructor assigns the attributes as new linked list
+     */
     public MainSystem() {
         this.users = new LinkedList<>();
         this.devs = new LinkedList<>();
