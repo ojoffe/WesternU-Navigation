@@ -270,7 +270,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     /**
      * This function clears the login, password, developer fields of the frame.
-     * @param evt clear button event
+     * @param evt clear button event, not used
      */
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         loginField.setText("");
