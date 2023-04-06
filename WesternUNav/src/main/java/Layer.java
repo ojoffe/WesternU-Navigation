@@ -47,7 +47,7 @@ public class Layer {
     
     /**
      * This method deletes a poi
-     * @param POI 
+     * @param POI a poi that is desired to be deleted
      */
     public void deletePOI(POI POI) {
         this.POIs.remove(POI);
