@@ -31,7 +31,7 @@ public class Layer {
     
     /**
      * This method returns the POIs
-     * @return 
+     * @return the linked list of POIs in this layer
      */
     public LinkedList<POI> getPOIs() {
         return POIs;
