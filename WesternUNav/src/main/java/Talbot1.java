@@ -194,8 +194,7 @@ public class Talbot1 extends javax.swing.JFrame {
                                         poiJson.put("name", name);
                                         poiJson.put("floor", floor);
                                         poiJson.put("layer", layer);
-                                        hideFrame();
-                                        new Talbot1(ll).setVisible(true);
+                                        hideFrame();                                       
                                         try {
                                             FileWriter fileWriter = new FileWriter("dataFiles/POI.json");
                                             fileWriter.write(json.toString());
@@ -204,6 +203,7 @@ public class Talbot1 extends javax.swing.JFrame {
                                         } catch (IOException ex) {
                                             ex.printStackTrace();
                                         }
+                                        new Talbot1(ll).setVisible(true);
                                     }
                                 } else if (result == 4) {
                                     int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the selected POI?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
