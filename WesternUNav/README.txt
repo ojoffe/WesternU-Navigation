@@ -1,5 +1,5 @@
 WesternU Navigation System
-
+!!!WARNING, YOU MUST DELETE CLASS "System.java" UPON CLONING/PULLING THE PROJECT, OR THERE WILL BE AN ERROR!!!
 Welcome to the WesternU Navigation System! This application is designed to help students, faculty, and visitors navigate the campus of Western University with ease. It provides detailed maps, and information about various buildings and facilities on campus.
 
 Getting Started
