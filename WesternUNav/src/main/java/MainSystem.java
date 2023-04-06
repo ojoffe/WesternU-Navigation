@@ -4,7 +4,10 @@
  */
 
 import java.util.LinkedList;
-
+/**
+ * this class is the main system
+ * @author louie
+ */
 public class MainSystem {
     private int developerKey = 1;
     private LinkedList<User> users;
