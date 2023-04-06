@@ -16,7 +16,7 @@ import java.util.LinkedList;
 
 
 /**
- *
+ * This class represents Middlesex5 frame
  * @author louie
  */
 //Components
