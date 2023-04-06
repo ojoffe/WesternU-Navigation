@@ -1,5 +1,5 @@
 /**
- *
+ * Test
  * @author orenj
  */
 
@@ -8,13 +8,18 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 import javax.crypto.*;
 import javax.crypto.spec.*;
-
+/**
+ * encrypt class
+ * @author louie
+ */
 public class StringEncrypter {
 
     private Key key;
     private String filename;
 
-    //public UserEncryptor(String password, String filename)  {
+    /**
+     * constructor
+     */
     public StringEncrypter()  {    
         try{
             // Initialize a basic key without randomization
@@ -31,7 +36,12 @@ public class StringEncrypter {
             e.printStackTrace();
         }
     }
-
+    /**
+     * method does the encryption 
+     * @param userInfo string to be encrypted
+     * @return the byte[] storing the encrypted key
+     * @throws Exception some error
+     */
     public byte[] encrypt(String userInfo) throws Exception {
         //String accountJson = "[{\"systemID\": \"" + systemID + "\", \"password\": \"" + password + "\"}]";
         try{
@@ -49,7 +59,12 @@ public class StringEncrypter {
         }
         return null;
     }
-
+    /**
+     * method decrypts a byte[]
+     * @param encryptedAccount the byte array to be decrypted
+     * @return the decrypted string
+     * @throws Exception some exception
+     */
     public String decrypt(byte[] encryptedAccount) throws Exception{
         try{
             Cipher cipher = Cipher.getInstance("DES");
@@ -65,7 +80,10 @@ public class StringEncrypter {
         }
         return null;
     }
-    
+    /**
+     * test method
+     * @param args command line arguments 
+     */
     public static void main(String[] args) {
         try {
             StringEncrypter encryptor1 = new StringEncrypter();
