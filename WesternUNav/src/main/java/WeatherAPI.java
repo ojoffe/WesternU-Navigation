@@ -38,7 +38,7 @@ public class WeatherAPI {
     
     /**
      * This method get the weather from the weather API
-     * @param city
+     * @param city represents the city to find weather in
      * @return it returns a string with the important weather details
      * @throws IOException
      * @throws InterruptedException 

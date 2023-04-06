@@ -13,10 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 /**
- *
+ * This class represents our login page where the user can enter their credentials which are checked with the User json file
  * @author stephenkinsey
  */
 public class LoginFrame extends javax.swing.JFrame {
+    /** is developer boolean to determine whether or not the user is in dev mode */
     public static Boolean isDev = false;
     /**
      * Creates new form MainFrame
@@ -46,11 +47,10 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginField = new javax.swing.JTextField();
         passwordField = new javax.swing.JPasswordField();
+        clearButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
-        loginButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         devField = new javax.swing.JPasswordField();
-        loginButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         HelpButton = new javax.swing.JButton();
 
@@ -126,17 +126,17 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        loginButton.setText("Clear");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
+                clearButtonActionPerformed(evt);
             }
         });
 
-        loginButton1.setText("Login");
-        loginButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
@@ -155,13 +155,6 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
-        loginButton2.setText("Bypass");
-        loginButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -171,23 +164,21 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(loginButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(38, 38, 38)
-                                    .addComponent(jLabel1))
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(devField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(loginButton)
+                                .addComponent(clearButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(loginButton1)))))
+                                .addComponent(loginButton)))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -211,9 +202,8 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(devField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginButton)
-                    .addComponent(loginButton1)
-                    .addComponent(loginButton2))
+                    .addComponent(clearButton)
+                    .addComponent(loginButton))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -278,18 +268,25 @@ public class LoginFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    /**
+     * This function clears the login, password, developer fields of the frame.
+     * @param evt clear button event
+     */
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         loginField.setText("");
         passwordField.setText("");
         devField.setText("");
-    }//GEN-LAST:event_loginButtonActionPerformed
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     private void loginFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginFieldActionPerformed
 
     }//GEN-LAST:event_loginFieldActionPerformed
-
-    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
+    
+    /**
+     * This method performs the login functionality by extracting the login and password fields and testing it against the User json file.
+     * @param evt login button event
+     */
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         String systemID = loginField.getText(); // Get the systemID entered in the login field
         String password = new String(passwordField.getPassword()); // Get the password entered in the password field
 
@@ -307,9 +304,9 @@ public class LoginFrame extends javax.swing.JFrame {
                     if (!devKeyString.isEmpty()) {
                         devKey = Integer.parseInt(devKeyString);
                     }
+                    //Developer if statement for developer functionality
                     if (devKey == 1) {
-                        System.out.println(devKey);
-                        // User is authenticated, do something
+                        //User Authenticated
                         int confirmation = JOptionPane.showConfirmDialog(this, "Developer Account in use. Do you want to proceed?", "Confirmation", JOptionPane.YES_NO_OPTION);
                         if (confirmation == JOptionPane.YES_OPTION) {
                             isDev = true;
@@ -323,51 +320,57 @@ public class LoginFrame extends javax.swing.JFrame {
                     }
                     else {
                         isDev = false;
-                        // User is authenticated, do something
+                        // User is authenticated
                         new welcomeScreenFrame().setVisible(true);
                         this.dispose();
                         return;
                     }
                 }
             }
-            // User is not authenticated, show an error message
+            // User is not authenticated -> error message is thrown
             JOptionPane.showMessageDialog(this, "Password is Incorrect. Please try again.");
             passwordField.setText("");
         } 
         catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_loginButton1ActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
 
     }//GEN-LAST:event_passwordFieldActionPerformed
-
-    private void loginButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton2ActionPerformed
-        isDev = false;
-        new welcomeScreenFrame().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_loginButton2ActionPerformed
-
+    
+    
     private void devFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_devFieldActionPerformed
-
+    
+    /**
+     * Allows for enter to perform same action as the login button
+     * @param evt enter pressed in login field event
+     */
     private void loginFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginFieldKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+            loginButtonActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
         }
     }//GEN-LAST:event_loginFieldKeyPressed
-
+    
+    /**
+     * Allows for enter to perform same action as the login button
+     * @param evt enter pressed in password field event
+     */
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+            loginButtonActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
         }
     }//GEN-LAST:event_passwordFieldKeyPressed
-
+    /**
+     * Allows for enter to perform same action as the login button
+     * @param evt enter pressed in developer field event
+     */
     private void devFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_devFieldKeyPressed
         if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
-            loginButton1ActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
+            loginButtonActionPerformed(new java.awt.event.ActionEvent(this, java.awt.event.ActionEvent.ACTION_PERFORMED, ""));
         }
     }//GEN-LAST:event_devFieldKeyPressed
 
@@ -375,6 +378,10 @@ public class LoginFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Pops up the Help Page PDF document when the button is selected
+     * @param evt help button event
+     */
     private void HelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpButtonActionPerformed
         File pdfFile = new File("dataFiles/2212help.pdf");
 
@@ -430,6 +437,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel HeaderTitle;
     private javax.swing.JButton HelpButton;
     private javax.swing.JPanel OtherBG;
+    private javax.swing.JButton clearButton;
     private javax.swing.JPasswordField devField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -441,8 +449,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JButton loginButton1;
-    private javax.swing.JButton loginButton2;
     private javax.swing.JTextField loginField;
     private javax.swing.JPasswordField passwordField;
     // End of variables declaration//GEN-END:variables

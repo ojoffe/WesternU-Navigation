@@ -178,7 +178,7 @@ public class POI {
     
     /**
      * 
-     * @return 
+     * @return building of the POI object
      */
     public String getBuilding() {
         return this.building;
