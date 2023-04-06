@@ -176,7 +176,7 @@ public class POI {
     }
     
     /**
-     * 
+     * getter for the building name
      * @return building of the POI object
      */
     public String getBuilding() {
