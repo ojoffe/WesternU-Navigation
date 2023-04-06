@@ -32,7 +32,7 @@ public class MainSystemTest {
     }
     
     @After
-    public void     /**
+    /**
      * Test of addUser method, of class MainSystem.
      */
     @Test
@@ -72,13 +72,10 @@ public class MainSystemTest {
         System.out.println("getWeather");
         MainSystem instance = new MainSystem();
         String expResult = "";
-        String result = instance.getWeather();
-        assertEquals(expResult, result);
+        //String result = instance.getWeather();
+        //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }
-
-tearDown() {
     }
     
 }
