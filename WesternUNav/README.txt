@@ -8,7 +8,8 @@ To get started with the WesternU Navigation System, follow these steps:
 
     Download the source code on your Windows 10 device.
     Launch the project on any IDE that supports Java Maven projects.
-    Run from the IDE or command line.
+    Run from the IDE or command line. (run the java class titled 
+    MavenProject1.java)
 
 Technologies Used
 
