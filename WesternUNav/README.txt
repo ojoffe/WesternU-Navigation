@@ -1,5 +1,5 @@
 WesternU Navigation System
-
+!!!WARNING, YOU MUST DELETE CLASS "System.java" UPON CLONING/PULLING THE PROJECT, OR THERE WILL BE AN ERROR!!!
 Welcome to the WesternU Navigation System! This application is designed to help students, faculty, and visitors navigate the campus of Western University with ease. It provides detailed maps, and information about various buildings and facilities on campus.
 
 Getting Started
@@ -24,3 +24,6 @@ Acknowledgements
 We would like to thank the following individuals and organizations for their contributions to the WesternU Navigation System:
 	Team: Oren Joffe, Darren Porciello, Luigi Perri, Aaron Pogrin, Stephen Kinsey
     Advisors: Moinul Islam, Dr. Daniel Servos
+    
+In regards to filtering a map by the different layers, select the layer(s) you wish to be displayed and then click the submit
+button to update the map to show only the desired layer(s).
